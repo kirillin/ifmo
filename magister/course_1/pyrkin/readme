@@ -1,0 +1,9 @@
+расчеты делались на python.
+github.com/kirillin/py_projects/manipulator
+
+1,2 labs
+	fik.py 
+	класс Kinematics
+3 lab
+	manipulator/manipulator_tests.py
+	функция trajectory_planning()
