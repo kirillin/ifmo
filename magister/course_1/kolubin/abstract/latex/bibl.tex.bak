@@ -1,0 +1,16 @@
+\addcontentsline{toc}{section}{Литература}
+
+\label{section_bibliography}
+
+\begin{thebibliography}{99} % Для того, чтобы цифры были одинаково выровнены, говорим, что максимальное число будет двухзначное
+
+\bibitem{besekerskiy_1}
+Featherstone, R. (1987). Robot Dynamics Algorithms
+
+\bibitem{besekerskiy_2}
+Siciliano, B., and Khatib, O. (eds.) (2008). Springer Handbook of Robotics
+
+\bibitem{besekerskiy_3}
+Featherstone, Orin Robot Dynamics: Equations and Algorithms
+
+\end{thebibliography}

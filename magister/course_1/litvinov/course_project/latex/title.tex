@@ -1,0 +1,67 @@
+\documentclass[a4paper,14pt]{extreport}
+\usepackage[utf8]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage[russian]{babel}
+\usepackage{eufrak}
+% поля:
+\usepackage[left=2.5cm, right=2cm, top=2cm, bottom=2cm]{geometry}
+\linespread{1}
+\usepackage{indentfirst} % отделять первую строку раздела абзацным отступом
+\setlength\parindent{5ex}
+\addto{\captionsrussian}{\renewcommand*{\contentsname}{Содержание}}
+\usepackage[hidelinks]{hyperref} % гиперссылки в содержании
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{amsmath}
+\renewcommand*{\thesection}{\arabic{section}}
+
+\begin{document}
+	
+\begin{titlepage}
+\pagenumbering{gobble}
+
+	\begin{center}
+		\large
+		МИНИСТЕРСТВО ОБРАЗОВАНИЯ И НАУКИ\\ РОССИЙСКОЙ ФЕДЕРАЦИИ
+		
+		\textbf{Федеральное агентство по образованию}
+		\vspace{0.5cm}
+		
+		УНИВЕРСИТЕТ ИТМО
+		\vspace{0.25cm}
+		
+		Факультет компьютерных технологий и управления
+		
+		Кафедра систем управления и информатики
+		\vfill
+		
+		
+		Студент: Артемов Кирилл\\
+		группа P4135\\
+		
+		\textsc{Курсовой проект}\\[5mm]
+		
+		{\LARGE Дискретный регулятор для непрерывного объекта управления }
+		\bigskip
+		
+	\end{center}
+	\vfill
+	
+	\newlength{\ML}
+	\settowidth{\ML}{«\underline{\hspace{0.7cm}}» \underline{\hspace{1cm}}}
+	\hfill\begin{minipage}{0.4\textwidth}
+		Руководитель\\
+		\underline{\hspace{\ML}} Ю.\,В.~Литвинов\\
+		«\underline{\hspace{0.7cm}}» \underline{\hspace{2cm}} 2016 г.
+	\end{minipage}%
+	\bigskip
+	
+	\vfill
+	
+	\begin{center}
+		Санкт-Петербург, 2016 г.
+	\end{center}
+\end{titlepage}
+
+\end{document}
+
