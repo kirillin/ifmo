@@ -1,0 +1,236 @@
+\documentclass[a4paper,14pt]{extreport}
+\usepackage[utf8]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage[russian]{babel}
+\usepackage{eufrak}
+% поля:
+\usepackage[left=1cm, right=1cm, top=2cm, bottom=2cm]{geometry}
+\linespread{1}
+\usepackage{indentfirst} % отделять первую строку раздела абзацным отступом
+\setlength\parindent{5ex}
+\addto{\captionsrussian}{\renewcommand*{\contentsname}{Содержание}}
+\usepackage[hidelinks]{hyperref} % гиперссылки в содержании
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{amsmath}
+\renewcommand*{\thesection}{\arabic{section}}
+
+\usepackage{multirow}
+\usepackage[normalem]{ulem}
+\useunder{\uline}{\ul}{}
+
+\usepackage{cmap}%позволяет копировать кириллицу из скомпилированного файла
+
+% Глубина разделов, попадающих в содержание
+\setcounter{tocdepth}{2}
+
+\linespread{1.3} % настройка межстрочного интервала
+\tolerance=1000 % настройка чувствительности вставки переносов
+\hfuzz=0pt
+\sloppy
+
+% r01.T
+\begin{document}
+\begin{align*}
+\left[
+\begin{matrix}\cos{\left (q_{1} \right )} & \sin{\left (q_{1} \right )} & 0\\- \sin{\left (q_{1} \right )} & \cos{\left (q_{1} \right )} & 0\\0 & 0 & 1
+\end{matrix}
+\right]
+\end{align*}
+
+% r12.T
+\begin{align*}
+\left[\begin{matrix}\cos{\left (q_{2} \right )} & \sin{\left (q_{2} \right )} & 0\\- \sin{\left (q_{2} \right )} & \cos{\left (q_{2} \right )} & 0\\0 & 0 & 1\end{matrix}\right]
+\end{align*}
+
+\begin{itemize}
+\item Звено 1
+% \omega_1
+\begin{align*}
+\omega_1 = ^0R_1^T [\omega_0 + \dot q_1 z_0] =
+\left[
+\begin{matrix}\cos{\left (q_{1} \right )} & \sin{\left (q_{1} \right )} & 0\\- \sin{\left (q_{1} \right )} & \cos{\left (q_{1} \right )} & 0\\0 & 0 & 1
+\end{matrix}
+\right]
+\left[\begin{matrix}0\\0\\\dot{q}_1\end{matrix}\right] = 
+\left[\begin{matrix}0\\0\\\dot{q}_1\end{matrix}\right]
+\end{align*}
+
+% \dot \omega_1
+\begin{align*}
+\dot \omega_1 = ^0R_1^T [\dot \omega_0 + \ddot q_1 z_0 + \dot q_1 \omega_0 \times z_0] = 
+\left[
+\begin{matrix}\cos{\left (q_{1} \right )} & \sin{\left (q_{1} \right )} & 0\\- \sin{\left (q_{1} \right )} & \cos{\left (q_{1} \right )} & 0\\0 & 0 & 1
+\end{matrix}
+\right]
+\left[\begin{matrix}0\\0\\\ddot{q}_1\end{matrix}\right]
+=
+\left[\begin{matrix}0\\0\\\ddot{q}_1\end{matrix}\right]
+\end{align*}
+
+% a1
+\begin{align*}
+&a_1 = ^0R_1^T a_0 + \dot \omega_1 \times ^1r_{01} + \omega_1 \times (\omega_1 \times ^1r_{01})
+=\\
+&=
+\left[\begin{matrix}g \sin{\left (q_{1} \right )}\\g \cos{\left (q_{1} \right )}\\0\end{matrix}\right]
++
+\left[\begin{matrix}0\\\ddot{q}_1 l_{1}\\0\end{matrix}\right]
++
+\left[\begin{matrix}- \dot{q}_1^{2} l_{1}\\0\\0\end{matrix}\right]
+=
+\left[\begin{matrix}- \dot{q}_1^{2} l_{1} + g \sin{\left (q_{1} \right )}\\\ddot{q}_1 l_{1} + g \cos{\left (q_{1} \right )}\\0\end{matrix}\right]
+\end{align*}
+
+% ac1
+\begin{align*}
+&a_{c1} = a_1 + \dot \omega_1 \times r_{1,c1} + \omega_1 \times (\omega_1 \times r_{1,c1})
+=\\
+&=
+\left[\begin{matrix}- \dot{q}_1^{2} l_{1} + g \sin{\left (q_{1} \right )}\\\ddot{q}_1 l_{1} + g \cos{\left (q_{1} \right )}\\0\end{matrix}\right]
++
+\left[\begin{matrix}0\\\ddot{q}_1 \left(- l_{1} + r_{1}\right)\\0\end{matrix}\right]
++
+\left[\begin{matrix}- \dot{q}_1^{2} \left(- l_{1} + r_{1}\right)\\0\\0\end{matrix}\right]
+=\\
+&=
+\left[\begin{matrix}- \dot{q}_1^{2} l_{1} - \dot{q}_1^{2} \left(- l_{1} + r_{1}\right) + g \sin{\left (q_{1} \right )}\\\ddot{q}_1 l_{1} + \ddot{q}_1 \left(- l_{1} + r_{1}\right) + g \cos{\left (q_{1} \right )}\\0\end{matrix}\right]
+\end{align*}
+
+%*********************************
+\item Звено 2
+% \omega_2
+\begin{align*}
+\omega_2 &= ^1R_2^T [\omega_1 + \dot q_2 z_1] = 
+\left[\begin{matrix}\cos{\left (q_{2} \right )} & \sin{\left (q_{2} \right )} & 0\\- \sin{\left (q_{2} \right )} & \cos{\left (q_{2} \right )} & 0\\0 & 0 & 1\end{matrix}\right]
+\left[\begin{matrix}0\\0\\\dot{q}_1 + \dot{q}_2\end{matrix}\right]
+=
+\left[\begin{matrix}0\\0\\\dot{q}_1 + \dot{q}_2\end{matrix}\right]
+\end{align*}
+
+% \dot \omega_2
+\begin{align*}
+\dot \omega_2 &= ^1R_2^T [\dot \omega_1 + \ddot q_2 z_1 + \dot q_2 \omega_1 \times z_1] 
+=\\
+&=
+\left[\begin{matrix}\cos{\left (q_{2} \right )} & \sin{\left (q_{2} \right )} & 0\\- \sin{\left (q_{2} \right )} & \cos{\left (q_{2} \right )} & 0\\0 & 0 & 1\end{matrix}\right]
+\left[\begin{matrix}0\\0\\\ddot{q}_1 + \ddot{q}_2\end{matrix}\right]
+=
+\left[\begin{matrix}0\\0\\\ddot{q}_1 + \ddot{q}_2\end{matrix}\right]
+\end{align*}
+
+% a2
+\begin{align*}
+a_2 &= ^1R_2^T a_1 + \dot \omega_2 \times ^2r_{12} + \omega_2 \times (\omega_2 \times ^2r_{11}) = \\
+&=
+\left[\begin{matrix}\left(\ddot{q}_1 l_{1} + g \cos{\left (q_{1} \right )}\right) \sin{\left (q_{2} \right )} + \left(- \dot{q}_1^{2} l_{1} + g \sin{\left (q_{1} \right )}\right) \cos{\left (q_{2} \right )}\\\left(\ddot{q}_1 l_{1} + g \cos{\left (q_{1} \right )}\right) \cos{\left (q_{2} \right )} - \left(- \dot{q}_1^{2} l_{1} + g \sin{\left (q_{1} \right )}\right) \sin{\left (q_{2} \right )}\\0\end{matrix}\right]
++\\
+&+
+\left[\begin{matrix}0\\l_{2} \left(\ddot{q}_1 + \ddot{q}_2\right)\\0\end{matrix}\right]
++
+\left[\begin{matrix}- l_{2} \left(\dot{q}_1 + \dot{q}_2\right)^{2}\\0\\0\end{matrix}\right]
+=\\
+&=
+\left[\begin{matrix}- l_{2} \left(\dot{q}_1 + \dot{q}_2\right)^{2} + \left(\ddot{q}_1 l_{1} + g \cos{\left (q_{1} \right )}\right) \sin{\left (q_{2} \right )} + \left(- \dot{q}_1^{2} l_{1} + g \sin{\left (q_{1} \right )}\right) \cos{\left (q_{2} \right )}\\l_{2} \left(\ddot{q}_1 + \ddot{q}_2\right) + \left(\ddot{q}_1 l_{1} + g \cos{\left (q_{1} \right )}\right) \cos{\left (q_{2} \right )} - \left(- \dot{q}_1^{2} l_{1} + g \sin{\left (q_{1} \right )}\right) \sin{\left (q_{2} \right )}\\0\end{matrix}\right]
+\end{align*}
+
+% ac2
+\begin{align*}
+a_{c2} &= a_2 + \dot \omega_2 \times r_{2,c2} + \omega_2 \times (\omega_2 \times r_{2,c2}) 
+=\\
+&=
+\left[\begin{matrix}- l_{2} \left(\dot{q}_1 + \dot{q}_2\right)^{2} + \left(\ddot{q}_1 l_{1} + g \cos{\left (q_{1} \right )}\right) \sin{\left (q_{2} \right )} + \left(- \dot{q}_1^{2} l_{1} + g \sin{\left (q_{1} \right )}\right) \cos{\left (q_{2} \right )}\\l_{2} \left(\ddot{q}_1 + \ddot{q}_2\right) + \left(\ddot{q}_1 l_{1} + g \cos{\left (q_{1} \right )}\right) \cos{\left (q_{2} \right )} - \left(- \dot{q}_1^{2} l_{1} + g \sin{\left (q_{1} \right )}\right) \sin{\left (q_{2} \right )}\\0\end{matrix}\right]
+=\\
+&=
+\left[\begin{matrix}0\\\left(\ddot{q}_1 + \ddot{q}_2\right) \left(- l_{2} + r_{2}\right)\\0\end{matrix}\right]
++
+\left[
+\begin{matrix}
+-\left(\dot{q}_1 + \dot{q}_2\right)^{2} \left(- l_{2} + r_{2}\right)\\
+0\\
+0
+\end{matrix}
+\right]
+=\\
+&=
+\left[\begin{matrix}
+- l_{2} \left(\dot{q}_1 + \dot{q}_2\right)^{2} - \left(\dot{q}_1 + \dot{q}_2\right)^{2} \left(- l_{2} + r_{2}\right) + \left(\ddot{q}_1 l_{1} +\\+ g \cos{\left (q_{1} \right )}\right) \sin{\left (q_{2} \right )} + \left(- \dot{q}_1^{2} l_{1} + g \sin{\left (q_{1} \right )}\right) \cos{\left (q_{2} \right )}\\
+l_{2} \left(\ddot{q}_1 + \ddot{q}_2\right) + \left(\ddot{q}_1 + \ddot{q}_2\right) \left(- l_{2} + r_{2}\right) + \left(\ddot{q}_1 l_{1} +\\+ g \cos{\left (q_{1} \right )}\right) \cos{\left (q_{2} \right )} - \left(- \dot{q}_1^{2} l_{1} + g \sin{\left (q_{1} \right )}\right) \sin{\left (q_{2} \right )}\\0\end{matrix}\right]
+\end{align*}
+\end{itemize}
+
+%*********************************
+%*********************************
+\begin{itemize}
+\item Звено 2
+% f_2
+\begin{align*}
+f_2 &= f_3 + m_2 a_{c2} =\\
+&=
+\left[\begin{matrix}- m_{2} \left(- \ddot{q}_1 l_{1} \sin{\left (q_{2} \right )} + \dot{q}_1^{2} l_{1} \cos{\left (q_{2} \right )} + \dot{q}_1^{2} r_{2} + 2 \dot{q}_1 \dot{q}_2 r_{2} + \dot{q}_2^{2} r_{2} - g \sin{\left (q_{1} + q_{2} \right )}\right)\\m_{2} \left(\ddot{q}_1 l_{1} \cos{\left (q_{2} \right )} + \ddot{q}_1 r_{2} + \ddot{q}_2 r_{2} + \dot{q}_1^{2} l_{1} \sin{\left (q_{2} \right )} + g \cos{\left (q_{1} + q_{2} \right )}\right)\\0\end{matrix}\right]
+\end{align*}
+
+% \tau_2
+\begin{align*}
+\tau_2 &= \tau_3 - f_2 \times (^2 r_{12} + r_{2,c2}) + f_3 \times r_{2c2} + J_2 \dot \omega_2 + \omega_2 \times (J_2 \omega_2) =\\
+&=
+\left[\begin{matrix}0\\0\\0\end{matrix}\right]
++
+\left[\begin{matrix}0\\0\\- m_{2} r_{2} \left(\ddot{q}_1 l_{1} \cos{\left (q_{2} \right )} + \ddot{q}_1 r_{2} + \ddot{q}_2 r_{2} + \dot{q}_1^{2} l_{1} \sin{\left (q_{2} \right )} + g \cos{\left (q_{1} + q_{2} \right )}\right)\end{matrix}\right]
++\\
+&+
+\left[\begin{matrix}0\\0\\0\end{matrix}\right]
++
+\left[\begin{matrix}0\\0\\\frac{1}{12} \left(\ddot{q}_1 + \ddot{q}_2\right) \left(12 m_{2} r^{l}_{2}^{2} + \operatorname{m_{2}}{\left (2 l_{2} + 3 r^{l}_{2}^{2} \right )}\right)\end{matrix}\right]
++
+\left[\begin{matrix}0\\0\\0\end{matrix}\right]
+=\\
+&= 
+\left[\begin{matrix}0\\0\\m_{2} r_{2} \left(\ddot{q}_1 l_{1} \cos{\left (q_{2} \right )} + \ddot{q}_1 r_{2} + \ddot{q}_2 r_{2} + \dot{q}_1^{2} l_{1} \sin{\left (q_{2} \right )} + g \cos{\left (q_{1} + q_{2} \right )}\right) +\\+ \frac{1}{12} \left(\ddot{q}_1 + \ddot{q}_2\right) \left(12 m_{2} r^{l}_{2}^{2} + \operatorname{m_{2}}{\left (2 l_{2} + 3 r^{l}_{2}^{2} \right )}\right)\end{matrix}\right]
+\end{align*}
+
+%**************************
+\item Звено 1
+% f_1
+\begin{align*}
+f_1 &= f_2 + m_1 a_{c1} =\\
+&=
+\left[\begin{matrix}- m_{2} \left(- \ddot{q}_1 l_{1} \sin{\left (q_{2} \right )} + \dot{q}_1^{2} l_{1} \cos{\left (q_{2} \right )} + \dot{q}_1^{2} r_{2} + 2 \dot{q}_1 \dot{q}_2 r_{2} + \dot{q}_2^{2} r_{2} - g \sin{\left (q_{1} + q_{2} \right )}\right)\\m_{2} \left(\ddot{q}_1 l_{1} \cos{\left (q_{2} \right )} + \ddot{q}_1 r_{2} + \ddot{q}_2 r_{2} + \dot{q}_1^{2} l_{1} \sin{\left (q_{2} \right )} + g \cos{\left (q_{1} + q_{2} \right )}\right)\\0\end{matrix}\right]
++\\
+&+
+\left[\begin{matrix}m_{1} \left(- \dot{q}_1^{2} r_{1} + g \sin{\left (q_{1} \right )}\right)\\m_{1} \left(\ddot{q}_1 r_{1} + g \cos{\left (q_{1} \right )}\right)\\0\end{matrix}\right]
+=\\
+&=
+\left[\begin{matrix}
+m_{1} \left(- \dot{q}_1^{2} r_{1} + g \sin{\left (q_{1} \right )}\right) - m_{2} \left(- \ddot{q}_1 l_{1} \sin{\left (q_{2} \right )} +\\+ \dot{q}_1^{2} l_{1} \cos{\left (q_{2} \right )} + \dot{q}_1^{2} r_{2} + 2 \dot{q}_1 \dot{q}_2 r_{2} + \dot{q}_2^{2} r_{2} - g \sin{\left (q_{1} + q_{2} \right )}\right)\\
+m_{1} \left(\ddot{q}_1 r_{1} + g \cos{\left (q_{1} \right )}\right) + m_{2} \left(\ddot{q}_1 l_{1} \cos{\left (q_{2} \right )} + \ddot{q}_1 r_{2} +\\+ \ddot{q}_2 r_{2} + \dot{q}_1^{2} l_{1} \sin{\left (q_{2} \right )} + g \cos{\left (q_{1} + q_{2} \right )}\right)\\0\end{matrix}\right]
+\end{align*}
+
+% \tau_1
+\begin{align*}
+\tau_1 &= \tau_2 - f_1 \times (^1 r_{01} + r_{1,c1}) + f_2 \times r_{1c1} + J_1 \dot \omega_1 + \omega_1 \times (J_1 \omega_1) =\\
+&=
+\left[\begin{matrix}0\\0\\m_{2} r_{2} \left(\ddot{q}_1 l_{1} \cos{\left (q_{2} \right )} + \ddot{q}_1 r_{2} + \ddot{q}_2 r_{2} + \dot{q}_1^{2} l_{1} \sin{\left (q_{2} \right )} + g \cos{\left (q_{1} + q_{2} \right )}\right) + \frac{1}{12} \left(\ddot{q}_1 + \ddot{q}_2\right) \left(12 m_{2} r_{l2}^{2} + \operatorname{m_{2}}{\left (2 l_{2} + 3 r_{l2}^{2} \right )}\right)\end{matrix}\right]
+-\\
+&-
+\left[\begin{matrix}0\\0\\- r_{1} \left(m_{1} \left(\ddot{q}_1 r_{1} + g \cos{\left (q_{1} \right )}\right) + m_{2} \left(\ddot{q}_1 l_{1} \cos{\left (q_{2} \right )} + \ddot{q}_1 r_{2} + \ddot{q}_2 r_{2} + \dot{q}_1^{2} l_{1} \sin{\left (q_{2} \right )} + g \cos{\left (q_{1} + q_{2} \right )}\right)\right)\end{matrix}\right]
++\\
+&+
+\left[\begin{matrix}0\\0\\m_{2} \left(l_{1} - r_{1}\right) \left(\ddot{q}_1 l_{1} \cos{\left (q_{2} \right )} + \ddot{q}_1 r_{2} + \ddot{q}_2 r_{2} + \dot{q}_1^{2} l_{1} \sin{\left (q_{2} \right )} + g \cos{\left (q_{1} + q_{2} \right )}\right)\end{matrix}\right]
++\\
+&+
+\left[\begin{matrix}0\\0\\\frac{\ddot{q}_1}{12} \left(12 m_{1} r_{l1}^{2} + \operatorname{m_{1}}{\left (l_{1}^{2} + 3 r_{l1}^{2} \right )}\right)\end{matrix}\right]
++
+\left[\begin{matrix}0\\0\\0\end{matrix}\right]
+=\\
+&=
+\left[\begin{matrix}0\\0\\
+\ddot{q}_1 l_{1}^{2} m_{2} \cos{\left (q_{2} \right )} + \ddot{q}_1 l_{1} m_{2} r_{2} \cos{\left (q_{2} \right )} + \ddot{q}_1 l_{1} m_{2} r_{2} + \ddot{q}_1 m_{1} r_{1}^{2} +\\+ \ddot{q}_1 m_{1} r^{l}_{1}^{2} + \ddot{q}_1 m_{2} r_{2}^{2} + \ddot{q}_1 m_{2} r^{l}_{2}^{2} +\frac{\ddot{q}_1}{12} \operatorname{m_{1}}{\left (l_{1}^{2} + 3 r^{l}_{1}^{2} \right )} +\\+ \frac{\ddot{q}_1}{12} \operatorname{m_{2}}{\left (2 l_{2} + 3 r^{l}_{2}^{2} \right )} + \ddot{q}_2 l_{1} m_{2} r_{2} + \ddot{q}_2 m_{2} r_{2}^{2} +\\+ \ddot{q}_2 m_{2} r^{l}_{2}^{2} + \frac{\ddot{q}_2}{12} \operatorname{m_{2}}{\left (2 l_{2} + 3 r^{l}_{2}^{2} \right )}  +\dot{q}_1^{2} l_{1}^{2} m_{2} \sin{\left (q_{2} \right )} + \dot{q}_1^{2} l_{1} m_{2} r_{2} \sin{\left (q_{2} \right )} + g l_{1} m_{2} \cos{\left (q_{1} +\\+ q_{2} \right )} + g m_{1} r_{1} \cos{\left (q_{1} \right )} + g m_{2} r_{2} \cos{\left (q_{1} + q_{2} \right )}\end{matrix}\right]
+\end{align*}
+
+\end{itemize}
+
+
+
+
+\end{document}
