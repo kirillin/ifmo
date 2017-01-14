@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.11.13)  28 DEC 2016 05:28
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.11.13)  15 JAN 2017 00:06
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -834,6 +834,24 @@ LaTeX Warning: Label `fig:scr1' multiply defined.
 
 LaTeX Warning: Label `fig:scr1' multiply defined.
 
+
+LaTeX Warning: Label `fig:scr1' multiply defined.
+
+
+LaTeX Warning: Label `fig:scr1' multiply defined.
+
+
+LaTeX Warning: Label `fig:scr1' multiply defined.
+
+
+LaTeX Warning: Label `fig:scr1' multiply defined.
+
+
+LaTeX Warning: Label `fig:scr1' multiply defined.
+
+
+LaTeX Warning: Label `fig:scr1' multiply defined.
+
 )
 \openout1 = `lab_5.aux'.
 
@@ -958,7 +976,7 @@ Package babel Info: Redefining russian shorthand "|
 (babel)             in language append on input line 83.
 Package babel Info: Redefining russian shorthand "~
 (babel)             in language append on input line 83.
- <pf.png, id=31, 330.23375pt x 107.40125pt>
+ <pf.png, id=35, 330.23375pt x 107.40125pt>
 File: pf.png Graphic file (type png)
 
 <use pf.png>
@@ -993,7 +1011,7 @@ l.123 \end{equation}
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.123 \end{equation}
-                     <./pf.png>] <pr.png, id=45, 440.64626pt x 254.9525pt>
+                     <./pf.png>] <pr.png, id=49, 440.64626pt x 254.9525pt>
 File: pr.png Graphic file (type png)
 
 <use pr.png>
@@ -1013,89 +1031,213 @@ Package babel Info: Redefining russian shorthand "~
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.183 \end{equation}
-                     <./pr.png>] <gk.png, id=59, 231.86626pt x 111.41624pt>
+                     <./pr.png>] <gk.png, id=63, 231.86626pt x 111.41624pt>
 File: gk.png Graphic file (type png)
 
 <use gk.png>
-Package pdftex.def Info: gk.png used on input line 238.
+Package pdftex.def Info: gk.png used on input line 236.
 (pdftex.def)             Requested size: 216.23764pt x 103.90845pt.
- <gk_res.png, id=61, 1321.93875pt x 665.48625pt>
+ <gk_res.png, id=65, 1321.93875pt x 665.48625pt>
 File: gk_res.png Graphic file (type png)
  <use gk_res.png>
-Package pdftex.def Info: gk_res.png used on input line 243.
+Package pdftex.def Info: gk_res.png used on input line 241.
 (pdftex.def)             Requested size: 378.42001pt x 190.49821pt.
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language append on input line 246.
+(babel)             in language append on input line 244.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language append on input line 246.
+(babel)             in language append on input line 244.
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language append on input line 246.
+(babel)             in language append on input line 244.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language append on input line 246.
+(babel)             in language append on input line 244.
 
 [3]
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language append on input line 282.
+(babel)             in language append on input line 280.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language append on input line 282.
+(babel)             in language append on input line 280.
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language append on input line 282.
+(babel)             in language append on input line 280.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language append on input line 282.
+(babel)             in language append on input line 280.
  [4pdfTeX warning (ext4): destination with the same identifier (name{figure.0.3
 }) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.282 Ч
-        то построить оптимальную по быстроде...
+l.280 Ч
+        тобы построить оптимальную по быстро...
 pdfTeX warning (ext4): destination with the same identifier (name{figure.0.4}) 
 has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.282 Ч
-        то построить оптимальную по быстроде...
+l.280 Ч
+        тобы построить оптимальную по быстро...
  <./gk.png> <./gk_res.png>]
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language append on input line 366.
+(babel)             in language append on input line 364.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language append on input line 366.
+(babel)             in language append on input line 364.
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language append on input line 366.
+(babel)             in language append on input line 364.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language append on input line 366.
+(babel)             in language append on input line 364.
  [5]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 395.
+<model_sch.png, id=102, 1175.39125pt x 368.37625pt>
+File: model_sch.png Graphic file (type png)
+ <use model_sch.png>
+Package pdftex.def Info: model_sch.png used on input line 395.
+(pdftex.def)             Requested size: 540.60239pt x 169.42702pt.
+
+<model_res.png, id=103, 1321.93875pt x 665.48625pt>
+File: model_res.png Graphic file (type png)
+ <use model_res.png>
+Package pdftex.def Info: model_res.png used on input line 400.
+(pdftex.def)             Requested size: 540.60239pt x 272.16061pt.
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language append on input line 395.
+(babel)             in language append on input line 404.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language append on input line 395.
+(babel)             in language append on input line 404.
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language append on input line 395.
+(babel)             in language append on input line 404.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language append on input line 395.
- [6]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 395.
+(babel)             in language append on input line 404.
+
+[6pdfTeX warning (ext4): destination with the same identifier (name{figure.0.5}
+) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.404 
+       <./model_sch.png>]
+Underfull \hbox (badness 5711) in paragraph at lines 421--422
+[]\T2A/cmr/m/n/14.4 ����� ��-��-���, ���-��-��-�-��� ���-���-����� ����-����-��
+-�� ��-��� �������-
+ []
+
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language append on input line 433.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language append on input line 433.
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language append on input line 433.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language append on input line 433.
+[7pdfTeX warning (ext4): destination with the same identifier (name{figure.0.6}
+) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.433 \end{equation}
+                     <./model_res.png>]
+<input_fsch.png, id=124, 432.61626pt x 181.67876pt>
+File: input_fsch.png Graphic file (type png)
+ <use input_fsch.png>
+Package pdftex.def Info: input_fsch.png used on input line 469.
+(pdftex.def)             Requested size: 378.42001pt x 158.92415pt.
+
+<input_f.png, id=125, 1321.93875pt x 665.48625pt>
+File: input_f.png Graphic file (type png)
+ <use input_f.png>
+Package pdftex.def Info: input_f.png used on input line 474.
+(pdftex.def)             Requested size: 540.60239pt x 272.16061pt.
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language append on input line 478.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language append on input line 478.
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language append on input line 478.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language append on input line 478.
+ [8pdfTeX warning (ext4): destination with the same identifier (name{figure.0.7
+}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.478 
+       <./input_fsch.png>]
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language append on input line 500.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language append on input line 500.
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language append on input line 500.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language append on input line 500.
+ [9pdfTeX warning (ext4): destination with the same identifier (name{figure.0.8
+}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.500 
+       <./input_f.png>] <model_f.png, id=145, 1165.35374pt x 418.56375pt>
+File: model_f.png Graphic file (type png)
+
+<use model_f.png>
+Package pdftex.def Info: model_f.png used on input line 530.
+(pdftex.def)             Requested size: 540.60239pt x 194.17027pt.
+ <model_f_res.png, id=146, 1321.93875pt x 665.48625pt>
+File: model_f_res.png Graphic file (type png)
+
+<use model_f_res.png>
+Package pdftex.def Info: model_f_res.png used on input line 535.
+(pdftex.def)             Requested size: 540.60239pt x 272.16061pt.
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language append on input line 539.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language append on input line 539.
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language append on input line 539.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language append on input line 539.
+ [10pdfTeX warning (ext4): destination with the same identifier (name{figure.0.
+9}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.539 
+       <./model_f.png>]
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language append on input line 544.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language append on input line 544.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 549.
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language append on input line 549.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language append on input line 549.
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language append on input line 549.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language append on input line 549.
+ [11pdfTeX warning (ext4): destination with the same identifier (name{figure.0.
+10}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.549 \end{document}
+                     <./model_f_res.png>]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 549.
  (./lab_5.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 395.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 395.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 549.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 549.
 Package rerunfilecheck Info: File `lab_5.out' has not changed.
-(rerunfilecheck)             Checksum: 2616A8C2DBEB355057179FE698C07B81;543.
+(rerunfilecheck)             Checksum: AA0F6BE70B222CB893FBBB11B7F7A797;684.
 
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 395.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 549.
  ) 
 Here is how much of TeX's memory you used:
- 10932 strings out of 494399
- 149169 string characters out of 6172182
- 227937 words of memory out of 5000000
- 14055 multiletter control sequences out of 15000+600000
+ 10987 strings out of 494399
+ 149975 string characters out of 6172182
+ 227903 words of memory out of 5000000
+ 14080 multiletter control sequences out of 15000+600000
  10761 words of font info for 27 fonts, out of 8000000 for 9000
  452 hyphenation exceptions out of 8191
- 29i,8n,32p,683b,369s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 29i,11n,32p,683b,369s stack positions out of 5000i,500n,10000p,200000b,80000s
  </home/kirix/.texmf-var/fonts/pk/ljfour/lh/lh-t2a/labx2074.600pk> </home/kir
 ix/.texmf-var/fonts/pk/ljfour/lh/lh-t2a/larm1440.600pk> </home/kirix/.texmf-var
 /fonts/pk/ljfour/lh/lh-t2a/larm2488.600pk> </home/kirix/.texmf-var/fonts/pk/ljf
@@ -1108,10 +1250,10 @@ live/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/te
 xmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dis
 t/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/
 type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on lab_5.pdf (7 pages, 193563 bytes).
+Output written on lab_5.pdf (12 pages, 335956 bytes).
 PDF statistics:
- 359 PDF objects out of 1000 (max. 8388607)
- 135 compressed objects within 2 object streams
- 48 named destinations out of 1000 (max. 500000)
- 65 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 425 PDF objects out of 1000 (max. 8388607)
+ 176 compressed objects within 2 object streams
+ 72 named destinations out of 1000 (max. 500000)
+ 103 words of extra memory for PDF output out of 10000 (max. 10000000)
 
