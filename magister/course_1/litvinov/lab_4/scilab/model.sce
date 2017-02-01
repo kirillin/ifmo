@@ -24,6 +24,8 @@ Hd = [1, 0]
 S = sylv(-Ad,Gd, Bd * Hd, 'd');
 Kd = Hd * S^(-1);
 
+
+
 sl = syslin('d', Ad, Bd, Cd);
 [d,num,chi] =ss2tf(sl)
 
@@ -35,4 +37,3 @@ Kk = [- 1.6926579, 2.6926579]
 Kd = Kk * M^-1
 
 Fd = Ad - Bd * Kd
-Fd = Ad
