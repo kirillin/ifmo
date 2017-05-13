@@ -1,0 +1,44 @@
+\section{Построение МТЧ ДОУ}\label{problem_1}
+
+\begin{enumerate}
+	\item Перейти к дискретному описанию ОУ с помощью интегральной модели ВСВ НОУ;
+	\item Построить модель траекторной чувствительности (МТЧ) дискретного ОУ (ДОУ) к вариации интервала дискретности;
+\end{enumerate}
+
+
+\subsection{Переход к дискретному описанию ОУ}
+
+ДОУ представляет собой дискретную по времени с интервалом дискретности
+длительности $\Delta t$ выборку из непрерывных процессов по вектору
+состояния $x(t,q)$ и выходу $y(t,q)$ при фиксированном на интервале $t \in \left[\Delta t k, \Delta t(k+1)\right]$ значении управления $u(t) = u(\Delta t k) = u(k)$. 
+\begin{equation}\label{eq_iso_doc}
+	\begin{cases}
+		x(k+1, q) = \overline{A}(q) x(k, q) + \overline{B}(q) u(k)\\
+		y(k, q) = \overline{C}(q) x(k, q)
+	\end{cases}
+\end{equation}
+где матрицы непрерывного~\ref{eq_iso_coc} и дискретного~\ref{eq_iso_doc} ОУ связаны следующими функциональными соотношениями
+\begin{align}
+	\overline{A}(q) = e^{A(q) \Delta t}; \overline{B}(q) = A^{-1}(q)(e^{A(q) \Delta t} - I)B(q); \overline{C}(q) = C(q)
+\end{align}
+
+
+%Номинальная модель ДОУ получается из~\ref{eq_iso_doc} при векторе параметров $q=q_0$
+%\begin{equation}\label{eq_iso_doc_n}
+%	\begin{cases}
+%		x(k+1) = \overline{A} x(k) + \overline{B} u(k)\\
+%		y(k) = \overline{C} x(k)
+%	\end{cases}
+%\end{equation}
+
+Общий вид интегральной модели ВСВ НОУ имеет вид
+\begin{align}
+	&x(t) = \Phi (t) x(0) + \int_0^t \Phi (t, \tau) B u(\tau) d \tau \\
+	&y(t) = C \Phi (t) x(0) + \int_0^t C \Phi(t, \tau) B u(\tau) d \tau 
+\end{align}
+где $\Phi(t) = e^{At}, \Phi(t, \tau) = \Phi(t) \Phi^{-1}(\tau) = e^{A(t-\tau)}$.
+
+Используя интегральную запись модели ВСВ непрерывного динамического объекта, нетрудно получить связь между матрицами модели ВСВ дискретного и непрерывного объектов в форме
+
+
+\newpage
