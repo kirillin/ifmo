@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.11.13)  14 MAY 2017 18:01
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.11.13)  28 MAY 2017 18:59
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -938,12 +938,19 @@ Package xcolor Info: Model `wave' substituted by `hsb' on input line 1360.
 \tileheight=\skip88
 \tileX=\skip89
 \tileY=\skip90
+)
+(/usr/share/texlive/texmf-dist/tex/latex/multirow/multirow.sty
+\bigstrutjot=\dimen133
 ) (./main.aux
 LaTeX Font Info:    Try loading font information for T2A+cmr on input line 5.
 
 (/usr/share/texlive/texmf-dist/tex/latex/cyrillic/t2acmr.fd
 File: t2acmr.fd 2001/08/11 v1.0a Computer Modern Cyrillic font definitions
-))
+)
+
+LaTeX Warning: Label `fig:mod_control' multiply defined.
+
+)
 \openout1 = `main.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 35.
@@ -1001,13 +1008,13 @@ Package lastpage Info: Please have a look at the pageslts package at
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count135
-\scratchdimen=\dimen133
+\scratchdimen=\dimen134
 \scratchbox=\box36
 \nofMPsegments=\count136
 \nofMParguments=\count137
 \everyMPshowfont=\toks24
 \MPscratchCnt=\count138
-\MPscratchDim=\dimen134
+\MPscratchDim=\dimen135
 \MPnumerator=\count139
 \makeMPintoPDFobject=\count140
 \everyMPtoPDFconversion=\toks25
@@ -1038,32 +1045,6 @@ LaTeX Font Warning: Font shape `T2A/cmr/m/sl' in size <20> not available
 (Font)              size <20.74> substituted on input line 35.
 
 
-! Package graphics Error: Division by 0.
-
-See the graphics package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.35 \begin{document}
-                     
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! Package graphics Error: Division by 0.
-
-See the graphics package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.35 \begin{document}
-                     
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
 LaTeX Font Warning: Font shape `T2A/cmr/m/n' in size <16> not available
 (Font)              size <17.28> substituted on input line 35.
 
@@ -1071,61 +1052,35 @@ LaTeX Font Warning: Font shape `T2A/cmr/m/n' in size <16> not available
 LaTeX Font Warning: Font shape `T2A/cmr/m/sl' in size <16> not available
 (Font)              size <17.28> substituted on input line 35.
 
-
-! Package graphics Error: Division by 0.
-
-See the graphics package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.35 \begin{document}
-                     
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! Package graphics Error: Division by 0.
-
-See the graphics package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.35 \begin{document}
-                     
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
 ABD: EveryShipout initializing macros
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
 \AtBeginShipoutBox=\box37
  (./title_pages.tex
-<./extra_pdf_pages/title_page_normal.pdf, id=1, 597.23125pt x 845.1575pt>
-File: ./extra_pdf_pages/title_page_normal.pdf Graphic file (type pdf)
+<./extrapdfpages/title_page_normal.pdf, id=1, 597.23125pt x 845.1575pt>
+File: ./extrapdfpages/title_page_normal.pdf Graphic file (type pdf)
 
-<use ./extra_pdf_pages/title_page_normal.pdf>
-Package pdftex.def Info: ./extra_pdf_pages/title_page_normal.pdf used on input 
-line 4.
+<use ./extrapdfpages/title_page_normal.pdf>
+Package pdftex.def Info: ./extrapdfpages/title_page_normal.pdf used on input li
+ne 4.
 (pdftex.def)             Requested size: 597.16599pt x 845.06516pt.
  [1
 
- <./extra_pdf_pages/title_page_normal.pdf>] <./extra_pdf_pages/tz1.pdf, id=19, 
-597.23125pt x 845.1575pt>
-File: ./extra_pdf_pages/tz1.pdf Graphic file (type pdf)
+ <./extrapdfpages/title_page_normal.pdf>] <./extrapdfpages/tz1.pdf, id=19, 597.
+23125pt x 845.1575pt>
+File: ./extrapdfpages/tz1.pdf Graphic file (type pdf)
 
-<use ./extra_pdf_pages/tz1.pdf>
-Package pdftex.def Info: ./extra_pdf_pages/tz1.pdf used on input line 8.
+<use ./extrapdfpages/tz1.pdf>
+Package pdftex.def Info: ./extrapdfpages/tz1.pdf used on input line 8.
 (pdftex.def)             Requested size: 597.16599pt x 845.06516pt.
- [2 <./extra_pdf_pages/tz1.pdf>]
-<./extra_pdf_pages/tz2.pdf, id=45, 597.23125pt x 845.1575pt>
-File: ./extra_pdf_pages/tz2.pdf Graphic file (type pdf)
+ [2 <./extrapdfpages/tz1.pdf>]
+<./extrapdfpages/tz2.pdf, id=45, 597.23125pt x 845.1575pt>
+File: ./extrapdfpages/tz2.pdf Graphic file (type pdf)
 
-<use ./extra_pdf_pages/tz2.pdf>
-Package pdftex.def Info: ./extra_pdf_pages/tz2.pdf used on input line 12.
+<use ./extrapdfpages/tz2.pdf>
+Package pdftex.def Info: ./extrapdfpages/tz2.pdf used on input line 12.
 (pdftex.def)             Requested size: 597.16599pt x 845.06516pt.
- [3 <./extra_pdf_pages/tz2.pdf>]) (./main.toc
+ [3 <./extrapdfpages/tz2.pdf>]) (./main.toc
 LaTeX Font Info:    Try loading font information for U+msa on input line 4.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
@@ -1141,199 +1096,117 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
  [4{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] (./introduction.tex [5]
 ) (./problem_1.tex
-Overfull \hbox (1.44115pt too wide) in paragraph at lines 6--7
+Overfull \hbox (1.44115pt too wide) in paragraph at lines 6--8
 []\T2A/cmr/m/n/14.4 Произвести ран-жи-ро-ва-ние па-ра-мет-ров по по-тен-ци-аль-
 ной чув-стви-тель-
  []
 
-[6] [7]
-Overfull \hbox (31.43874pt too wide) in paragraph at lines 194--195
-[]\T2A/cmr/m/n/14.4 Сконструируем аг-ре-ги-ро-ван-ную си-сте-му с со-став-ным в
-ек-то-ром $[] \OT1/cmr/m/n/14.4 = \OML/cmm/m/it/14.4 col\OMS/cmsy/m/n/14.4 f\OM
-L/cmm/m/it/14.4 x; ^^[[]\OMS/cmsy/m/n/14.4 g$
- []
+[6] [7] [8] [9] [10] [11]) (./problem_2.tex [12] [13] [14] [15])
+(./problem_3.tex [16] [17]
+<./images/mod_control.png, id=122, 683.55376pt x 197.73875pt>
+File: ./images/mod_control.png Graphic file (type png)
 
-[8] [9] [10] [11]) (./problem_2.tex [12]
-! Too many }'s.
-l.75 ...СЂРµРґСЃС‚Р°РІР»РµРЅРёСЏ~\ref{eq_iso_doc}}
-                                                   РїРѕ РєРѕРјРїРѕРЅРµРЅС‚Р°...
-You've closed more groups than you opened.
-Such booboos are generally harmless, so keep going.
+<use ./images/mod_control.png>
+Package pdftex.def Info: ./images/mod_control.png used on input line 146.
+(pdftex.def)             Requested size: 497.92328pt x 144.04333pt.
+ [18 <./images/mod_control.png>]
+<./images/res_mod_control.png, id=128, 1321.93875pt x 665.48625pt>
+File: ./images/res_mod_control.png Graphic file (type png)
 
-! Missing $ inserted.
-<inserted text> 
-                $
-l.75 ...ёРё (РІ РЅР°С€РµРј СЃР»СѓС‡Р°Рµ q = \Delta
-                                                   t), РІ СЂРµР·СѓР»СЊС‚Р°С‚...
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
+<use ./images/res_mod_control.png>
+Package pdftex.def Info: ./images/res_mod_control.png used on input line 155.
+(pdftex.def)             Requested size: 497.92328pt x 250.66356pt.
+ [19 <./images/res_mod_control.png>] [20]
+<./images/mod_control_mts.png, id=137, 1004.75375pt x 458.71375pt>
+File: ./images/mod_control_mts.png Graphic file (type png)
 
+<use ./images/mod_control_mts.png>
+Package pdftex.def Info: ./images/mod_control_mts.png used on input line 339.
+(pdftex.def)             Requested size: 497.92328pt x 227.31949pt.
 
-LaTeX Warning: Command \cyrv invalid in math mode on input line 75.
+<./images/res_3_q1.png, id=138, 1321.93875pt x 665.48625pt>
+File: ./images/res_3_q1.png Graphic file (type png)
 
+<use ./images/res_3_q1.png>
+Package pdftex.def Info: ./images/res_3_q1.png used on input line 346.
+(pdftex.def)             Requested size: 497.92328pt x 250.66356pt.
 
-LaTeX Warning: Command \cyrr invalid in math mode on input line 75.
+<./images/res_3_q2.png, id=139, 1321.93875pt x 665.48625pt>
+File: ./images/res_3_q2.png Graphic file (type png)
 
+<use ./images/res_3_q2.png>
+Package pdftex.def Info: ./images/res_3_q2.png used on input line 353.
+(pdftex.def)             Requested size: 497.92328pt x 250.66356pt.
 
-LaTeX Warning: Command \cyre invalid in math mode on input line 75.
+<./images/res_3_q3.png, id=140, 1321.93875pt x 665.48625pt>
+File: ./images/res_3_q3.png Graphic file (type png)
 
+<use ./images/res_3_q3.png>
+Package pdftex.def Info: ./images/res_3_q3.png used on input line 359.
+(pdftex.def)             Requested size: 497.92328pt x 250.66356pt.
 
-LaTeX Warning: Command \cyrz invalid in math mode on input line 75.
+<./images/res_3_q4.png, id=141, 1321.93875pt x 665.48625pt>
+File: ./images/res_3_q4.png Graphic file (type png)
 
+<use ./images/res_3_q4.png>
+Package pdftex.def Info: ./images/res_3_q4.png used on input line 365.
+(pdftex.def)             Requested size: 497.92328pt x 250.66356pt.
 
-LaTeX Warning: Command \cyru invalid in math mode on input line 75.
+<./images/res_3_q6.png, id=142, 1321.93875pt x 665.48625pt>
+File: ./images/res_3_q6.png Graphic file (type png)
 
+<use ./images/res_3_q6.png>
+Package pdftex.def Info: ./images/res_3_q6.png used on input line 371.
+(pdftex.def)             Requested size: 497.92328pt x 250.66356pt.
 
-LaTeX Warning: Command \cyrl invalid in math mode on input line 75.
+<./images/res_3_q7.png, id=143, 1321.93875pt x 665.48625pt>
+File: ./images/res_3_q7.png Graphic file (type png)
 
-
-LaTeX Warning: Command \cyrsftsn invalid in math mode on input line 75.
-
-
-LaTeX Warning: Command \cyrt invalid in math mode on input line 75.
-
-
-LaTeX Warning: Command \cyra invalid in math mode on input line 75.
-
-
-LaTeX Warning: Command \cyrt invalid in math mode on input line 75.
-
-
-LaTeX Warning: Command \cyre invalid in math mode on input line 75.
-
-
-LaTeX Warning: Command \cyrch invalid in math mode on input line 75.
-
-
-LaTeX Warning: Command \cyre invalid in math mode on input line 75.
-
-
-LaTeX Warning: Command \cyrg invalid in math mode on input line 75.
-
-
-LaTeX Warning: Command \cyro invalid in math mode on input line 75.
-
-
-LaTeX Warning: Command \cyrd invalid in math mode on input line 75.
-
-
-LaTeX Warning: Command \cyrl invalid in math mode on input line 75.
-
-
-LaTeX Warning: Command \cyrya invalid in math mode on input line 75.
-
-
-LaTeX Warning: Command \CYRM invalid in math mode on input line 75.
-
-
-LaTeX Warning: Command \CYRT invalid in math mode on input line 75.
-
-
-LaTeX Warning: Command \CYRCH invalid in math mode on input line 75.
-
-
-LaTeX Warning: Command \cyrp invalid in math mode on input line 75.
-
-
-LaTeX Warning: Command \cyro invalid in math mode on input line 75.
-
-
-LaTeX Warning: Command \cyrl invalid in math mode on input line 75.
-
-
-LaTeX Warning: Command \cyru invalid in math mode on input line 75.
-
-
-LaTeX Warning: Command \cyrch invalid in math mode on input line 75.
-
-
-LaTeX Warning: Command \cyra invalid in math mode on input line 75.
-
-
-LaTeX Warning: Command \cyre invalid in math mode on input line 75.
-
-
-LaTeX Warning: Command \cyrm invalid in math mode on input line 75.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.76 
-     
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-Missing character: There is no в in font cmr12!
-Missing character: There is no р in font cmr12!
-Missing character: There is no е in font cmr12!
-Missing character: There is no з in font cmr12!
-Missing character: There is no у in font cmr12!
-Missing character: There is no л in font cmr12!
-Missing character: There is no ь in font cmr12!
-Missing character: There is no т in font cmr12!
-Missing character: There is no а in font cmr12!
-Missing character: There is no т in font cmr12!
-Missing character: There is no е in font cmr12!
-Missing character: There is no ч in font cmr12!
-Missing character: There is no е in font cmr12!
-Missing character: There is no г in font cmr12!
-Missing character: There is no о in font cmr12!
-Missing character: There is no д in font cmr12!
-Missing character: There is no л in font cmr12!
-Missing character: There is no я in font cmr12!
-Missing character: There is no М in font cmr12!
-Missing character: There is no Т in font cmr12!
-Missing character: There is no Ч in font cmr12!
-Missing character: There is no п in font cmr12!
-Missing character: There is no о in font cmr12!
-Missing character: There is no л in font cmr12!
-Missing character: There is no у in font cmr12!
-Missing character: There is no ч in font cmr12!
-Missing character: There is no а in font cmr12!
-Missing character: There is no е in font cmr12!
-Missing character: There is no м in font cmr12!
-[13]
-Overfull \hbox (21.57442pt too wide) in paragraph at lines 118--119
-[]\T2A/cmr/m/n/14.4 Сконструируем аг-ре-ги-ро-ван-ную си-сте-му с со-став-ным в
-ек-то-ром $[] \OT1/cmr/m/n/14.4 = \OML/cmm/m/it/14.4 col\OMS/cmsy/m/n/14.4 f\OM
-L/cmm/m/it/14.4 x; ^^[\OMS/cmsy/m/n/14.4 g$
- []
-
-[14] [15]) (./main.bbl) 
+<use ./images/res_3_q7.png>
+Package pdftex.def Info: ./images/res_3_q7.png used on input line 377.
+(pdftex.def)             Requested size: 497.92328pt x 250.66356pt.
+ [21] [22 <./images/mod_control_mts.png> <./images/res_3_q1.png>] [23 <./images
+/res_3_q2.png> <./images/res_3_q3.png>] [24 <./images/res_3_q4.png> <./images/r
+es_3_q6.png>] [25 <./images/res_3_q7.png>] [26])
+(./problem_4.tex [27] [28] [29]) (./main.bbl) 
 AED: lastpage setting LastPage
-[16] (./main.aux)
+[30] (./main.aux)
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 1.28pt have occurred.
 
+
+LaTeX Warning: There were multiply-defined labels.
+
  ) 
 Here is how much of TeX's memory you used:
- 7194 strings out of 494399
- 104686 string characters out of 6172182
- 208350 words of memory out of 5000000
- 10278 multiletter control sequences out of 15000+600000
- 15359 words of font info for 36 fonts, out of 8000000 for 9000
+ 7316 strings out of 494399
+ 106820 string characters out of 6172182
+ 206548 words of memory out of 5000000
+ 10370 multiletter control sequences out of 15000+600000
+ 23158 words of font info for 62 fonts, out of 8000000 for 9000
  452 hyphenation exceptions out of 8191
- 50i,15n,42p,957b,288s stack positions out of 5000i,500n,10000p,200000b,80000s
- </home/kirix/.texmf-var/fonts/pk/ljfour/lh/lh-t2a/labx1728.600pk> </home/kir
-ix/.texmf-var/fonts/pk/ljfour/lh/lh-t2a/lasl1728.600pk> </home/kirix/.texmf-var
-/fonts/pk/ljfour/lh/lh-t2a/larm1440.600pk> </home/kirix/.texmf-var/fonts/pk/ljf
-our/lh/lh-t2a/labx1440.600pk> </home/kirix/.texmf-var/fonts/pk/ljfour/lh/lh-t2a
-/labx2074.600pk> </home/kirix/.texmf-var/fonts/pk/ljfour/lh/lh-t2a/lasl1000.600
-pk> </home/kirix/.texmf-var/fonts/pk/ljfour/lh/lh-t2a/lasl2074.600pk> </home/ki
-rix/.texmf-var/fonts/pk/ljfour/lh/lh-t2a/lasl1200.600pk></usr/share/texlive/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dis
-t/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/font
-s/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type
-1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
-c/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
-cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.p
-fb>
-Output written on main.pdf (16 pages, 388904 bytes).
+ 50i,18n,42p,1130b,375s stack positions out of 5000i,500n,10000p,200000b,80000s
+ </home/kirix/.texmf-var/fonts/pk/ljfour/lh/lh-t2a/larm1000.600pk> </home/kir
+ix/.texmf-var/fonts/pk/ljfour/lh/lh-t2a/labx1728.600pk> </home/kirix/.texmf-var
+/fonts/pk/ljfour/lh/lh-t2a/lasl1728.600pk> </home/kirix/.texmf-var/fonts/pk/ljf
+our/lh/lh-t2a/larm1440.600pk> </home/kirix/.texmf-var/fonts/pk/ljfour/lh/lh-t2a
+/labx1440.600pk> </home/kirix/.texmf-var/fonts/pk/ljfour/lh/lh-t2a/labx2074.600
+pk> </home/kirix/.texmf-var/fonts/pk/ljfour/lh/lh-t2a/lasl1000.600pk> </home/ki
+rix/.texmf-var/fonts/pk/ljfour/lh/lh-t2a/lasl2074.600pk> </home/kirix/.texmf-va
+r/fonts/pk/ljfour/lh/lh-t2a/lasl1200.600pk></usr/share/texlive/texmf-dist/fonts
+/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1
+/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsf
+onts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
+/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.
+pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></u
+sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share
+/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
+Output written on main.pdf (30 pages, 723700 bytes).
 PDF statistics:
- 465 PDF objects out of 1000 (max. 8388607)
- 123 compressed objects within 2 object streams
+ 556 PDF objects out of 1000 (max. 8388607)
+ 161 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 16 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 61 words of extra memory for PDF output out of 10000 (max. 10000000)
 

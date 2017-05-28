@@ -1,0 +1,198 @@
+\section{Построение МФМЧ и результаты ее исследования}
+
+\begin{enumerate}
+	\item Построить матрицу функций модальной чувствительности;
+	\item Выделить неблагоприятное сочетание вариаций параметров.
+\end{enumerate}
+
+\subsection{Построение МФМЧ}
+
+Для вычисления функций чувствительности $\delta q_j$ и $\beta q_j$ соответственно вещественных и мнимых частей комплексно-сопряженных собственных значений к вариациям параметра $q_j$ следует вычислить матрицу $M^{-1} F_{q_j} M$ и на элементах этой матрицы сконструировать функции чувствительности $\delta q_j$ и $\beta q_j$ с помощью соотношений
+\begin{align}\label{fsenses}
+	\delta_{q_j} = \cfrac{1}{2} \left( (M^{-1} F_{q_j} M)_{11} + (M^{-1} F_{q_j} M)_{22}\right)\\
+	\beta_{q_j} = \cfrac{1}{2} \left((M^{-1} F_{q_j} M)_{12} - (M^{-1} F_{q_j} M)_{21} \right)
+\end{align}
+где матрица $M$~--- матрица диагонального преобразования, $F_{q_j}$~--- матрица чувствительности замкнутой системы к вариации параметра $q_j$.
+
+Найдем спектр собственных значений матрицы $F(q)$ при номинальном векторе параметров $q$
+\begin{equation}
+	\sigma{\{F\}} = \{[\lambda_1, \lambda_2] :det[\lambda I - F] = 0\} = \{- 2.121 \pm j 2.1216406 \}
+\end{equation}
+
+Для анализа модальной чувствительности спроектированной системы произведем следующие вычисления. Матрицы чувствительности $F_{q_j}$ были рассчитаны ранее в ~\ref{mxs_sense}.
+
+Матрица $M$ находится из выражения
+\begin{equation}
+	M \Lambda = F M
+\end{equation}
+
+Так как в спектре $\sigma{\{F\}}$ имеются комплексно-сопряженные собственные значения $\lambda_{1,2} = \delta \pm j \beta$, то вещественная матрица подобия $\Lambda$ будет блочно-диагональной 
+\begin{equation}
+	\Lambda = 
+	\begin{bmatrix}
+		\delta &  \beta\\
+		-\beta & \delta
+	\end{bmatrix}
+	=
+	\begin{bmatrix}
+	  - 2.121  &      2.1216406  \\
+		-2.1216406&  - 2.121 
+	\end{bmatrix}
+\end{equation}
+
+
+Тогда, нужно записать матрицу $M$ в форме обобщенной матрицы Вандермонда
+\begin{equation}
+	M = 
+	\begin{bmatrix}
+	1&0\\
+	\delta&\beta
+	\end{bmatrix}
+	=
+	\begin{bmatrix}
+	1&0\\
+	-2.121&  2.1216406 
+	\end{bmatrix}
+\end{equation}
+
+Матрица $M^{-1}$
+\begin{equation}
+	M^{-1} = 
+	\begin{bmatrix}
+	   1&           0\\         
+	0.9997105  &  0.4519487 
+	\end{bmatrix}
+\end{equation}
+
+Вычислим матрицы $(M^{-1} F_{q_j} M)$, при $j = \overline{1,2,3,4,6,7}$
+\begin{equation}
+	M^{-1} F_{q_{1,2}} M = 
+	\begin{bmatrix}
+	0&0\\
+	0&0	
+	\end{bmatrix}
+\end{equation}
+\begin{equation}
+	M^{-1} F_{q_3} M = 
+	\begin{bmatrix}
+	    0&           0\\   
+	- 0.0739388  &  0.3 	
+	\end{bmatrix}
+\end{equation}
+\begin{equation}
+	M^{-1} F_{q_4} M = 
+	\begin{bmatrix}
+	    0&           0\\   
+	3.3729834 & - 3.6
+	\end{bmatrix}
+\end{equation}
+\begin{equation}
+	M^{-1} F_{q_6} M = 
+	\begin{bmatrix}
+	    0&           0\\         
+	- 1.4402098&    1.6666667 
+	\end{bmatrix}
+\end{equation}
+\begin{equation}
+	M^{-1} F_{q_7} M = 
+	\begin{bmatrix}
+    0&           0\\         
+	1.4402098 & - 1.6666667 	
+	\end{bmatrix}
+\end{equation}
+
+В соответствии с выражениями~\ref{fsenses}, вычислим функции модальной чувствительности $\lambda_{q_j} = \delta_{q_j} \pm j \beta_{q_j}$
+\begin{equation}
+	\lambda_{q_{1,2}} = 0
+\end{equation}
+\begin{equation}
+\lambda_{q_3} = 0.15 + j 0.0369694 
+\end{equation}
+\begin{equation}
+\lambda_{q_4} =  - 1.8 - j  1.6864917 
+\end{equation}
+\begin{equation}
+\lambda_{q_6} = 0.8333333 + j 0.7201049 
+\end{equation}
+\begin{equation}
+\lambda_{q_7} = - 0.8333333  - j 0.7201049  
+\end{equation}
+
+Сконструируем матрицу функций модальной чувствительности в виде функций чувствительности вещественной и мнимой частей:
+\begin{equation}
+	S_{\lambda} = 
+	\begin{bmatrix}
+	\delta_q\\
+	\beta_q
+	\end{bmatrix}
+	=
+	\begin{bmatrix}
+	0&0& 0.15 &- 1.8  & 0.8333333 &  - 0.8333333\\
+	0&0& 0.0369694 &-1.6864917&  0.7201049 & -0.7201049  
+	\end{bmatrix}
+\end{equation}
+
+\subsection{Выделить неблагоприятное сочетание вариаций параметров}
+
+Для выделения неблагоприятного сочетания вариаций параметров воспользуемся сингулярным разложением матрицы модальной чувствительности
+\small
+\begin{align*}
+	&S_{\lambda} = U_{\lambda} \Sigma_{\lambda} V^T_{\lambda}\\
+	&U_{\lambda} = \begin{bmatrix}
+	  - 0.7383 & - 0.6744  \\
+	- 0.6744  &  0.7383 
+	\end{bmatrix}\\
+	&\Sigma_{\lambda} = 
+	\begin{bmatrix}
+	    2.9199   & 0  &         0&    0&    0&    0\\  
+		0&           0.0909   & 0&    0&    0&    0 
+	\end{bmatrix}\\
+	&V_{\lambda} =
+	\begin{bmatrix}
+	0 & 0 &   0.0695&  - 0.8346    &0.3863&  - 0.3863  \\
+	0         &  0         &- 0.8105  &- 0.3666234  &- 0.3230   & 0.3230  \\
+	- 0.0464 & - 0.8121 &   0.3382&  - 0.2391&  - 0.2886&    0.2886\\  
+	0.8446 & - 0.3427 & - 0.2391   & 0.169  &  0.204  &- 0.204  \\
+	- 0.377 & - 0.3338 & - 0.2886 &   0.204 &   0.7463 &   0.2536  \\
+	0.377   & 0.3338    &0.2886  &- 0.204   & 0.2536    &0.7463 	
+	\end{bmatrix}
+\end{align*}
+\normalsize
+%Выделим согласованные тройки $\{U_{\lambda max}, \alpha_{\lambda max}\}, V_{\lambda max}\}$ и \newline
+%$\{U_{\lambda min}, \alpha_{\lambda min}\}, V_{\lambda min}\}$, то на фиксированной в %сфере $||\Delta q|| = 0.2$ в пространстве параметров могут быть получены оценки
+%\begin{equation}
+%	\max_{\Delta q} ||\Delta \lambda|| = \alpha_{\lambda M} ||\Delta q||
+%\end{equation}
+%\begin{equation}
+%	\min_{\Delta q} ||\Delta \lambda|| = \alpha_{\lambda m} ||\Delta q||
+%\end{equation}
+%максимальной и минимальной по норме вариации собственных значений, при этом правые ингулярные векторы $V_{\lambda max}$ и $V_{\lambda min}$ задают наиболее неблагоприятное и наименее неблагоприятное сочетание параметров, порождающих соответственно вариации.
+
+Запишем оценки вариации
+\begin{equation}
+\max_{\Delta q} ||\Delta \lambda|| =  2.9199 ||\Delta q||
+\end{equation}
+\begin{equation}
+\min_{\Delta q} ||\Delta \lambda|| = 0.0909 ||\Delta q||
+\end{equation}
+
+Наиболее неблагоприятное сочетание вариаций параметров характеризуется вектором
+\begin{equation}
+	\Delta q = 
+	\begin{bmatrix}
+	0&0&- 0.0464681 &   0.8446960 & - 0.3770473 &   0.3770473 
+	\end{bmatrix}^T
+	||\Delta q||
+\end{equation}
+
+Наименее неблагоприятное характеризуется вектором
+\begin{equation}
+	\Delta q = 
+	\begin{bmatrix}
+		0&0&  - 0.8121559 & - 0.3427354 & - 0.3338676  &  0.3338676 
+	\end{bmatrix}
+	||\Delta q||
+\end{equation}
+
+
+\newpage
