@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.11.13)  28 MAY 2017 18:59
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.11.13)  29 MAY 2017 13:58
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1124,40 +1124,40 @@ File: ./images/mod_control_mts.png Graphic file (type png)
 Package pdftex.def Info: ./images/mod_control_mts.png used on input line 339.
 (pdftex.def)             Requested size: 497.92328pt x 227.31949pt.
 
-<./images/res_3_q1.png, id=138, 1321.93875pt x 665.48625pt>
+<./images/res_3_q1.png, id=138, 1321.93875pt x 695.59875pt>
 File: ./images/res_3_q1.png Graphic file (type png)
 
 <use ./images/res_3_q1.png>
 Package pdftex.def Info: ./images/res_3_q1.png used on input line 346.
-(pdftex.def)             Requested size: 497.92328pt x 250.66356pt.
+(pdftex.def)             Requested size: 497.92328pt x 262.00581pt.
 
-<./images/res_3_q2.png, id=139, 1321.93875pt x 665.48625pt>
+<./images/res_3_q2.png, id=139, 1321.93875pt x 695.59875pt>
 File: ./images/res_3_q2.png Graphic file (type png)
 
 <use ./images/res_3_q2.png>
 Package pdftex.def Info: ./images/res_3_q2.png used on input line 353.
-(pdftex.def)             Requested size: 497.92328pt x 250.66356pt.
+(pdftex.def)             Requested size: 497.92328pt x 262.00581pt.
 
-<./images/res_3_q3.png, id=140, 1321.93875pt x 665.48625pt>
+<./images/res_3_q3.png, id=140, 1321.93875pt x 695.59875pt>
 File: ./images/res_3_q3.png Graphic file (type png)
 
 <use ./images/res_3_q3.png>
 Package pdftex.def Info: ./images/res_3_q3.png used on input line 359.
-(pdftex.def)             Requested size: 497.92328pt x 250.66356pt.
+(pdftex.def)             Requested size: 497.92328pt x 262.00581pt.
 
-<./images/res_3_q4.png, id=141, 1321.93875pt x 665.48625pt>
+<./images/res_3_q4.png, id=141, 1321.93875pt x 695.59875pt>
 File: ./images/res_3_q4.png Graphic file (type png)
 
 <use ./images/res_3_q4.png>
 Package pdftex.def Info: ./images/res_3_q4.png used on input line 365.
-(pdftex.def)             Requested size: 497.92328pt x 250.66356pt.
+(pdftex.def)             Requested size: 497.92328pt x 262.00581pt.
 
-<./images/res_3_q6.png, id=142, 1321.93875pt x 665.48625pt>
+<./images/res_3_q6.png, id=142, 1321.93875pt x 695.59875pt>
 File: ./images/res_3_q6.png Graphic file (type png)
 
 <use ./images/res_3_q6.png>
 Package pdftex.def Info: ./images/res_3_q6.png used on input line 371.
-(pdftex.def)             Requested size: 497.92328pt x 250.66356pt.
+(pdftex.def)             Requested size: 497.92328pt x 262.00581pt.
 
 <./images/res_3_q7.png, id=143, 1321.93875pt x 665.48625pt>
 File: ./images/res_3_q7.png Graphic file (type png)
@@ -1168,9 +1168,10 @@ Package pdftex.def Info: ./images/res_3_q7.png used on input line 377.
  [21] [22 <./images/mod_control_mts.png> <./images/res_3_q1.png>] [23 <./images
 /res_3_q2.png> <./images/res_3_q3.png>] [24 <./images/res_3_q4.png> <./images/r
 es_3_q6.png>] [25 <./images/res_3_q7.png>] [26])
-(./problem_4.tex [27] [28] [29]) (./main.bbl) 
+(./problem_4.tex [27] [28] [29]) (./problem_5.tex [30] [31]) (./main.bbl)
+
 AED: lastpage setting LastPage
-[30] (./main.aux)
+[32] (./main.aux)
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 1.28pt have occurred.
@@ -1180,10 +1181,10 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 7316 strings out of 494399
- 106820 string characters out of 6172182
- 206548 words of memory out of 5000000
- 10370 multiletter control sequences out of 15000+600000
+ 7322 strings out of 494399
+ 106875 string characters out of 6172182
+ 206581 words of memory out of 5000000
+ 10373 multiletter control sequences out of 15000+600000
  23158 words of font info for 62 fonts, out of 8000000 for 9000
  452 hyphenation exceptions out of 8191
  50i,18n,42p,1130b,375s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1203,10 +1204,10 @@ onts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
 pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></u
 sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share
 /texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on main.pdf (30 pages, 723700 bytes).
+Output written on main.pdf (32 pages, 728455 bytes).
 PDF statistics:
- 556 PDF objects out of 1000 (max. 8388607)
- 161 compressed objects within 2 object streams
+ 568 PDF objects out of 1000 (max. 8388607)
+ 166 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  61 words of extra memory for PDF output out of 10000 (max. 10000000)
 
