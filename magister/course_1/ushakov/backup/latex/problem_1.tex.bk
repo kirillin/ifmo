@@ -1,0 +1,399 @@
+\section{Построение МТЧ НОУ и результаты ее исследования}\label{problem_1}
+
+\begin{enumerate}
+	\item Записать непрерывный ОУ (НОУ) в форме <<вход-состояние-выход (ВСВ)>> в требуемом базисе;
+	\item Построить модель траекторной чувствительности (МТЧ) НОУ;
+	\item Произвести ранжирование параметров  по потенциальной чувствительности к ним выхода ОУ с использованием матрицы управляемости агрегированной системы;
+	Оценить, какое из дополнительных движений, вызванных вариацией, потребует максимальных затрат управления при обеспечении его асимптотической сходимости к нулю.
+\end{enumerate}
+
+
+\subsection{Непрерывный ОУ в форме ВСВ}
+
+Заданный ОУ описывается ПФ
+\begin{equation}\label{eq_OU}
+\Phi (s, q) = \cfrac{3 (1 + q_1) s + 0.4 (1 + q_2)}{(2 (1+q_3)s + 0.6 (1+q_4))(6 (1 + q_6) s + 10 (1 + q_7))}
+\end{equation}
+
+Для составления векторно-матричного описания ОУ запишем ПФ в форме
+\begin{equation*}\label{eq_pf_coc}
+\Phi (s, q) = \cfrac{\cfrac{(1 + q_1)}{4(1+q_3)(1+q_6)} s + \cfrac{(1 + q_2)}{30(1+q_3)(1+q_6)}}{s^2 + \cfrac{20(1+q_3)(1+q_7)+3.6(1+q_4)(1+q_6)}{12(1+q_3)(1+q_6)} s + \cfrac{(1+q_4)(1+q_7)}{2(1+q_3)(1+q_6)}}
+\end{equation*}
+
+В каноническом управляемом базисе векторно-матричное представление ОУ принимает вид:
+\begin{equation}\label{eq_iso_coc}
+\begin{cases}
+\dot x(t,q) &= A(q) x(t,q) + B u(t)\\
+y(t,q) &= C(q) x(t,q)
+\end{cases}
+\end{equation}
+в котором
+\begin{equation}\label{Aq}
+	A(q) =
+	\begin{bmatrix}
+		0 & 1 \\
+		- \cfrac{(1+q_4)(1+q_7)}{2(1+q_3)(1+q_6)} & - \cfrac{20(1+q_3)(1+q_7)+3.6(1+q_4)(1+q_6)}{12(1+q_3)(1+q_6)}
+	\end{bmatrix}
+\end{equation}
+\begin{equation}\label{Bq}
+	B =
+	\begin{bmatrix}
+		0\\
+		1
+	\end{bmatrix}
+\end{equation}
+
+\begin{equation}\label{Cq}
+	C(q) =
+	\begin{bmatrix}
+	\cfrac{(1 + q_2)}{30(1+q_3)(1+q_6)} & \cfrac{(1 + q_1)}{4(1+q_3)(1+q_6)} 
+	\end{bmatrix}
+\end{equation}
+
+\subsection{Модель траекторной чувствительности НОУ}
+
+ПФ номинального ОУ, когда параметры $q_{j} = 0, j = \overline{1,7}$, представляет собой
+\begin{equation}
+	\Phi(s, 0) = \cfrac{\cfrac{1}{4} s + \cfrac{1}{30}}{s^2 + \cfrac{236}{120} s + \cfrac{1}{2}} 
+\end{equation}
+
+Матрицы модели ВСВ номинального ОУ имеют реализации
+\begin{align*}
+A =
+\begin{bmatrix}
+0 & 1 \\
+- \cfrac{1}{2} & - \cfrac{236}{120}
+\end{bmatrix};
+B =
+\begin{bmatrix}
+0\\
+1
+\end{bmatrix};
+C =
+\begin{bmatrix}
+\cfrac{1}{30} & \cfrac{1}{4}
+\end{bmatrix}
+\end{align*}
+
+Введем обозначения
+\begin{align*}
+	&A_{q_j} = \cfrac{\partial{A(q)}}{\partial{q_j}} \bigg|_{q=q_0};
+	B_{q_j} = \cfrac{\partial{B(q)}}{\partial{q_j}} \bigg|_{q=q_0};
+	C_{q_j} = \cfrac{\partial{C(q)}}{\partial{q_j}} \bigg|_{q=q_0};\\
+	&A(q)|_{q=q_0} = A;
+	B(q)|_{q=q_0} = B;
+	C(q)|_{q=q_0} = C;\\
+	&x(t,q)|_{q=q_0} = x(t);
+	y(t,q)|_{q=q_0} = y(t);\\
+	&\cfrac{\partial{x(t,q)}}{\partial{q_j}} \bigg|_{q=q_0} = \sigma_j(t);
+	\cfrac{\partial{y(t,q)}}{\partial{q_j}} \bigg|_{q=q_0} = \eta_j(t);
+\end{align*}
+
+Теперь для $j$-й модели траекторной чувствительности получим представление МТЧ
+\begin{equation}\label{eq_mts}
+	\begin{cases}
+		\dot \sigma_j(t) &= A \sigma_j(t) + A_{q_j} x(t) + B_{q_j} u(t); 
+		\sigma_j (0) = 0\\
+		\eta_j (t) &= C \sigma_j (t) + C_{q_j} x(t)
+	\end{cases}
+\end{equation}
+
+МТЧ будет генерировать функции траекторной чувствительности $\sigma_j (t)$ по состоянию и $\eta_j (t)$ по выходу, если ее дополнить моделью номинального ОУ~\ref{eq_iso_coc}.
+
+На состояние заданного ОУ влияют $p = 6$ (далее, под записью $j = \overline{1, p}$ будет подразумеваться, что $j = 1,2,3,4,6,7$) параметров: $q_1, q_2, q_3, q_4, q_6, q_7$. Вычислим матрицы моделей траекторной чувствительности
+\begin{align}
+	&A_{q_1} = 
+	\begin{bmatrix}
+		0 & 0\\
+		0 & 0
+	\end{bmatrix};
+	B_{q_1} = 
+	\begin{bmatrix}
+		0\\
+		0
+	\end{bmatrix};
+	C_{q_1} = 
+	\begin{bmatrix}
+		0 & \cfrac{1}{4}
+	\end{bmatrix};\\
+	&A_{q_2} = 
+	\begin{bmatrix}
+	0 & 0\\
+	0 & 0
+	\end{bmatrix};
+	B_{q_2} = 
+	\begin{bmatrix}
+	0\\
+	0
+	\end{bmatrix};
+	C_{q_2} = 
+	\begin{bmatrix}
+	\cfrac{1}{30} & 0
+	\end{bmatrix};\\
+	&A_{q_3} = 
+	\begin{bmatrix}
+	0 & 0\\
+	\cfrac{1}{2} & \cfrac{36}{120}
+	\end{bmatrix};
+	B_{q_3} = 
+	\begin{bmatrix}
+	0\\
+	0
+	\end{bmatrix};
+	C_{q_3} = 
+	\begin{bmatrix}
+	- \cfrac{1}{30} & - \cfrac{1}{4}
+	\end{bmatrix};\\
+	&A_{q_4} = 
+	\begin{bmatrix}
+	0 & 0\\
+	- \cfrac{1}{2} & - 3.6
+	\end{bmatrix};
+	B_{q_4} = 
+	\begin{bmatrix}
+	0\\
+	0
+	\end{bmatrix};
+	C_{q_4} = 
+	\begin{bmatrix}
+	0 & 0
+	\end{bmatrix};\\
+	&A_{q_6} = 
+	\begin{bmatrix}
+	0 & 0\\
+	\cfrac{1}{2} & \cfrac{20}{12}
+	\end{bmatrix};
+	B_{q_6} = 
+	\begin{bmatrix}
+	0\\
+	0
+	\end{bmatrix};
+	C_{q_6} = 
+	\begin{bmatrix}
+	- \cfrac{1}{30} & - \cfrac{1}{4}
+	\end{bmatrix};\\
+	&A_{q_7} = 
+	\begin{bmatrix}
+	0 & 0\\
+	- \cfrac{1}{2} & - \cfrac{20}{12}
+	\end{bmatrix};
+	B_{q_7} = 
+	\begin{bmatrix}
+	0\\
+	0
+	\end{bmatrix};
+	C_{q_7} = 
+	\begin{bmatrix}
+	0 & 0
+	\end{bmatrix};
+\end{align}
+
+\subsection{Ранжирование параметров}
+
+\rightmargin = 50 mm
+Сконструируем агрегированную систему с составным вектором \newline $\tilde{x}_j = col\{x, \sigma_j\}$ размерности $ \dim \tilde{x} = 2n$, которая объединением \ref{eq_mts} и \ref{eq_iso_coc}, получает представление
+\begin{align}\label{rang_system}
+	\dot{\tilde{x}}_j (t) &= \tilde{A}_j \tilde{x}_j (t) + \tilde{B}_j u(t); 
+	\tilde{x}_j (0) = col \{x(0), 0\}\\
+	x(t) &= \tilde{C}_{x_j} \tilde{x}_j;\\
+	y(t) &= \tilde{C}_j \tilde{x}_j (t);\\
+	\sigma_j (t) &= \tilde{C}_{\sigma_j} \tilde{x}_j (t);\\
+	\eta_j (t) &= \tilde{C}_{\eta_j} \tilde{x}_j (t)
+\end{align}
+где 
+\begin{align*}
+	&j = \overline{1, p},
+	\tilde{A}_j =
+	\begin{bmatrix}
+	A & 0\\
+	A_{q_j} & A
+	\end{bmatrix},
+	\tilde{B}_j = 
+	\begin{bmatrix}
+		B\\
+		B_{q_j}
+	\end{bmatrix},\\
+	&\tilde{C}_{x_j} = 
+	\begin{bmatrix}
+		I_{n \times n} & O_{n \times n}
+	\end{bmatrix},
+	\tilde{C}_{j} = 
+	\begin{bmatrix}
+		C & 0_{m \times n}
+	\end{bmatrix},
+	\tilde{C}_{\sigma_{j}} = 
+	\begin{bmatrix}
+		0_{n \times n} & I_{n \times n}
+	\end{bmatrix},
+	\tilde{C}_{\eta_{j}} = 
+	\begin{bmatrix}
+		C_{q_j} & C
+	\end{bmatrix}.	
+\end{align*}
+
+Составим необходимые матрицы
+
+\begin{align*}
+	&\tilde{A}_{1,2} =
+	\begin{bmatrix}
+		0 & 1 & 0 & 0\\
+		- \cfrac{1}{2} & - \cfrac{236}{120} & 0 & 0\\
+		0 & 0 & 0 & 1\\
+		0 & 0 &- \cfrac{1}{2} & - \cfrac{236}{120}
+	\end{bmatrix};
+	\tilde{A}_3 =
+	\begin{bmatrix}
+		0 & 1 & 0 & 0\\
+		- \cfrac{1}{2} & - \cfrac{236}{120} & 0 & 0\\
+		0 & 0 & 0 & 1\\
+		\cfrac{1}{2} & \cfrac{36}{120} &- \cfrac{1}{2} & - \cfrac{236}{120}
+	\end{bmatrix};\\
+	&\tilde{A}_4 =
+	\begin{bmatrix}
+		0 & 1 & 0 & 0\\
+		- \cfrac{1}{2} & - \cfrac{236}{120} & 0 & 0\\
+		0 & 0 & 0 & 1\\
+		- \cfrac{1}{2} & - 3.6 &- \cfrac{1}{2} & - \cfrac{236}{120}
+	\end{bmatrix};
+	\tilde{A}_6 =
+	\begin{bmatrix}
+		0 & 1 & 0 & 0\\
+		- \cfrac{1}{2} & - \cfrac{236}{120} & 0 & 0\\
+		0 & 0 & 0 & 1\\
+		\cfrac{1}{2} & \cfrac{20}{12} &- \cfrac{1}{2} & - \cfrac{236}{120}
+	\end{bmatrix};\\
+	&\tilde{A}_7 =
+	\begin{bmatrix}
+		0 & 1 & 0 & 0\\
+		- \cfrac{1}{2} & - \cfrac{236}{120} & 0 & 0\\
+		0 & 0 & 0 & 1\\
+		- \cfrac{1}{2} & - \cfrac{20}{12} &- \cfrac{1}{2} & - \cfrac{236}{120}
+	\end{bmatrix};
+	\tilde{B}_{1,2,3,4,6,7} =
+	\begin{bmatrix}
+		0\\
+		1\\
+		0\\
+		0
+	\end{bmatrix};
+\end{align*}
+
+\begin{align*}
+	&\tilde{C}_{x_{1,2,3,4,6,7}} =
+	\begin{bmatrix}
+		1 & 0 & 0 & 0\\
+		0 & 1 & 0 & 0\\
+	\end{bmatrix};
+	\tilde{C}_{1,2,3,4,6,7} =
+	\begin{bmatrix}
+		\cfrac{1}{30} & \cfrac{1}{4} & 0 & 0\\
+	\end{bmatrix};\\
+	&\tilde{C}_{\sigma_{1,2,3,4,6,7}} =
+	\begin{bmatrix}
+		0 & 0 & 1 & 0\\
+		0 & 0 & 0 & 1\\
+	\end{bmatrix};\\
+	&\tilde{C}_{\eta_1} =
+	\begin{bmatrix}
+		0 & \cfrac{1}{4} & \cfrac{1}{30} & \cfrac{1}{4}\\
+	\end{bmatrix};
+	\tilde{C}_{\eta_2} =
+	\begin{bmatrix}
+		\cfrac{1}{30} & 0 & \cfrac{1}{30} & \cfrac{1}{4}\\
+	\end{bmatrix};\\
+	&\tilde{C}_{\eta_3} =
+	\begin{bmatrix}
+		-\cfrac{1}{30} & - \cfrac{1}{4} & \cfrac{1}{30} & \cfrac{1}{4}\\
+	\end{bmatrix};
+	\tilde{C}_{\eta_4} =
+	\begin{bmatrix}
+		0 & 0 & \cfrac{1}{30} & \cfrac{1}{4}\\
+	\end{bmatrix};\\
+	&\tilde{C}_{\eta_6} =
+	\begin{bmatrix}
+		- \cfrac{1}{30} & - \cfrac{1}{4} & \cfrac{1}{30} & \cfrac{1}{4}\\
+	\end{bmatrix};
+	\tilde{C}_{\eta_7} =
+	\begin{bmatrix}
+		0 & 0 & \cfrac{1}{30} & \cfrac{1}{4}\\
+	\end{bmatrix};
+\end{align*}
+
+Для ранжирования параметров по возможным затратам ресурсов управления для достижения нечувствительности траектории проектируемой системы к этим вариациям проведем анализ
+управляемости системы~\ref{rang_system} по ее выходу~$\eta_j$.
+
+Требования к ресурсам управления заметно снижаются, если изначально ограничиться задачей обеспечения траекторной нечувствительности выхода проектируемой системы. На уровне требований к структурным свойствам агрегированной системы~\ref{rang_system} задача сводится к контролю управляемости тройки матриц $(\tilde{C}_{\eta_j}, \tilde{A}_{j}, \tilde{B}_{j})$ и количественной оценке эффекта управления по переменной $\eta_j$ при приложении управления $u(t)$ фиксированной нормы с помощью сингулярных чисел матрицы управляемости
+\begin{equation}
+	\tilde{W}_{y \eta_j} =
+	\begin{bmatrix}
+		\tilde{C}_{\eta_j} \tilde{B}_{j} &
+		\tilde{C}_{\eta_j} \tilde{A}_{j} \tilde{B}_{j} &
+		\tilde{C}_{\eta_j} \tilde{A}_{j}^2 \tilde{B}_{j} &		
+		\cdots &
+		\tilde{C}_{\eta_j} \tilde{A}_{j}^{2n-1} \tilde{B}_{j}
+	\end{bmatrix}
+\end{equation}
+
+С учетом $n = 2$, рассчитаем матрицы управляемости $\tilde{W}_{\eta_j}$
+\begin{align*}
+	&\tilde{W}_{y \eta_{1}} =
+	\begin{bmatrix}
+		0.25 & - 0.4916667 &   0.8419444&  - 1.4099907
+	\end{bmatrix}, 
+	\\
+	&\tilde{W}_{y \eta_2} =
+	\begin{bmatrix}
+	
+	\end{bmatrix}, 
+	\\
+	&\tilde{W}_{y \eta_3} =
+	\begin{bmatrix}
+		0   &   0.1083333 & - 0.3505556 &   0.8681759  
+	\end{bmatrix}, 
+	\\
+	&\tilde{W}_{y \eta_4} =
+	\begin{bmatrix}
+		0.25 & - 1.325    &    3.8808333 & - 9.3064722  
+	\end{bmatrix}, 
+	\\
+	&\tilde{W}_{y \eta_6} =
+	\begin{bmatrix}
+		0   &   0.45   &    - 1.6488889  &  4.3117963  
+	\end{bmatrix}, 
+	\\
+	&\tilde{W}_{y \eta_7} =
+	\begin{bmatrix}
+		0.25 & - 0.8416667 &   2.0441667 & - 4.4350093
+	\end{bmatrix}
+\end{align*}
+
+Вычислим для полученных матриц управляемости сингулярные числа
+\begin{align}\label{singul_nums}
+	&\alpha\{\tilde{W}_{y \eta_{1}}\} = 2.7613747,
+	\alpha\{\tilde{W}_{y \eta_{2}}\} = 0.9189399,\\	
+	&\alpha\{\tilde{W}_{y \eta_{3}}\} = 0.9425257,	
+	\alpha\{\tilde{W}_{y \eta_{4}}\} = 10.172975,\\		
+	&\alpha\{\tilde{W}_{y \eta_{6}}\} = 4.6382024,
+	\alpha\{\tilde{W}_{y \eta_{7}}\} = 4.9617363
+	\label{singul_nums_end}
+\end{align}
+
+
+%Ранжирование параметров $q_j$ осуществляется по значению сингулярных чисел матриц управляемости. 
+%Чем эти числа меньше, тем большими по норме управлениями достигается асимптотическая траекторная нечувствительность компонента yj(t) вектора выхода y(t). Отсюда следует, что асимптотическая сходимость к нулю дополнительного движения будет требовать все меньшего количества затрат при следующем расположении qj : q6, q7, q2, q4, q5.
+
+Ранги матриц $\tilde{W}_{\eta_j}$ равны $rang(\tilde{W}_{\eta_j}) = 1$, что совпадает с размерностью $m = 1$ вектора выхода. Таким образом, выбором закона
+управления можно обеспечить сходимость $\lim_{t  \to \infty} \Delta y (t,q_0,\Delta q_j) = 0; j = \overline{1, p}$ с заданным темпом~\cite{NSUsh}. 
+Сингулярные числа матриц $\tilde{W}_{\eta_j}$ принимают значения~\ref{singul_nums}--\ref{singul_nums_end}. Проранжируем параметры $q_j$ в порядке увеличения затрат ресурсов на управление
+\begin{enumerate}
+	\item $q_4$
+	\item $q_7$
+	\item $q_6$
+	\item $q_1$
+	\item $q_3$
+	\item $q_2$			
+\end{enumerate}
+
+Отсюда следует, что асимптотическая сходимость к нулю дополнительного движения $\Delta y (t,q_0,\Delta q_2)$ будет требовать наибольших затрат на управление, чем сходимость остальных дополнительных движений, с тем же темпом.
+
+\newpage

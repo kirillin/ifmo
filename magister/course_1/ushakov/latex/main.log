@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.11.13)  31 MAY 2017 14:12
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.11.13)  2 JUN 2017 17:33
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1170,26 +1170,7 @@ Package pdftex.def Info: ./images/res_3_q7.png used on input line 377.
 /res_3_q2.png> <./images/res_3_q3.png>] [25 <./images/res_3_q4.png> <./images/r
 es_3_q6.png>] [26 <./images/res_3_q7.png>] [27])
 (./problem_4.tex [28] [29] [30]) (./problem_5.tex [31] [32]) (./problem_6.tex
-[33] [34] [35]
-! Undefined control sequence.
-l.164 	\omega_0 = max \{\omega_0 \re
-                                     \cfrac{6}{2} = 3c^{-1}; \omega_0 \re \c...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-l.164 ... \re \cfrac{6}{2} = 3c^{-1}; \omega_0 \re
-                                                   \cfrac{||\Delta A||}{\del...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-[36] [37]) (./main.bbl) 
+[33] [34] [35] [36] [37]) (./main.bbl) 
 AED: lastpage setting LastPage
 [38] (./main.aux)
 
@@ -1224,7 +1205,7 @@ onts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
 pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></u
 sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share
 /texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on main.pdf (38 pages, 748083 bytes).
+Output written on main.pdf (38 pages, 748087 bytes).
 PDF statistics:
  598 PDF objects out of 1000 (max. 8388607)
  181 compressed objects within 2 object streams
