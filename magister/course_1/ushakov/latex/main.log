@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.11.13)  2 JUN 2017 17:33
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.11.13)  5 JUN 2017 11:01
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -950,6 +950,9 @@ File: t2acmr.fd 2001/08/11 v1.0a Computer Modern Cyrillic font definitions
 
 LaTeX Warning: Label `fig:mod_control' multiply defined.
 
+
+LaTeX Warning: Label `' multiply defined.
+
 )
 \openout1 = `main.aux'.
 
@@ -1090,12 +1093,11 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 4.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-))
+) [4{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}])
 \tf@toc=\write3
 \openout3 = `main.toc'.
 
- [4{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [5] (./introduction.tex
- [6])
+ [5] (./introduction.tex [6])
 (./problem_1.tex
 Overfull \hbox (1.44115pt too wide) in paragraph at lines 6--8
 []\T2A/cmr/m/n/14.4 ѕроизвести ран-жи-ро-ва-ние па-ра-мет-ров по по-тен-ци-аль-
@@ -1170,9 +1172,34 @@ Package pdftex.def Info: ./images/res_3_q7.png used on input line 377.
 /res_3_q2.png> <./images/res_3_q3.png>] [25 <./images/res_3_q4.png> <./images/r
 es_3_q6.png>] [26 <./images/res_3_q7.png>] [27])
 (./problem_4.tex [28] [29] [30]) (./problem_5.tex [31] [32]) (./problem_6.tex
-[33] [34] [35] [36] [37]) (./main.bbl) 
+[33] [34]
+Overfull \hbox (2.60858pt too wide) in paragraph at lines 126--126
+[] 
+ []
+
+[35] [36] [37]
+Overfull \hbox (4.18399pt too wide) in paragraph at lines 241--242
+[]\T2A/cmr/m/n/14.4 ¬ычислим по-лу-чен-ную оцен-ку от-но-си-тель-ной ин-тер-вал
+ь-но-сти мат-ри-цы $\OML/cmm/m/it/14.4 F$ 
+ []
+
+[38] <./images/problem6_res.png, id=210, 1321.93875pt x 665.48625pt>
+File: ./images/problem6_res.png Graphic file (type png)
+
+<use ./images/problem6_res.png>
+Package pdftex.def Info: ./images/problem6_res.png used on input line 305.
+(pdftex.def)             Requested size: 497.92328pt x 250.66356pt.
+ [39 <./images/problem6_res.png>]
+<./images/problem6.png, id=215, 994.71625pt x 810.02625pt>
+File: ./images/problem6.png Graphic file (type png)
+
+<use ./images/problem6.png>
+Package pdftex.def Info: ./images/problem6.png used on input line 315.
+(pdftex.def)             Requested size: 497.92328pt x 405.4818pt.
+ [40 <./images/problem6.png>]) (./main.bbl)
+
 AED: lastpage setting LastPage
-[38] (./main.aux)
+[41] (./main.aux)
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 1.28pt have occurred.
@@ -1182,10 +1209,10 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 7331 strings out of 494399
- 106947 string characters out of 6172182
- 206647 words of memory out of 5000000
- 10379 multiletter control sequences out of 15000+600000
+ 7343 strings out of 494399
+ 107205 string characters out of 6172182
+ 206670 words of memory out of 5000000
+ 10389 multiletter control sequences out of 15000+600000
  23158 words of font info for 62 fonts, out of 8000000 for 9000
  452 hyphenation exceptions out of 8191
  50i,18n,42p,1130b,375s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1205,10 +1232,10 @@ onts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
 pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></u
 sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share
 /texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on main.pdf (38 pages, 748087 bytes).
+Output written on main.pdf (41 pages, 846747 bytes).
 PDF statistics:
- 598 PDF objects out of 1000 (max. 8388607)
- 181 compressed objects within 2 object streams
+ 611 PDF objects out of 1000 (max. 8388607)
+ 187 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 61 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 71 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -67,8 +67,8 @@ uF = F + uA;
 oF = F + oA;
 chUF = charpoly(uF);
 chOF = charpoly(oF);
-%norm(uA)
-%norm(uA) / norm(A)
+norm(uA)
+norm(uA) / norm(A)
 
 
 plot(w)
