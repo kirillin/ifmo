@@ -1,0 +1,57 @@
+
+Hello everybody, let me introduce myself. I'm Kirill, I'm a student of ITMO University.
+Today i would like to give you a general overview of Computer Vision in control system of Manipulator.
+I have divided my presentation into owerview of Computer Vision and System that i made.
+I'm going to outline what is computer vision and where it's applicable, then i would like to tell about typical tasks of CV and finaly about my solution for KUKA Youbot Arm.
+
+So, Computer Vision is the theory and technology of creating machines that can detect, track and classify objects.
+Computer vision tasks include methods for acquiring([эквайрин]получение), processing, analyzing and understanding digital images, and extraction of high-dimensional data from the real world in order to produce numerical or symbolic information. Understanding in this context means the transformation of visual images into descriptions of the world in numerical or symbolic representation.
+On the slide are thre images: on the left and middle images shown some information in numerical representation and on the right is symbolic.
+
+Next, let me describe where CV is applicable.
+Applications range from tasks such as industrial machine vision systems which, say, inspect bottles speeding by on a production line, to research into artificial intelligence(ИИ) and computers or robots that can comprehend(постигать) the world around them. 
+Examples of applications of computer vision include systems for:
+-Automatic inspection, e.g., in manufacturing applications;
+-Assisting humans in identification tasks, e.g., people who have problems with a sight(зрение);
+-Controlling processes, e.g., an industrial robot [wich is called KUKA Youbot];
+Then
+-Detecting events, e.g., for visual surveillance(сюрвеленс) or people counting (large clusters of people);
+-Interaction, e.g., as the input to a device for computer-human interaction;
+-Modeling objects or environments, e.g., this applies in medical image analysis or topographical modeling;
+-Navigation, e.g., by an autonomous mobile robot;
+-Organizing information, e.g., for indexing databases of images and image sequences.
+
+I'd now like to move on to typical tasks in CV.
+The classical problem in computer vision, image processing, and machine vision is that of determining whether or not the image data contains some specific object, feature, or activity. This tasks called recognition, identification or detection. Several tasks based on recognition exist, such as:
+--Content-based image retrieval – finding all images in a larger set of images which have a specific content.
+--Pose estimation – estimating the position or orientation of a specific object relative to the camera. 
+--Optical character recognition (OCR) – identifying characters in images of printed or handwritten text, usually with a view to encoding the text in a format more amenable(эманибл -поддающийся) to editing or indexing on computer.
+--2D Code reading -- Reading of 2D codes such as data matrix and QR codes.
+--Facial recognition 
+--Shape Recognition -- Technology (SRT) in people counter systems differentiating human beings (head and shoulder patterns) from objects
+
+Next let me describe my work in computer vision.
+It's a robot for research and education. 
+We made control system with computer vision for moving different objects.
+I would like to tell in short how work CV in this project.
+All work consist of fifth steps.
+On the first step we get one frame from the camera and converting it to gray scale.
+On the second step we blur it the frame
+Next, on the third step we aplly special filtres, such as Canny egde detector, which return us binarized(байнаразд) image.
+Then, we are finding all conours on the image recived
+and finaly, comparing each conour with specified tempelates and use it!!
+
+That's all!
+
+Thank you!
+
+
+**************
+
+--Content-based image retrieval – finding all images in a larger set of images which have a specific content. The content can be specified in different ways, for example in terms of similarity relative a target image (give me all images similar to image X), or in terms of high-level search criteria given as text input (give me all images which contains many houses, are taken during winter, and have no cars in them).
+--Computer vision for people counter purposes in public places, malls, shopping centres
+--Pose estimation – estimating the position or orientation of a specific object relative to the camera. An example application for this technique would be assisting a robot arm in retrieving objects from a conveyor belt in an assembly line situation or picking parts from a bin.
+--Optical character recognition (OCR) – identifying characters in images of printed or handwritten text, usually with a view to encoding the text in a format more amenable to editing or indexing (e.g. ASCII).
+--2D Code reading Reading of 2D codes such as data matrix and QR codes.
+--Facial recognition
+--Shape Recognition Technology (SRT) in people counter systems differentiating human beings (head and shoulder patterns) from objects
