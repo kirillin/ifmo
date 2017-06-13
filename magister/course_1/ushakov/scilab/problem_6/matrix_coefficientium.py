@@ -19,6 +19,61 @@ def zero(n):
     Z = [[[0., 0.] for j in range(n)] for i in range(n)]
     return Z
 
+def mulmx(A, B):
+    R = [[[0.,0.],[0.,0.],[0.,0.]],
+         [[0.,0.],[0.,0.],[0.,0.]],
+         [[0.,0.],[0.,0.],[0.,0.]]]
+    for i in range(0, len(A)):
+        for j in range(0, len(A)):
+            for r in range(0, len(A)):
+                R[i][j] = plus(R[i][j], mul(A[i][r], B[r][j]))
+    return R
+
+def powMx(A, pow):
+    if pow == 0:
+        return I
+    B = A
+    for i in range(1, pow):
+        B = mulmx(B, A)
+    return B
+
+def mulmxscal(scal, A):
+    R = [[[1.,1.],[0.,0.],[0.,0.]],
+     [[0.,0.],[1.,1.],[0.,0.]],
+     [[0.,0.],[0.,0.],[1.,1.]]]
+    for i in range(0, len(A)):
+        for j in range(0, len(A)):
+            R[i][j] = mul(A[i][j], scal)
+    return R
+
+
+def trSimp(A):
+    t = [0., 0.]
+    for i in range(0, len(A)):
+        t = plus(t, A[i][i])
+    return t
+
+def tr(A, H):
+    t = [0., 0.]
+    R = mulmx(A, H)
+    for i in range(0, len(A)):
+        t = plus(t, R[i][i])
+    return t
+
+
+def getH(k, A, ak):
+    if k == 0:
+        return H0
+    Hkm1 = zero(len(A))
+    LOL = zero(len(A))
+    Hkm1 = mulmx(A, getH(k-1, A, geta(k-1, A)))
+    LOL = mulmxscal(ak, I)
+    for i in range(0, len(A)):
+        for j in range(0, len(A)):
+            Hkm1[i][j] = plus(Hkm1[i][j], LOL[i][j])
+    return Hkm1
+
+
 
 def trace(A):
     n = len(A)
@@ -72,7 +127,7 @@ def det(A, row=0):
     try:
         d = [0., 0.]
         for j in range(n):
-            margarita = mul((-1)**(2+j), mul(A[row][j], det(M(row, j, A))))
+            margarita = mul((-1)**(2+j), mul(A[row][j], mul((-1)**(row+j),det(M(row, j, A)))))
             d = plus(d, margarita)
         return d
     except IndexError:
@@ -147,68 +202,6 @@ if __name__ == '__main__':
 
 
 #
-I = [[[1.,1.],[0.,0.],[0.,0.]],
-     [[0.,0.],[1.,1.],[0.,0.]],
-     [[0.,0.],[0.,0.],[1.,1.]]]
-Z = [[[0.,0.],[0.,0.],[0.,0.]],
-     [[0.,0.],[0.,0.],[0.,0.]],
-     [[0.,0.],[0.,0.],[0.,0.]]]
-
-H0 = I
-
-def mulmx(A, B):
-    R = [[[0.,0.],[0.,0.],[0.,0.]],
-         [[0.,0.],[0.,0.],[0.,0.]],
-         [[0.,0.],[0.,0.],[0.,0.]]]
-    for i in range(0, len(A)):
-        for j in range(0, len(A)):
-            for r in range(0, len(A)):
-                R[i][j] = plus(R[i][j], mul(A[i][r], B[r][j]))
-    return R
-
-def powMx(A, pow):
-    if pow == 0:
-        return I
-    B = A
-    for i in range(1, pow):
-        B = mulmx(B, A)
-    return B
-
-def mulmxscal(scal, A):
-    R = [[[1.,1.],[0.,0.],[0.,0.]],
-     [[0.,0.],[1.,1.],[0.,0.]],
-     [[0.,0.],[0.,0.],[1.,1.]]]
-    for i in range(0, len(A)):
-        for j in range(0, len(A)):
-            R[i][j] = mul(A[i][j], scal)
-    return R
-
-
-def trSimp(A):
-    t = [0., 0.]
-    for i in range(0, len(A)):
-        t = plus(t, A[i][i])
-    return t
-
-def tr(A, H):
-    t = [0., 0.]
-    R = mulmx(A, H)
-    for i in range(0, len(A)):
-        t = plus(t, R[i][i])
-    return t
-
-
-def getH(k, A, ak):
-    if k == 0:
-        return H0
-    Hkm1 = Z
-    LOL = Z
-    Hkm1 = mulmx(A, getH(k-1, A, geta(k-1, A)))
-    LOL = mulmxscal(ak, I)
-    for i in range(0, len(A)):
-        for j in range(0, len(A)):
-            Hkm1[i][j] = plus(Hkm1[i][j], LOL[i][j])
-    return Hkm1
 
 # # Fadeev's method of coeffs
 def geta(k, A):

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.11.13)  5 JUN 2017 11:01
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.11.13)  13 JUN 2017 13:08
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -953,6 +953,21 @@ LaTeX Warning: Label `fig:mod_control' multiply defined.
 
 LaTeX Warning: Label `' multiply defined.
 
+
+LaTeX Warning: Label `' multiply defined.
+
+
+LaTeX Warning: Label `' multiply defined.
+
+
+LaTeX Warning: Label `' multiply defined.
+
+
+LaTeX Warning: Label `' multiply defined.
+
+
+LaTeX Warning: Label `' multiply defined.
+
 )
 \openout1 = `main.aux'.
 
@@ -1196,10 +1211,62 @@ File: ./images/problem6.png Graphic file (type png)
 <use ./images/problem6.png>
 Package pdftex.def Info: ./images/problem6.png used on input line 315.
 (pdftex.def)             Requested size: 497.92328pt x 405.4818pt.
- [40 <./images/problem6.png>]) (./main.bbl)
+ [40 <./images/problem6.png>]) (./problem_7.tex
 
+LaTeX Font Warning: Command \small invalid in math mode on input line 55.
+
+
+LaTeX Font Warning: Command \normalsize invalid in math mode on input line 55.
+
+
+LaTeX Font Warning: Command \small invalid in math mode on input line 55.
+
+
+LaTeX Font Warning: Command \normalsize invalid in math mode on input line 55.
+
+[41] [42] [43] [44] <./images/model.png, id=234, 1153.30875pt x 310.15875pt>
+File: ./images/model.png Graphic file (type png)
+
+<use ./images/model.png>
+Package pdftex.def Info: ./images/model.png used on input line 256.
+(pdftex.def)             Requested size: 497.92328pt x 133.90518pt.
+
+<./images/error_model.png, id=235, 1164.35pt x 410.53375pt>
+File: ./images/error_model.png Graphic file (type png)
+
+<use ./images/error_model.png>
+Package pdftex.def Info: ./images/error_model.png used on input line 263.
+(pdftex.def)             Requested size: 497.92328pt x 175.56137pt.
+ [45 <./images/model.png> <./images/error_model.png>] <./images/sm.png, id=239,
+ 516.93124pt x 220.825pt>
+File: ./images/sm.png Graphic file (type png)
+ <use ./images/sm.png>
+Package pdftex.def Info: ./images/sm.png used on input line 270.
+(pdftex.def)             Requested size: 398.34013pt x 170.17055pt.
+
+<./images/adaptiv_square_y.png, id=240, 1321.93875pt x 665.48625pt>
+File: ./images/adaptiv_square_y.png Graphic file (type png)
+
+<use ./images/adaptiv_square_y.png>
+Package pdftex.def Info: ./images/adaptiv_square_y.png used on input line 277.
+(pdftex.def)             Requested size: 497.92328pt x 250.66356pt.
+ [46 <./images/sm.png> <./images/adaptiv_square_y.png>]
+<./images/adaptiv_square_error.png, id=245, 1321.93875pt x 665.48625pt>
+File: ./images/adaptiv_square_error.png Graphic file (type png)
+
+<use ./images/adaptiv_square_error.png>
+Package pdftex.def Info: ./images/adaptiv_square_error.png used on input line 2
+84.
+(pdftex.def)             Requested size: 497.92328pt x 250.66356pt.
+ [47 <./images/adaptiv_square_error.png>]) (./lafinita.tex
+Overfull \hbox (0.31067pt too wide) in paragraph at lines 4--5
+[]\T2A/cmr/m/n/14.4 В этой расчетно-исследовательской ра-бо-те мною бы-ли рас-с
+мот-ре-ны неко-
+ []
+
+[48]) (./main.bbl) 
 AED: lastpage setting LastPage
-[41] (./main.aux)
+[49] (./main.aux)
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 1.28pt have occurred.
@@ -1209,13 +1276,13 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 7343 strings out of 494399
- 107205 string characters out of 6172182
- 206670 words of memory out of 5000000
- 10389 multiletter control sequences out of 15000+600000
+ 7379 strings out of 494399
+ 107973 string characters out of 6172182
+ 206742 words of memory out of 5000000
+ 10415 multiletter control sequences out of 15000+600000
  23158 words of font info for 62 fonts, out of 8000000 for 9000
  452 hyphenation exceptions out of 8191
- 50i,18n,42p,1130b,375s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 50i,22n,42p,1771b,375s stack positions out of 5000i,500n,10000p,200000b,80000s
  </home/kirix/.texmf-var/fonts/pk/ljfour/lh/lh-t2a/larm1000.600pk> </home/kir
 ix/.texmf-var/fonts/pk/ljfour/lh/lh-t2a/labx1728.600pk> </home/kirix/.texmf-var
 /fonts/pk/ljfour/lh/lh-t2a/lasl1728.600pk> </home/kirix/.texmf-var/fonts/pk/ljf
@@ -1231,11 +1298,12 @@ onts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
 /cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.
 pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></u
 sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share
-/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on main.pdf (41 pages, 846747 bytes).
+/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
+Output written on main.pdf (49 pages, 1024635 bytes).
 PDF statistics:
- 611 PDF objects out of 1000 (max. 8388607)
- 187 compressed objects within 2 object streams
+ 669 PDF objects out of 1000 (max. 8388607)
+ 208 compressed objects within 3 object streams
  0 named destinations out of 1000 (max. 500000)
- 71 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 96 words of extra memory for PDF output out of 10000 (max. 10000000)
 
