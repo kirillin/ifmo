@@ -1,0 +1,84 @@
+%% Creator: Inkscape inkscape 0.91, www.inkscape.org
+%% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
+%% Accompanies image file 'title_page.pdf' (pdf, eps, ps)
+%%
+%% To include the image in your LaTeX document, write
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics{<filename>.pdf}
+%% To scale the image, write
+%%   \def\svgwidth{<desired width>}
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics[width=<desired width>]{<filename>.pdf}
+%%
+%% Images with a different path to the parent latex file can
+%% be accessed with the `import' package (which may need to be
+%% installed) using
+%%   \usepackage{import}
+%% in the preamble, and then including the image with
+%%   \import{<path to file>}{<filename>.pdf_tex}
+%% Alternatively, one can specify
+%%   \graphicspath{{<path to file>/}}
+%% 
+%% For more information, please see info/svg-inkscape on CTAN:
+%%   http://tug.ctan.org/tex-archive/info/svg-inkscape
+%%
+\begingroup%
+  \makeatletter%
+  \providecommand\color[2][]{%
+    \errmessage{(Inkscape) Color is used for the text in Inkscape, but the package 'color.sty' is not loaded}%
+    \renewcommand\color[2][]{}%
+  }%
+  \providecommand\transparent[1]{%
+    \errmessage{(Inkscape) Transparency is used (non-zero) for the text in Inkscape, but the package 'transparent.sty' is not loaded}%
+    \renewcommand\transparent[1]{}%
+  }%
+  \providecommand\rotatebox[2]{#2}%
+  \ifx\svgwidth\undefined%
+    \setlength{\unitlength}{453.95725244bp}%
+    \ifx\svgscale\undefined%
+      \relax%
+    \else%
+      \setlength{\unitlength}{\unitlength * \real{\svgscale}}%
+    \fi%
+  \else%
+    \setlength{\unitlength}{\svgwidth}%
+  \fi%
+  \global\let\svgwidth\undefined%
+  \global\let\svgscale\undefined%
+  \makeatother%
+  \begin{picture}(1,1.51803499)%
+    \put(0.08133627,1.49589609){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{\textbf{М}\textbf{и}\textbf{н}\textbf{и}\textbf{с}\textbf{т}\textbf{е}\textbf{р}\textbf{с}\textbf{т}\textbf{в}\textbf{о}\textbf{ }\textbf{о}\textbf{б}\textbf{р}\textbf{а}\textbf{з}\textbf{о}\textbf{в}\textbf{а}\textbf{н}\textbf{и}\textbf{я}\textbf{ }\textbf{и}\textbf{ }\textbf{н}\textbf{а}\textbf{у}\textbf{к}\textbf{и}\textbf{ }\textbf{Р}\textbf{о}\textbf{с}\textbf{с}\textbf{и}\textbf{й}\textbf{с}\textbf{к}\textbf{о}\textbf{й}\textbf{ }\textbf{Ф}\textbf{е}\textbf{д}\textbf{е}\textbf{р}\textbf{а}\textbf{ц}\textbf{и}\textbf{и}}}}%
+    \put(-0.00060097,1.37795547){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{\textbf{Ф}\textbf{Е}\textbf{Д}\textbf{Е}\textbf{Р}\textbf{А}\textbf{Л}\textbf{Ь}\textbf{Н}\textbf{О}\textbf{Е}\textbf{ }\textbf{Г}\textbf{О}\textbf{С}\textbf{У}\textbf{Д}\textbf{А}\textbf{Р}\textbf{С}\textbf{Т}\textbf{В}\textbf{Е}\textbf{Н}\textbf{Н}\textbf{О}\textbf{Е}\textbf{ }\textbf{А}\textbf{В}\textbf{Т}\textbf{О}\textbf{Н}\textbf{О}\textbf{М}\textbf{Н}\textbf{О}\textbf{Е}\textbf{ }\textbf{О}\textbf{Б}\textbf{Р}\textbf{А}\textbf{З}\textbf{О}\textbf{В}\textbf{А}\textbf{Т}\textbf{Е}\textbf{Л}\textbf{Ь}\textbf{Н}\textbf{О}\textbf{Е}\textbf{ }\textbf{У}\textbf{Ч}\textbf{Е}\textbf{Р}\textbf{Е}\textbf{Ж}\textbf{Д}\textbf{Е}\textbf{Н}\textbf{И}\textbf{Е}\textbf{ }}}}%
+    \put(0.35050258,1.34887784){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{\textbf{В}\textbf{Ы}\textbf{С}\textbf{Ш}\textbf{Е}\textbf{Г}\textbf{О}\textbf{ }\textbf{О}\textbf{Б}\textbf{Р}\textbf{А}\textbf{З}\textbf{О}\textbf{В}\textbf{А}\textbf{Н}\textbf{И}\textbf{Я}}}}%
+    \put(-0.00139399,1.23758983){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{\textbf{С}\textbf{А}\textbf{Н}\textbf{К}\textbf{Т}}}}%
+    \put(0.10195495,1.23758983){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{\textbf{-}}}}%
+    \put(0.11147126,1.23758983){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{\textbf{П}\textbf{Е}\textbf{Т}\textbf{Е}\textbf{Р}\textbf{Б}\textbf{У}\textbf{Р}\textbf{Г}\textbf{С}\textbf{К}\textbf{И}\textbf{Й}\textbf{ }\textbf{Н}\textbf{А}\textbf{Ц}\textbf{И}\textbf{О}\textbf{Н}\textbf{А}\textbf{Л}\textbf{Ь}\textbf{Н}\textbf{Ы}\textbf{Й}\textbf{ }\textbf{И}\textbf{С}\textbf{С}\textbf{Л}\textbf{Е}\textbf{Д}\textbf{О}\textbf{В}\textbf{А}\textbf{Т}\textbf{Е}\textbf{Л}\textbf{Ь}\textbf{С}\textbf{К}\textbf{И}\textbf{Й}\textbf{ }}}}%
+    \put(0.11490771,1.19978891){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{\textbf{У}\textbf{Н}\textbf{И}\textbf{В}\textbf{Е}\textbf{Р}\textbf{С}\textbf{И}\textbf{Т}\textbf{Е}\textbf{Т}\textbf{ }\textbf{И}\textbf{Н}\textbf{Ф}\textbf{О}\textbf{Р}\textbf{М}\textbf{А}\textbf{Ц}\textbf{И}\textbf{О}\textbf{Н}\textbf{Н}\textbf{Ы}\textbf{Х}\textbf{ }\textbf{Т}\textbf{Е}\textbf{Х}\textbf{Н}\textbf{О}\textbf{Л}\textbf{О}\textbf{Г}\textbf{И}\textbf{Й}\textbf{,}}}}%
+    \put(0.32935521,1.13978326){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{\textbf{М}\textbf{Е}\textbf{Х}\textbf{А}\textbf{Н}\textbf{И}\textbf{К}\textbf{И}\textbf{ }\textbf{И}\textbf{ }\textbf{О}\textbf{П}\textbf{Т}\textbf{И}\textbf{К}\textbf{И}}}}%
+    \put(0.04750048,1.00754614){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{Кафедра }}}%
+    \put(0.20352839,1.00754614){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{Систем Управления и Информатики}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{title_page.pdf}}%
+    \put(0.75558477,1.00754614){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{Группа     __P_4_2_3_5___}}}%
+    \put(0.29948456,0.88198366){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{\textbf{К}\textbf{У}\textbf{Р}\textbf{С}\textbf{О}\textbf{В}\textbf{А}\textbf{Я}\textbf{ }\textbf{Р}\textbf{А}\textbf{Б}\textbf{О}\textbf{Т}\textbf{А}}}}%
+    \put(0.07076258,0.81827722){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{\textbf{«}}}}%
+    \put(0.0884735,0.81827722){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{\textbf{А}\textbf{д}\textbf{а}\textbf{п}\textbf{т}\textbf{и}\textbf{в}\textbf{н}\textbf{о}\textbf{е}\textbf{ }\textbf{у}\textbf{п}\textbf{р}\textbf{а}\textbf{в}\textbf{л}\textbf{е}\textbf{н}\textbf{и}\textbf{е}\textbf{ }\textbf{д}\textbf{и}\textbf{н}\textbf{а}\textbf{м}\textbf{и}\textbf{ч}\textbf{е}\textbf{с}\textbf{к}\textbf{и}\textbf{м}\textbf{и}\textbf{ }\textbf{с}\textbf{и}\textbf{с}\textbf{т}\textbf{е}\textbf{м}\textbf{а}\textbf{м}\textbf{и}}}}%
+    \put(0.9197412,0.81827722){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{\textbf{»}}}}%
+    \put(0.37455771,0.68791252){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{Вариант № 18}}}%
+    \put(0.14054889,0.55468412){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{Автор работы}}}%
+    \put(0.32406837,0.55468412){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{:}}}%
+    \put(0.14054889,0.49177071){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{Преподаватель: }}}%
+    \put(0.06256798,0.382267){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{“___” _______________20____г. }}}%
+    \put(0.06256798,0.25670452){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{Работа выполнена с оценкой}}}%
+    \put(0.53056359,0.25670452){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{__________________}}}%
+    \put(0.06256798,0.19379111){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{Дата защиты “___” 20_1_7___ г.}}}%
+    \put(0.38592442,0.0624131){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{Санкт}}}%
+    \put(0.46553544,0.0624131){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{-}}}%
+    \put(0.47584478,0.0624131){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{Петербург}}}%
+    \put(0.5210249,0.00043795){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{г.}}}%
+    \put(0.69342081,0.55410756){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{Артемов К.}}}%
+    \put(0.69266956,0.49068707){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{Герасимов Д.Н.}}}%
+    \put(0.45092634,0.0011763){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{2017}}}%
+  \end{picture}%
+\endgroup%
