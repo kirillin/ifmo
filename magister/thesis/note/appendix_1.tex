@@ -1,0 +1,167 @@
+\ESKDappendix{обязательное}{Программный код в Scilab}\label{append_app_example}
+
+В этом приложении представлен программный код в Scilab, используемый в этой работе.
+
+Программный код функции для расчета коэффициентов кубических сплайнов с фиксированными концами для интерполяции траектории, заданной набором точек $ q_i $ в моменты времени $ t_i $:
+
+\begin{lstlisting}
+function [a,b,c,d]=splin_v(t, q, dq0, dqf)
+	// Computes a cubic spline interpolation function 
+	//  in Hermit form.
+	//
+	// Params:
+	//      t       vector of the time for knots (n >= 3)
+	//      q       vector of knots
+	//      dq0     initial velocity
+	//      dqf     final velocity
+	//
+	// Returns:
+	//      a,b,c,d coeffitions for cubic spline
+	n = length(q);  // quantity knots
+	a = []; b = []; c = []; d = [];
+	delta = [];
+	z = []; mu = []; l = [];
+	h = [];
+	a = q;
+	for i = 1:n-1 do
+		h(i) = t(i+1) - t(i);
+	end
+	delta(1) = 3 *(a(2) - a(1)) / h(1) - 3 * dq0;
+	delta(n) = 3 * dqf - 3 * (a(n) - a(n-1)) / h(n-1);
+	for i = 2:n-1 do
+		delta(i) = 3 * (a(i+1) - a(i)) / h(i) - 3 * (a(i) 
+		          - a(i-1)) / h(i-1);
+	end
+	// forward
+	mu(1) = 0.5;
+	z(1) = delta(1) / (2*h(1)); 
+	for i = 2:n-1 do   
+		l = 2 * (t(i+1) - t(i-1)) - h(i-1) * mu(i-1);
+		mu(i) = h(i) / l;
+		z(i) = ( delta(i) - h(i-1) * z(i-1) ) / l;
+	end
+	// inverse
+	l = h(n-1) * (2 - mu(n-1));
+	z(n) = ( delta(n) - h(n-1) * z(n-1) ) / l;
+	c(n) = z(n);   
+	for i = n-1:-1:1 do 
+		c(i) = z(i) - mu(i) * c(i+1);
+		b(i) = (a(i+1) - a(i)) / h(i) - h(i) * (c(i+1) 
+				+ 2 * c(i)) / 3;
+		d(i) = (c(i+1) - c(i)) / (3 * h(i));
+	end
+endfunction
+\end{lstlisting}
+
+Программный код функции для расчета коэффициентов кубических сплайнов со свободными концами:
+
+\begin{lstlisting}
+function [a,b,c,d]=splin_a(t, q)
+	n = length(q);
+	a = []; b = []; d = [];
+	K = zeros(1,n+1); K(2) = 0;
+	c = zeros(1,n+1); c(2) = 0; 
+	for i = 3:n do
+		j = i - 1;
+		m = j - 1;
+		A = t(i) - t(j);
+		B = t(j) - t(m);
+		R = 2 * (A + B) - B * c(j);
+		c(i) = A / R;
+		K(i) = (3 * ((q(i)-q(j))/A - (q(j)-q(m))/B) 
+				- B*K(j)) / R;
+	end
+	c(n+1) = K(n+1);
+	for i = n:-1:3 do
+		c(i) = K(i) - c(i) * c(i+1);
+	end
+	for i = 2:n do
+		hi = t(i) - t(i-1)
+		a(i-1) = q(i-1);
+		b(i-1) = (q(i) - q(i-1)) / hi - (c(i+1) 
+					+ 2 * c(i))*hi/3;
+		d(i-1) = (c(i+1) - c(i)) / 3 / hi;
+	end
+	c(1:n) = c(2:n+1); 
+endfunction
+\end{lstlisting}
+
+Функция для расчета коэффициентов сплайна пятой степени:
+\begin{lstlisting}
+function [qt,qdt,qddt]=polynomal_trajectory_5(qs, 
+		qf, tv, dqs, dqf, v_max)
+	// Compute trajectory for 5-th polynom
+	// q(t) = a + bt + ct^2 + dt^3 + et^4 +ft^5
+	n = length(qs);
+	if length(tv)>1 then
+		tscal = max(tv);
+		t = tv(:)/tscal;
+	else
+		tscal = 1;
+		// normalized time from 0 -> 1
+		t = (0:(tv-1))''/(tv-1); 
+	end;
+	qt = []; qdt = []; qddt = [];
+	a = qs;
+	b = dqs;
+	c = zeros(n,1);
+	d = 10 *(qf - qs) - (6*dqs + 4*dqf); 
+	e = -15 * (qf - qs) + (8*dqs + 7*dqf);
+	f = 6 * (qf - qs) - (3*dqf + 3*dqs);
+	times = [ones(length(t),1) t t.^2 t.^3 t.^4 t.^5];
+	coefs = [a b c d e f]';
+	qt = times * coefs;
+	coefs = [ b zeros(n,1) 3*d 4*e 5*f zeros(n,1)]';
+	//    qdt = times * coefs;
+	qdt = times * coefs / max(times * coefs)
+	qdt = qdt * v_max
+	coefs = [  zeros(n,1) 6*d 12*e 20*f zeros(n,1) zeros(n,1)]';
+	qddt = times * coefs;
+endfunction
+\end{lstlisting}
+
+Функция рассчитывающая траекторию составленную из трех частей: параболы, прямой, параболы:
+\begin{lstlisting}
+function [qt,qdt,qddt, t, tb, tf]=plp(qs, 
+		qf, step, v_des)
+	// Compute trajectrory with velocity 
+	//  profile -- parabolic-linear-parabolic
+	v = v_des;
+	tf = 1.5*(qf - qs) / v; 
+	tf = 2
+	v = 1.5*(qf - qs) / tf; 
+	t = 0:step:tf;
+	qt = zeros(length(t), 1); qdt = qt; qddt = qt;
+	tb = (qs - qf + v*tf) / v;
+	a = v/tb;
+	for i = 1:length(t)
+		tt = t(i);
+		if tt <= tb then
+			// initial blend
+			qt(i) = qs + a/2*tt^2;
+			qdt(i) = a*tt;
+			qddt(i) = a;
+		elseif tt <= (tf-tb)
+			// linear motion
+			qt(i) = (qf + qs - v*tf) / 2 + v * tt;
+			qdt(i) = v;
+			qddt(i) = 0;
+		else
+			// final blend
+			qt(i) = qf - a/2*tf^2 + a*tf*tt - a/2*tt^2;
+			qdt(i) = a*tf - a*tt;
+			qddt(i) = -a;
+		end
+	end
+endfunction
+\end{lstlisting}
+
+Функция возвращающая точку дуги в операционном пространстве в заданный момент времени:
+\begin{lstlisting}
+function [x,y,alpha]=get_circle_point(t, v, theta_s, alpha0)
+	phi = v * t / (%pi * Rc);
+	x = Rc * cos(s + phi);
+	y = Rc * sin(s + phi);
+	alpha = alpha0 + phi;
+endfunction
+\end{lstlisting}

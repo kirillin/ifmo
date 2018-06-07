@@ -1,0 +1,327 @@
+\subsubsection{Решение задач о положении манипулятора}\label{part_kinematic_position}
+Планирование траектории движения схвата манипулятора предполагает определение соотношений между координатами схвата, заданными в различной форме: обобщенными координатами самого манипулятора и шестью числами, задающими положение и ориентацию схвата в связанной с ним системе координат.
+
+Последовательная кинематическая цепь рассматриваемого манипулятора, включающая только вращательные кинематические пары (КП) V-класса (цилиндрические шарниры), изображена на рисунке~\ref{img:kinematics}a.
+
+\begin{figure}[h!]
+	\begin{minipage}[h]{0.5\linewidth}
+		\centering{\includegraphics[width=0.95\linewidth]{kinematics_schema.pdf} \\ а)}
+	\end{minipage}
+	\hfill
+	\begin{minipage}[h]{0.5\linewidth}
+		\centering{\includegraphics[width=0.95\linewidth]{kinematics_frames.pdf} \\ б)}
+	\end{minipage}
+	\caption{Схемы рассматриваемого манипулятора: а~--- кинематическая при $\theta=\left[\theta_1,\,\theta_2,\,\theta_3,\,\theta_4,\,\theta_5\right]^T = \left[0,\,\pi/2,\,0,\,0,\,0\right]^T$; б~--- расположения СК КП.}
+	\label{img:kinematics}
+\end{figure}
+
+Процедура описания положений звеньев манипулятора друг относительно друга в соответствии с методом Денавита-Хартенберга \cite{spong2005robot}, представляется тремя шагами:
+\begin{enumerate}
+    \item <<привязка>> к каждому звену СК, чьи оси удовлетворяют следующим условиям:
+    \begin{enumerate}
+	    \item ось $z_{i-1}$ направлена вдоль оси $i$-ой КП;
+        \item ось $x_i$ перпендикулярна оси $z_{i-1}$ и пересекает ее;
+        \item ось $y_i$ дополняет оси $z_i$ и $x_i$ до правой декартовой СК.
+    \end{enumerate}
+    \item определение параметров ДХ:
+    \begin{enumerate}
+	    \item $a_i$~--- расстояния от $z_{i-1}$ до $z_i$ вдоль $x_i$;
+	    \item $\alpha_i$~--- угла от $z_{i-1}$ до $z_i$ вокруг $x_i$;
+        \item $d_i$~--- расстояния от $x_{i-1}$ до $x_i$ вдоль $z_{i-1}$;
+        \item $\theta_i$~--- угла от $x_{i-1}$ до $x_i$ вокруг $z_{i-1}$.
+    \end{enumerate}
+    \item расчет матриц однородного преобразования в соответствии со следующими формулами:
+    \begin{equation}\label{DH_matrix}
+        {}^{i-1}A_{i} = R_{z, \theta_i} \cdot T_{z, d_i} \cdot T_{x, a_i} \cdot R_{x, \alpha_i}
+    \end{equation}
+    где $R_{z, \theta_i}$~--- матрица поворота вокруг оси $z$ на угол $\theta_i$, $T_{z, d_i}$~--- матрица смещения вдоль оси $z$ на расстояние $d$, $T_{x, a_i}$~---матрица смещения вдоль оси $x$ на расстояние $a_i$,  $R_{x, \alpha_i}$~--- матрица поворота вокруг оси $x$ на угол $\alpha_i$, равные
+    \begin{gather}
+        R_{z, \theta_i} =
+        \begin{bmatrix}
+            \cos\theta_i & -\sin\theta_i & 0 & 0\\
+            \sin\theta_i &  \cos\theta_i & 0 & 0\\
+            0 & 0 & 1 & 0\\
+            0 & 0 & 0 & 1
+        \end{bmatrix}\!\!,
+        \quad
+        T_{z, d_i} =
+        \begin{bmatrix}
+            1 & 0 & 0 & 0\\
+            0 & 1 & 0 & 0\\
+            0 & 0 & 1 & d_i\\
+            0 & 0 & 0 & 1\\
+        \end{bmatrix}\!\!,\\
+\end{gather}
+\begin{gather}   %
+        T_{x, a_i} =
+        \begin{bmatrix}
+            1 & 0 & 0 & a_i\\
+            0 & 1 & 0 & 0\\
+            0 & 0 & 1 & 0\\
+            0 & 0 & 0 & 1\\
+        \end{bmatrix}\!\!,
+        \quad
+        R_{x, \alpha_i} =
+        \begin{bmatrix}
+            1 & 0 & 0 & 0\\
+            0 & \cos\alpha_i & -\sin\alpha_i & 0\\
+            0 & \sin\alpha_i &  \cos\alpha_i & 0\\
+            0 & 0 & 0 & 1
+        \end{bmatrix}\!\!;
+    \end{gather}
+    итого
+    \begin{equation}
+        {}^{i-1}A_i =
+        \begin{bmatrix}
+            \cos\theta_i & - \cos\alpha_i \sin\theta_i & \sin\alpha_i \sin\theta_i & a_{i} \cos\theta_i\\
+            \sin\theta_i & \cos\alpha_i \cos\theta_i & - \sin\alpha_i \cos\theta_i & a_{i} \sin\theta_i\\
+            0 & \sin\alpha_i & \cos\alpha_i & d_{i}\\
+            0 & 0 & 0 & 1
+        \end{bmatrix}
+    \end{equation}
+\end{enumerate}
+
+Результаты выполнения двух первых шагов для исследуемого манипулятора представлены на рисунке~\ref{img:kinematics}б и в таблице~\ref{table_DH_params}, а третьего~--- в лице следующих выражений:
+\begin{gather}\label{eq_all_ht_matrices}
+	{}^0A_1\! =\!\!
+    \left[\begin{matrix}c_1 & 0 & s_1 & a_{1} c_1\\s_1 & 0 & - c_1 & a_{1} s_1\\0 & 1 & 0 & d_{1}\\0 & 0 & 0 & 1\end{matrix}\right]\!\!;
+    %
+	{}^1A_2\! =\!\!
+	\left[\begin{matrix}c_2 & - s_2 & 0 & a_{2} c_2\\s_2 & c_2 & 0 & a_{2} s_2\\0 & 0 & 1 & 0\\0 & 0 & 0 & 1\end{matrix}\right]\!\!;
+    %
+	{}^2A_3\! =\!\!
+	\left[\begin{matrix}c_3 & - s_3 & 0 & a_{3} c_3\\s_3 & c_3 & 0 & a_{3} s_3\\0 & 0 & 1 & 0\\0 & 0 & 0 & 1\end{matrix}\right]\!\!;\notag
+	\\
+	{}^3A_4 =
+	 \left[\begin{matrix}c_4 & 0 & s_4 & 0\\s_4 & 0 & - c_4 & 0\\0 & 1 & 0 & 0\\0 & 0 & 0 & 1\end{matrix}\right]\!\!;
+	\;
+	{}^4A_5 =
+	\left[\begin{matrix}c_5 & - s_5 & 0 & 0\\s_5 & c_5 & 0 & 0\\0 & 0 & 1 & d_{5}\\0 & 0 & 0 & 1\end{matrix}\right]\!\!\ldotp
+\end{gather}
+
+\textbf{Прямая задача кинематики}\label{part_kinematics_forward} решается из  соотношений, содержащихся в информации о смещении и повороте СК $Ox_5y_5z_5$ относительно СК $Ox_0y_0z_0$, содержащейся в матрице ${}^0A_5$.
+Следовательно, чтобы решить ПЗК, необходимо найти эту матрицу в соответствии c выражением:
+\begin{equation}\label{fk}
+	{}^0A_5 = \prod^{5}_{i=1}{{}^{i-1}A_i(q_i)}\ldotp
+\end{equation}
+
+\begin{table}[h!]
+	\caption{Параметры Денавита-Хартенберга}
+	\begin{center}
+		\begin{tabularx}{1\textwidth}{|>{\hsize=0.15\textwidth}Y|>{\hsize=0.15\textwidth}Y|>{\hsize=0.15\textwidth}Y|>{\hsize=0.15\textwidth}Y|Y|}
+			\hline
+			Звено, $i$ 	& $a_i$, мм & $\alpha_i$, рад & $d_i$, мм & $\theta_i$, рад\\
+			\hline
+			1  		& $33$ & $\pi/2$ & $147$ & \parbox[c][0.7\height]{4cm}{$$\pi \cdot \cfrac{169^\circ}{180^\circ} - q_1$$}\\
+			\hline
+			2 		& $155$ & $0$ 	& $0$ & \parbox[c][0.7\height]{4cm}{$$\pi \cdot \cfrac{65^\circ}{180^\circ} + \cfrac{\pi}{2} - q_2$$}\\
+			\hline
+			3 		& $135$ & $0$ 	& $0$ 	& \parbox[c][0.7\height]{4cm}{$$-\pi \cdot \cfrac{146^\circ}{180^\circ} - q_3$$}\\
+			\hline
+			4 	& $0$ & $\pi/2$ & $0$ & \parbox[c][0.7\height]{4cm}{$$\pi \cdot \cfrac{102.5^\circ}{180^\circ} + \cfrac{\pi}{2} - q_4$$}\\
+			\hline
+			5 		& $0$ & $0$ 	& $218$     & \parbox[c][0.7\height]{4cm}{$$\pi \cdot \cfrac{167.5^\circ}{180^\circ} - q_5$$}\\
+			\hline
+		\end{tabularx}
+	\end{center}
+	\label{table_DH_params}
+\end{table}
+
+Решая \textbf{обратную задачу кинематики}\label{part_kinematics_inverse}, найдём соотношения для положений сочленений при известном положении и ориентации схвата. Заданные смещение и поворот СК $Ox_5y_5z_5$ относительно СК $Ox_0y_0z_0$ можно описать с помощью матрицы ${}^0A_5$.
+Используя ее и матрицы из~\eqref{eq_all_ht_matrices}, найти расчетные формулы для углов $q_i$ ($i=\overline{1,5}$) можно из следующих соображений~\cite{craig2018introduction}.
+
+Для неизвестной матрицы ${}^0A_5$ вводятся следующие обозначения ее элементов:
+\begin{equation}\label{ik}
+	{}^0A_5 =
+	\left[\begin{matrix}
+	r_{11} & r_{12} & r_{13} & p_{x}\\
+	r_{21} & r_{22} & r_{23} & p_{y}\\
+	r_{31} & r_{32} & r_{33} & p_{z}\\
+	0 & 0 & 0 & 1
+	\end{matrix}\right]\!\!\ldotp
+\end{equation}
+
+Далее, составляется равенство из матрицы ${}^0A_5$ и правой части выражения~\eqref{fk}, затем полученное равенство с обеих сторон умножается на ${}^0A_1^{-1}$:
+\begin{equation}
+	{}^0A_1^{-1} \cdot {}^0A_5 = {}^1A_2 \cdot {}^2A_3 \cdot {}^3A_4 \cdot {}^4A_5,
+\end{equation}
+где левая часть с учетом~\eqref{eq_all_ht_matrices} равна
+\begin{equation}\label{eq_left_part}
+	{}^0A_1^{-1} \cdot {}^0A_5 =
+	\left[\begin{matrix}
+		r_{11} c_{1} + r_{21} s_{1} & r_{12} c_{1} + r_{22} s_{1} & r_{13} c_{1} + r_{23} s_{1} &  p_{x} c_{1} + p_{y} s_{1} - a_{1}\\
+		r_{31} & r_{32} & r_{33} & p_{z} - d_{1}\\
+		r_{11} s_{1} - r_{21} c_{1} & r_{12} s_{1} - r_{22} c_{1} & r_{13} s_{1} - r_{23} c_{1} & p_{x} s_{1} - p_{y} c_{1}\\
+		0 & 0 & 0 & 1\end{matrix}\right]\!\!,
+\end{equation}
+а правая
+\begin{equation}\label{eq_right_part}
+	{}^1A_2 \cdot {}^2A_3 \cdot {}^3A_4 \cdot {}^4A_5 =
+	\left[\begin{matrix}
+		c_{5} c_{234} & - s_{5} c_{234} & s_{234} & a_{2} c_{2} + a_{3} c_{23} + d_{5} s_{234}\\
+		c_{5} s_{234} & - s_{5} s_{234} & - c_{234} & a_{2} s_{2} + a_{3} s_{23} - d_{5} c_{234}\\
+		s_{5} & c_{5} & 0 & 0\\
+		0 & 0 & 0 & 1
+	\end{matrix}\right]\!\!,
+\end{equation}
+где, в свою очередь,
+\begin{equation}\label{eq_theta_23_234}
+    \theta_{23} = \theta_2 + \theta_3,
+    \qquad
+    \theta_{234} = \theta_2 + \theta_3 + \theta_4\ldotp
+\end{equation}
+
+Теперь, решая уравнения, полученные из равенства матриц~\eqref{eq_left_part} и \eqref{eq_right_part}, выводятся выражения для углов $\theta_1$, $\theta_5$ и $\theta_{234}$
+
+\begin{itemize}
+    \item равенство элементов $(3,4)$:
+        \begin{equation}\label{eq_for_theta_1}
+	        p_{x} s_{1} - p_{y} c_{1} = 0
+            \; \Rightarrow \;
+	        \tg \theta_1 = \cfrac{p_y}{p_x}
+	        \; \Rightarrow \;
+	        \left\{
+	        \begin{aligned}
+		        \!&\theta_1^\msf{I} = \atan2(p_y, p_x)\\
+		        \!&\theta_1^\msf{II} = \atan2(-p_y, -p_x)
+            \end{aligned}
+            \right.
+        \end{equation}
+    \item равенство элементов $(3,1)$ и $(3,2)$:
+        \begin{multline}
+            \left\{
+	        \begin{aligned}
+		        \!&s_{5} = r_{11} s_{1} - r_{21} c_{1}\\
+		        \!&c_{5} = r_{12} s_{1} - r_{22} c_{1}
+            \end{aligned}
+            \right.
+            \qquad \Rightarrow
+            \\
+            \Rightarrow \;
+            \left\{
+	        \begin{aligned}
+		        \!&\theta_5^\msf{I} = \atan2(r_{11} \sin\theta_1^\msf{I} - r_{21} \cos\theta_1^\msf{I},\: r_{12} \sin\theta_1^\msf{I} - r_{22} \cos\theta_1^\msf{I})\\
+		        \!&\theta_5^\msf{II} = \atan2(r_{11} \sin\theta_1^\msf{II} - r_{21} \cos\theta_1^\msf{II},\: r_{12} \sin\theta_1^\msf{II} - r_{22} \cos\theta_1^\msf{II})
+            \end{aligned}
+            \right.
+        \end{multline}
+    \item равенство элементов $(2,3)$ и $(1,3)$:
+        \begin{multline}
+            \left\{
+	        \begin{aligned}
+		        \!&c_{234} = -r_{33}\\
+		        \!&s_{234} = r_{13} c_{1} + r_{23} s_{1}
+            \end{aligned}
+            \right.
+            \qquad \Rightarrow
+            \\
+            \Rightarrow \qquad
+            \left\{
+	        \begin{aligned}
+		        \!&\theta_{234}^\msf{I} = \atan2(r_{13} \cos\theta_1^\msf{I}  + r_{23} \sin\theta_1^\msf{I},\: -r_{33})\\
+		        \!&\theta_{234}^\msf{II} = \atan2(r_{13} \cos\theta_1^\msf{II}  + r_{23} \sin\theta_1^\msf{II},\: -r_{33})
+            \end{aligned}
+            \right.
+        \end{multline}
+\end{itemize}
+
+Домножая выражение~\eqref{eq_left_part} на ${}^4A_5^{-1}$ справа~--- получается матрица~${}^1A_4$:
+\begin{equation}\label{eq_A14_matrix}
+    {}^1A_4 =
+    \begin{bmatrix}
+        \cdots & \cdots & \cdots & (p_y - d_5 r_{23})s_1 + (p_x - d_5 r_{13})c_1 - a_1\\
+        \cdots & \cdots & \cdots & p_z - d_1 - d_5 r_{33}\\
+        \cdots & \cdots & \cdots & p_x s_1 - p_y c_1 - d_5(r_{13} s_1 - r_{23} c_1)\\
+        0 & 0 & 0 & 1
+    \end{bmatrix}\!\!,
+\end{equation}
+где $\cdots$~--- неинтересные элементы матрицы.
+
+Нужно заметить, что c учетом~\eqref{eq_for_theta_1} и равенства элементов~$(3,3)$ в~\eqref{eq_left_part} и~\eqref{eq_right_part} справедливо
+\begin{equation}
+p_x s_1 - p_y c_1 - d_5(r_{13} s_1 - r_{23} c_1) = 0\ldotp
+\end{equation}
+С~учетом этого и~\eqref{eq_A14_matrix}:
+\begin{equation}\label{eq_r_1_1_4}
+    r^1_{1,\,4} =
+    \begin{bmatrix}
+        (p_y - d_5 r_{23})s_1 + (p_x - d_5 r_{13})c_1 - a_1 \\
+        p_z - d_1 - d_5 r_{33} \\
+        0
+    \end{bmatrix}\!\!\ldotp
+\end{equation}
+
+Далее нужно заметить, что одно и то же положение 4-го звена может достигаться при двух разных способах расположения звеньев~2 и~3 (см.~рисунок~\ref{ik_geometric}).
+Следовательно, углы $\theta_2$, $\theta_3$ и $\theta_4$ при одних и тех же значениях углов $\theta_1$ и $\theta_5$ имеют по два возможных значения. 
+Ниже выводятся выражения для последних.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.58\textwidth]{ik_geometric_approach.pdf}
+	\caption{Плоская часть манипулятора}
+	\label{ik_geometric}
+\end{figure}
+
+По теореме косинусов, выражение для $\cos\theta_3$ (его зависимость от $\theta_1$ обуславливается зависимостью от этого угла вектора $r^1_{1,\,4}$) примет вид:
+\begin{equation}
+	c_3(\theta_1) = \frac{(r^1_{1,\,4})^T \!\! \cdot r^1_{1,\,4}- a_2^2 - a_3^2}{2 a_2 a_3}
+\end{equation}
+C~учетом этого для $\theta_3$ можно получить следующие выражения:
+\begin{gather}
+	\theta_3^\msf{I,II} = \mp \atan2\bigl(\sqrt{1 - c_3^2(\theta_1^\msf{I})},\; c_3(\theta_1^\msf{I})\bigr)\\
+	\theta_3^\msf{III,IV} = \mp \atan2\bigl(\sqrt{1 - c_3^2(\theta_1^\msf{II})},\; c_3(\theta_1^\msf{II})\bigr)
+\end{gather}
+
+Как видно из рисунка~\ref{ik_geometric}, $\theta_2 = \varphi + \beta$ при $\theta_3^\msf{I,III} < 0$ и $\theta_2 = \varphi - \beta$ при $\theta_3^\msf{II,IV} > 0$.
+Следовательно, принимая во внимание то, что
+\begin{equation}
+    \varphi(\theta_1) = \atan2(y_r,\, x_r),
+    \qquad
+    \beta(\theta_3) = \atan2(a_3\sin|\theta_3|,\: a_2 + a_3\cos|\theta_3|),
+\end{equation}
+где $x_r$ и $y_r$~--- проекции вектора $r^1_{1,\,4}$ на оси абсцисс и ординат (их значения см.~в~\eqref{eq_r_1_1_4}), для возможных значений угла $\theta_2$ можно записать:
+\begin{align}
+	\theta_2^\msf{I} &= \varphi(\theta_1^\msf{I}) + \beta(\theta_3^\msf{I}), &
+	\theta_2^\msf{II} &= \varphi(\theta_1^\msf{I}) - \beta(\theta_3^\msf{II}),\\
+	\theta_2^\msf{III} &= \varphi(\theta_1^\msf{II}) + \beta(\theta_3^\msf{III}), &
+	\theta_2^\msf{IV} &= \varphi(\theta_1^\msf{II}) - \beta(\theta_3^\msf{IV})\ldotp
+\end{align}
+
+Выражения для значений угла $\theta_4$ после этого с учетом~\eqref{eq_theta_23_234} приобретают вид:
+\begin{equation}
+	\theta_4^\msf{I,II} = \theta_{234}^\msf{I} - \theta_{2}^\msf{I,II} - \theta_{3}^\msf{I,II},
+	\qquad
+	\theta_4^\msf{III,IV} = \theta_{234}^\msf{II} - \theta_{2}^\msf{III, IV} - \theta_{3}^\msf{III,IV}\ldotp
+\end{equation}
+
+Таким образом, любые положение и ориентацию схвата относительно основания манипулятор может обеспечить 4-мя собственными конфигурациями, которым соответствуют следующие наборы значений для его обобщенных координат $q=\left[q_1,\,q_2,\,q_3,\,q_4,\,q_5\right]^T$ (с~учетом таблицы~\ref{table_DH_params}):
+\begin{align}
+	\theta^\msf{I} &=
+	\begin{bmatrix}
+	    \theta_1^\msf{I} & \theta_2^\msf{I} & \theta_3^\msf{I} & \theta_4^\msf{I} & \theta_5^\msf{I}
+	\end{bmatrix}^T\!\!\!\!\!,
+	&
+	\theta^\msf{II} &=
+	\begin{bmatrix}
+	    \theta_1^\msf{I} & \theta_2^\msf{II} & \theta_3^\msf{II} & \theta_4^\msf{II} & \theta_5^\msf{I}
+	\end{bmatrix}^T\!\!\!\!\!,
+	\\
+	\theta^\msf{III} &=
+	\begin{bmatrix}
+	    \theta_1^\msf{II} & \theta_2^\msf{III} & \theta_3^\msf{III} & \theta_4^\msf{III} & \theta_5^\msf{II}
+	\end{bmatrix}^T\!\!\!\!\!,
+	&
+	\theta^\msf{IV} &=
+	\begin{bmatrix}
+	    \theta_1^\msf{II} & \theta_2^\msf{IV} & \theta_3^\msf{IV} & \theta_4^\msf{IV} & \theta_5^\msf{II}
+	\end{bmatrix}^T\!\!\!\!\!,
+\end{align}
+\begin{equation}
+    q^\msf{I,II,III,IV} =
+    \pi \cdot
+    \begin{bmatrix}
+	    \cfrac{169^\circ}{180^\circ} & \cfrac{65^\circ}{180^\circ} + \cfrac{1}{2} & -\cfrac{146^\circ}{180^\circ} &
+	    \cfrac{102.5^\circ}{180^\circ} + \cfrac{1}{2} & \cfrac{167.5^\circ}{180^\circ}
+	\end{bmatrix}^T
+	\!\!- \; \theta^\msf{I,II,III,IV} \ldotp
+\end{equation}

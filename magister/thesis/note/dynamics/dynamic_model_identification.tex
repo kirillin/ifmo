@@ -1,0 +1,123 @@
+\subsubsection{Идентификация динамических параметров}
+Динамические характеристики робота с необходимой для расчетов точностью не определены, а некоторые, такие как параметры трения, вообще неизвестны. В связи с этим необходимо решить задачу идентификации.
+
+\textbf{Линейная регрессионная модель манипулятора}
+
+Для проведения процедуры идентификации динамических параметров манипулятора необходимо представить динамическую модель в регрессионной форме. Для этого, используя выражение для кинетической и потенциальной энергий, нужно найти функцию Лагранжа:
+
+\begin{gather}
+L = K - U = \notag
+\\
+= \sum_{i=1}^5 \Biggl( m_i \left( \frac{1}{2} (v^i_i)^T v^i_i + g_i^T r^i_{0,\,i} \right) + (m_ir^i_{i,\,ci})^T \cdot \left( v^i_i \times \omega^i_i + g_i \right) + \frac{1}{2} (\omega^i_i)^T \mathcal{I}^{i}_i \omega^i_i \Biggr) = \notag
+\\
+= \sum_{i=1}^5 \Biggl( m_i \underbrace{\left( \frac{1}{2} (v^i_i)^T v^i_i + g_i^T r^i_{0,\,i} \right)}_{\ds L_{i,1}} + m_i x_{ci} \cdot \underbrace{x\left\{ v^i_i \times \omega^i_i + g_i \right\}}_{\ds L_{i,2}} + \notag
+\\
++ m_i y_{ci} \cdot \underbrace{y\left\{ v^i_i \times \omega^i_i + g_i \right\}}_{\ds L_{i,3}} + m_i z_{ci} \cdot \underbrace{z\left\{ v^i_i \times \omega^i_i + g_i \right\}}_{\ds L_{i,4}} + I_{i,\,xx} \cdot \underbrace{\frac{1}{2} \cdot \bigl(x\{\omega^i_i\}\bigr)^2}_{\ds L_{i,5}} +\notag
+\\
++ I_{i,\,yy} \cdot \underbrace{\frac{1}{2} \cdot \bigl(y\{\omega^i_i\}\bigr)^2}_{\ds L_{i,6}} + I_{i,\,zz} \cdot \underbrace{\frac{1}{2} \cdot \bigl(z\{\omega^i_i\}\bigr)^2}_{\ds L_{i,7}} + I_{i,\,xy} \cdot \underbrace{x\{\omega^i_i\} \cdot y\{\omega^i_i\}}_{\ds L_{i,8}} +\notag
+\\
++ I_{i,\,xz} \cdot \underbrace{x\{\omega^i_i\} \cdot z\{\omega^i_i\}}_{\ds L_{i,9}} + I_{i,\,yz} \cdot \underbrace{y\{\omega^i_i\} \cdot z\{\omega^i_i\}}_{\ds L_{i,10}}\Biggr) \ldotp
+\end{gather}
+
+Уравнения движения робота:
+\begin{equation}
+\frac{d}{dt}\frac{\partial L}{\partial\dot{q_i}} - \frac{\partial L}{\partial q_i} = \tau_i, \quad i = \overline{1,5} \qquad \Rightarrow
+\end{equation}
+\begin{equation}
+\Rightarrow \quad
+\left\{
+\begin{aligned}
+\!&\sum_{i=1}^5 \bigl( m_i \cdot \mathcal{L}_1 \{L_{i,1}\} + m_i x_{ci} \cdot \mathcal{L}_1 \{L_{i,2}\} + \ldots + I_{i,\,yz} \cdot \mathcal{L}_1 \{L_{i,10}\} \bigr) = \tau_1\\
+\!&\sum_{i=1}^5 \bigl( m_i \cdot \mathcal{L}_2 \{L_{i,1}\} + m_i x_{ci} \cdot \mathcal{L}_2 \{L_{i,2}\} + \ldots + I_{i,\,yz} \cdot \mathcal{L}_2 \{L_{i,10}\} \bigr) = \tau_2\\
+\!&\ldots\\
+\!&\sum_{i=1}^5 \bigl( m_i \cdot \mathcal{L}_5 \{L_{i,1}\} + m_i x_{ci} \cdot \mathcal{L}_5 \{L_{i,2}\} + \ldots + I_{i,\,yz} \cdot \mathcal{L}_5 \{L_{i,10}\} \bigr) = \tau_5
+\end{aligned}
+\right.
+\end{equation}
+где $\mathcal{L}_j$~--- оператор, работающий в соответствии с формулой:
+\begin{equation}
+\mathcal{L}_j : \quad \mathcal{L}_j \{f\} = \frac{d}{dt}\frac{\partial f}{\partial\dot{q_j}} - \frac{\partial f}{\partial q_j},
+\end{equation}
+где в свою очередь $f = f(\dot{q}(t), q(t))$.
+Если же заметить, что
+\begin{equation}
+\mathcal{L}_j \{L_{i,k}\} = 0 \qquad \text{при }j > i, \quad i,j=\overline{1,5}, \quad k=\overline{1,10},
+\end{equation}
+то выражения для них упрощаются до:
+\begin{equation}
+\left\{
+\begin{aligned}
+\!&\sum_{i=1}^5 \bigl( m_i \cdot \mathcal{L}_1 \{L_{i,1}\} + m_i x_{ci} \cdot \mathcal{L}_1 \{L_{i,2}\} + \ldots + I_{i,\,yz} \cdot \mathcal{L}_1 \{L_{i,10}\} \bigr) = \tau_1\\
+\!&\sum_{i=2}^5 \bigl( m_i \cdot \mathcal{L}_2 \{L_{i,1}\} + m_i x_{ci} \cdot \mathcal{L}_2 \{L_{i,2}\} + \ldots + I_{i,\,yz} \cdot \mathcal{L}_2 \{L_{i,10}\} \bigr) = \tau_2\\
+\!&\ldots\\
+\!& m_5 \cdot \mathcal{L}_5 \{L_{5,1}\} + m_5 x_{c5} \cdot \mathcal{L}_5 \{L_{5,2}\} + \ldots + I_{5,\,yz} \cdot \mathcal{L}_5 \{L_{5,10}\} = \tau_5
+\end{aligned}
+\right.
+\end{equation}
+или в матричном виде
+\begin{equation}\label{eq_dynamic_in_linear}
+\tau = \xi \chi,
+\end{equation}
+где $\tau = [\tau_1, \: \tau_2, \: \ldots, \: \tau_5]^T$~--- вектор обобщенных моментов,\\ $\chi=[\chi_1, \: \chi_2, \: \ldots, \: \chi_5]^T \in \mathbb R^{50}$~--- вектор параметров робота, где в свою очередь
+\begin{equation}
+\chi_i =
+\begin{bmatrix}
+m_i & m_i x_{ci} & m_i y_{ci} & m_i z_{ci} & I_{i,\,xx} & I_{i,\,yy} & I_{i,\,zz} & I_{i,\,xy} & I_{i,\,xz} & I_{i,\,yz}
+\end{bmatrix}^T\!\!\!\!;
+\end{equation}
+$\xi$~--- так называемый регрессор, равный
+\begin{equation}
+\xi =
+\begin{bmatrix}
+\xi_{1,1} & \xi_{1,2} & \cdots & \xi_{1,5} \\
+O_{1 \times 10} & \xi_{2,2} & \cdots & \xi_{2,5} \\
+\vdots & \vdots & \ddots & \vdots \\
+O_{1 \times 10} & O_{1 \times 10} & O_{1 \times 10} & \xi_{5,5}
+\end{bmatrix}\!\!,
+\end{equation}
+где в свою очередь $O_{1 \times 10}$~--- вектор-строка, состоящая из 10 нулей, а $\xi_{j,i} =$\linebreak $= \xi_{j,i}(\ddot{q}, \dot{q}, q)$~--- вектор-строка, рассчитываемый по формуле
+\begin{equation}
+\xi_{j,i} =
+\begin{bmatrix}
+\mathcal{L}_j \{L_{i,1}\} & \mathcal{L}_j \{L_{i,2}\} & \ldots & \mathcal{L}_j \{L_{i,10}\}
+\end{bmatrix}\!\!\ldotp
+\end{equation}
+
+Подставляя~\eqref{eq_friction_torque} в~\eqref{eq_eqs_with_tau_f}, получим
+\begin{equation}
+\tau_e = I_a \ddot{q} + \xi \chi + f_v \dot{q} + f_c \sign(\dot{q}) + f_\text{off}\ldotp
+\end{equation}
+Если ввести в рассмотрение новые матрицы $\bar{\chi}=[\bar{\chi}_1, \: \bar\chi_2, \: \ldots, \: \bar\chi_5]^T$ и\linebreak
+\begin{equation}
+\bar\xi =
+\begin{bmatrix}
+\bar\xi_{1,1} & \bar\xi_{1,2} & \cdots & \bar\xi_{1,5} \\
+O_{1 \times 10} & \bar\xi_{2,2} & \cdots & \bar\xi_{2,5} \\
+\vdots & \vdots & \ddots & \vdots \\
+O_{1 \times 10} & O_{1 \times 10} & O_{1 \times 10} & \bar\xi_{5,5}
+\end{bmatrix}\!\!,
+\end{equation}
+определяемые выражениями
+\begin{equation}
+\bar{\chi}_i =
+\begin{bmatrix}
+\chi_i & I_{a,i} & f_{v,i} & f_{c,i} & f_{\text{off},i}
+\end{bmatrix}^T\!\!\!\!,
+\end{equation}
+\begin{equation}
+\bar{\xi}_{j,i} =
+\left\{
+\begin{aligned}
+\!\begin{bmatrix}\xi_{j,i} & 0 & 0 & 0 & 0\end{bmatrix}&, && i \ne j \\
+\!\begin{bmatrix}\xi_{j,i} & \ddot{q_j} & \dot{q_j} & \sign(\dot{q_j}) & 1\end{bmatrix}&, &&i = j
+\end{aligned}
+\right.
+\end{equation}
+то данное выражение может быть записано в следующем матричном виде:
+\begin{equation}\label{eq_extended_dynamic_in_linear}
+\tau_e = \bar\xi \bar\chi \ldotp
+\end{equation}
+
+
+
+

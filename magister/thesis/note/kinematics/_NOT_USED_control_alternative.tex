@@ -1,0 +1,40 @@
+\textbf{Управление по положению.}
+
+Первым реализуем алгоритм управления из предположения, что величина отклонения $ \Delta \bm{s} = \bm{s}_d - \bm{s} $ несущественна, тогда запишем следующие рекуррентные соотношения~\cite{zenk2000}:
+\begin{gather}
+	\label{controller1}
+	\Delta q_{k+1} = J^{-1}(q_k) \Delta s_k, \\
+	\Delta s_k = q_{k+1} - q_k, \\
+	\Delta s_k = 
+	\begin{bmatrix}
+		\Delta \varphi_k\\
+		\Delta p_k
+	\end{bmatrix}
+	=
+	\begin{bmatrix}
+		\omega_k \Delta t \\
+		v_k \Delta t
+	\end{bmatrix}\!\!\!,
+\end{gather}
+где $ \Delta s_k $~--- вектор ошибки на k-ой итерации между заданным положением схвата и текущим в момент времени t, которую можно минимизировать за время $\Delta t$, путем придания схвату линейной $ v_k $ и угловой $ \omega_k $ скоростей; компоненты вектора $ \Delta s_k $, представлены выражениями:
+\begin{gather}
+	\Delta p_k = p_d - p_k, \\
+	\Delta \varphi_k = \cfrac{1}{2} (x_k \times x_d + y_k \times y_d + z_k \times z_d),
+\end{gather}
+где $ x_d, y_d, z_d $~--- соответствующие столбцы матрицы, задающей положение и ориентацию схвата:
+\begin{equation}\label{Trajectory_r}
+	T = T_d(t) = 
+	\begin{bmatrix}
+		x_d(t) & y_d(t) & z_d(t) & p_d(t)\\
+		0&0 &0 &1
+	\end{bmatrix}.
+\end{equation}
+
+\begin{figure}[h!]
+	\centering{\includegraphics[width=0.9\textwidth]{ipe/linear_control_system.pdf}}
+	\vspace{0.1cm}
+	\caption{Система управления по положению}
+	\label{img:controll_system_position}
+\end{figure}
+
+Из предположения о сходимости итерационного процесса~\eqref{controller1} за одну итерацию, будем рассматривать~\eqref{controller1}--\eqref{Trajectory_r} как алгоритм слежения схвата манипулятора за заданной траекторией движения~\eqref{Trajectory_r}. Схема системы управления приведена на рисунке~\ref{img:controll_system_position}

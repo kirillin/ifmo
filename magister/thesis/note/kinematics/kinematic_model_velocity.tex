@@ -1,0 +1,349 @@
+\vspace{0.5cm}
+\subsubsection{Решение задач о скорости звеньев манипулятора}\label{part_kinematic_velocity}
+
+%%\textbf{Приведем некоторые соотношения для скоростей и ускорений.}
+
+Как видно из рассуждений в разделе~\ref{part_kinematic_position}, $i$-ое звено связано с СК, начало которой закрепленно в ($i+1$) сочленении. При этом кинематические параметры этого звена задаются в связанной с ним СК $Ox_{i-1}y_{i-1}z_{i-1}$.
+
+Получим выражения, которые позволят последовательно получать скорости и ускорения звеньев манипулятора, начиная от базы в направлении схвата, выраженные в абсолютной СК $Ox_{0}y_{0}z_{0}$.
+
+\begin{figure}[h!]
+	\centering{\includegraphics[width=0.5\textwidth]{ipe/example_of_moving.pdf}}
+	\caption{Рисунок, поясняющий приведённые в разделе~\ref{part_kinematic_velocity} выражения}
+	\label{img:bodies}
+\end{figure}
+
+Заметим, что в соответствии с рисунком~\ref{img:bodies}, на котором изображена упрощенная кинематическая схема для двух соседних звеньев, радиус вектор
+\begin{equation}\label{vector_r}
+	r_{i-1, i} = r_i - r_{i-1}
+\end{equation}
+характеризует расположение СК $Ox_{i}y_{i}z_{i}$ относительно СК $Ox_{i-1}y_{i-1}z_{i-1}$.
+
+Согласно~\eqref{vector_r} и теореме механики о сложении скоростей~\cite{yabl19964}, соотношения для  скоростей в подвижной и неподвижной системах координат запишутся:
+\begin{equation}
+	v_i = v_{i-1} + \omega_{i-1} \times r_{i-1,i} + \cfrac{d^* r_{i-1,i}}{dt},
+\end{equation}
+где $\frac{d^* r_{i-1,i}}{dt}$~--- скорость $i$-ого звена относительно СК $Ox_{i-1}y_{i-1}z_{i-1}$.
+
+Для угловой скорости:
+\begin{equation}\label{omega_i}
+	\omega_i = \omega_{i-1} + \omega^{i-1}_{i},
+	\quad
+	\omega^{i-1}_{i} = z_{i-1} \cdot \dot{q}_i,
+\end{equation}
+где $\omega^{i-1}_{i}$~--- угловая скорость вращения СК $Ox_{i}y_{i}z_{i}$ относительно $Ox_{i-1}y_{i-1}z_{i-1}$, $\dot{q}_i$~--- угловая скорость вращения $i$-ого звена.
+
+С учетом равенств~\eqref{vector_r}--\eqref{omega_i}, окончательно запишем рекуррентные соотношения для вычисления линейных и угловых скоростей манипулятора:
+\begin{equation}\label{linear_velocities}
+	v_i = v_{i-1} + \omega_{i} \times r_{i-1,i}, %%% + z_{i-1} \cdot \dot{q}_i,
+\end{equation}
+
+\begin{equation}\label{angular_velocities}
+	\omega_i = \omega_{i-1} + z_{i-1} \cdot \dot{q}_i.
+\end{equation}
+
+Далее, согласно теореме о сложении ускорений, запишем соотношения для линейных и угловых ускорений:
+\begin{equation}
+	\dot{v}_i = \dot{v}_{i-1} + \omega_{i-1} \times (\omega_{i-1} \times r_{i-1,i}) + 2 \cdot \omega_{i-1} \times \cfrac{d^* r_{i-1,i}}{dt} + \cfrac{d^{*2} r_{i-1,i}}{dt^2},
+\end{equation}
+\begin{equation}
+	\dot{\omega}_{i} = \dot{\omega}_{i-1} + \dot{\omega}^{i-1}_{i},
+\end{equation}
+где 
+\begin{equation}
+	\dot{\omega}^{i-1}_{i} = \cfrac{d^{*} \omega^{i-1}_{i}}{dt} + \omega_{i-1} \times \omega^{i-1}_{i},
+	\quad
+	\cfrac{d^{*} \omega^{i-1}_{i}}{dt} = z_{i-1} \cdot \ddot{q}_i.
+\end{equation}
+
+После элементарных преобразований, рекуррентные соотношения для линейных и угловых ускорений запишутся, как:
+\begin{equation}\label{linear_accelerations}
+	\dot{v}_i = \dot{v}_{i-1} + \omega_{i} \times (\omega_{i} \times r_{i-1,i}) + \dot{\omega}_i \times r_{i-1,i}, %%% + 2 \cdot \omega_{i} \times (z_{i-1} \cdot \dot{q}_i) + \dot{\omega}_{i} \times \dot{p}_{i-1,i} + z_{i-1} \cdot \ddot{q}_i,
+\end{equation}
+\begin{equation}\label{angular_accelerations}
+	\dot{\omega}_i = \dot{\omega}_{i-1} + z_{i-1} \cdot \ddot{q}_i + \omega_{i-1} \times (z_{i-1} \cdot \dot{q}_i).
+\end{equation}
+
+Таким образом, соотношения~\eqref{linear_velocities}--\eqref{angular_velocities} и~\eqref{linear_accelerations}--\eqref{angular_accelerations} позволяют найти линейные и угловые скорости и ускорения звеньев, при $i=\overline{1,n}$ и начальных условиях $\omega = \dot{\omega} = v_0 = 0$, $\dot{v}_0 = g$, где $g$~--- вектор ускорения свободного падения.
+
+Отсюда можно без труда получить конечные зависимости линейных и угловых скоростей. Для линейной скорости $k$-ого звена:
+\begin{equation}
+	v_k = \sum_{i = 1}^{k} z_{i-1} \times r_{i-1, k} \cdot \dot{q}_i.
+\end{equation}
+Для угловой скорости $k$-ого звена:
+\begin{equation}
+	\omega_k = \sum_{i = 1}^{k} z_{i-1} \cdot \dot{q}_i.
+\end{equation}
+
+Все векторы в рассмотренных соотношениях, описывающие движения манипулятора, заданы в базовой СК $Ox_{0}y_{0}z_{0}$. Руководствуясь соображениями вычислительной эффективности, представим векторы скоростей в СК их собственного звена. Тогда, если матрица перехода из СК $i$-ого звена $Ox_{i}y_{i}z_{i}$ в СК $Ox_{i-1}y_{i-1}z_{i-1}$, то:
+\begin{equation}
+	{}^{i-1}\!A_{i}^{-1} = 
+	\begin{bmatrix}
+		{}^{i-1}\!R_{i}^T	& {p}_{i-1,i} \\
+		000	& 1
+	\end{bmatrix}\!\!\!,
+\end{equation}
+где ${p}_{i-1,i} = {}^0\!R_{i-1}^T \cdot r_{i-1,i}$.
+
+Можно переписать выражения ~\eqref{linear_velocities}--\eqref{angular_velocities} и~\eqref{linear_accelerations}--\eqref{angular_accelerations} в виде:
+\begin{equation}
+	v_i^i = {}^{i-1}\!R_{i} \cdot v^{i-1}_{i-1} + \omega^{i}_{i} \times p_{i-1,i},
+\end{equation}
+\begin{equation}
+	\omega^{i}_{i} = {}^{i-1}\!R_{i} \cdot \omega^{i-1}_{i-1} + {}^{i-1}\!R_{i} \cdot z_0 \dot{q}_i,
+\end{equation}
+\begin{equation}
+	\dot{v}^{i}_{i} = {}^{i-1}\!R_{i} \cdot \dot{v}^{i-1}_{i-1} + \omega^i_i \times (\omega^i_i \times p_{i-1,i}) + \dot{\omega}^i_i \times p_{i-1, i},
+\end{equation}
+\begin{equation}
+	\dot{\omega}^i_i = {}^{i-1}\!R_{i} \cdot \dot{\omega}^i_i + {}^{i-1}\!R_{i} \cdot z_0 \ddot{q}_i + {}^{i-1}\!R_{i} \cdot \omega^{i-1}_{i-1} \times (z_0 \dot{q}_i).
+\end{equation}
+
+%%%
+В задачах о скорости движения схвата манипулятора описывается вектором $\mathbf{s} = [x,y,z,\varphi, \psi, \theta]$, линейной $ \bm{v} $ и угловой $ \bm{\omega} $ скоростями, где со схватом связана СК $ Ox_{n}y_{n}z_{n} $. Вектор $ \mathbf{s} $ определяется конфигурацией манипулятора, задаваемой вектором обобщеннных координат $ \mathbf{q} = [q_1, q_2, \dots, q_n]^T $, что можно записать, как:
+\begin{equation}\label{s_fq}
+	\mathbf{s} = f (\mathbf{q}).
+\end{equation}
+
+Дифференцируя~\eqref{s_fq} по времени, получаем:
+\begin{equation}\label{sjq}
+	\dot{\mathbf{s}} = J (\mathbf{q}) \cdot \dot{\mathbf{q}},
+\end{equation}
+где $ \dot{\mathbf{s}} $ вектор скорости схвата:
+\begin{equation}\label{fvk_1}
+	\dot{\mathbf{s}} =
+	\begin{bmatrix}
+			\bm{v} \\ 
+		\bm{\omega}
+	\end{bmatrix}\!\!\!,
+\end{equation}
+$ J(\mathbf{q}) $~--- матрица Якоби размерности $ 6 \times n $, $\dot{\mathbf{q}} = [\dot{q}_1, \dot{q}_2, \dots, \dot{q}_n]^T $~--- вектор скоростей обобщенных координат.
+
+%\subsubsection{Прямая задача о скорости}
+\textbf{Прямая задача о скорости} формулируется, как нахождение линейной~$ \bm{v} $ и угловой~$ \bm{\omega} $ скоростей схвата по известным скоростям обобщенных координат $ \dot{q}_1, \dot{q}_2, \dots, \dot{q}_n $.
+Заметим, что из~\eqref{linear_velocities}--\eqref{angular_velocities} следует, что если записать матрицу Якоби в виде:
+\begin{equation}\label{Jq}
+	J(\mathbf{q}) = 
+	\begin{bmatrix}
+	\bm{j}_1 & \bm{j}_2 & \cdots & \bm{j}_n
+	\end{bmatrix},
+\end{equation}
+то вектор $ \bm{j}_k $ будет рассчитываться из выражения:
+\begin{equation}
+	\bm{j}_k = 
+	\begin{bmatrix}
+	z_{k-1} \\
+	z_{z-1} \times p_{k-1,n}
+	\end{bmatrix},
+\end{equation}
+
+Следовательно, выражение~\eqref{sjq} является решением прямой задачи о скорости, где матрица $ J(\mathbf{q}) $ находится из~\eqref{Jq}.
+
+Матрицу Якоби получим, используя дифференциальные преобразования. Обозначим матрицу Якоби, как:
+\begin{equation}\label{J}
+	J = 
+	\begin{bmatrix}
+		J_v \\ 
+		J_{\omega}
+	\end{bmatrix}\!\!\!,
+\end{equation}
+тогда перепишем соотношения для скоростей в виде
+\begin{align}
+	\label{Jv1}
+	\bm{v}  = J_{v} \dot{\bm{q}}, \\
+	\label{Jw1}
+	\bm{\omega} = J_{\omega} \dot{\bm{q}}.
+\end{align}
+
+\begin{figure}[h!]
+	\begin{minipage}[h]{0.5\linewidth}
+		\centering{\includegraphics[width=0.95\linewidth]{ipe/diff_matrix_v2.pdf} \\ а)}
+	\end{minipage}
+	\hfill
+	\begin{minipage}[h]{0.5\linewidth}
+		\centering{\includegraphics[width=0.95\linewidth]{ipe/diff_transform_v2.pdf} \\ б)}
+	\end{minipage}
+	\caption{а~--- дифференциальное перемещение, б~--- изменение матрицы трансфорации при дифференциальном перемещении}
+	\label{img:diff_transformations}
+\end{figure}
+
+Если представить малое изменение матрицы трансформации $ T $ (рисунок~\ref{img:diff_transformations}a), как
+\begin{equation}
+	\tilde{T} = T + dT,
+\end{equation}
+откуда $ dT = \tilde{T} - T = \tilde{T}(d\bm{r}, \delta\bm{\varphi}) - T$, где $ d\bm{r} $ и $ \delta\bm{\varphi} $~--- малые перемещение и поворот соответственно, то для k-ого звена манипулятора,  применяя правило дифференцирования матриц однородных преобразований $ \cfrac{\partial A_k}{\partial q_l} = \theta_k \cdot A_k $, можно получить:
+\begin{equation}\label{dkT}
+	d_k T = A_1 A_2 \dots A_{k-1} \theta_k dq_k A_{k+1} \dots A_{n-1} A_n,
+\end{equation}
+где 
+\begin{equation}
+	\theta_k = 
+	\begin{bmatrix}
+	0 & -1 & 0 & 0 \\
+	1 & 0 & 0 & 0 \\
+	0 & 0 & 0 & 0 \\
+	0 & 0 & 0 & 0
+	\end{bmatrix}
+\end{equation}
+
+Выражение~\eqref{dkT} можно переписать в виде:
+\begin{equation}
+	d_k T = \Delta_{\theta_k} \cdot T,
+\end{equation}
+где $ \Delta_{\theta_k} $~--- матрица дифференциальных преобразований:
+\begin{equation}\label{Delta_matrix}
+	\Delta_{\theta_k} = T_{k-1} \theta_k T_{k-1}^{-1} dq_k.
+\end{equation}
+
+Обозначим разыскиваемые дифференциальные перемещения  схвата манипулятора, как~$ d \bm{r}_n $ и~$\delta\bm{\varphi}_n $, изображённые на рисунке~\ref{img:diff_transformations}б, тогда матрица дифференциальных преобразований:
+\begin{equation}
+	\Delta_n =
+	\begin{bmatrix}
+		0 & - \delta z_n & \delta y_n & d x_n \\
+		\delta z_n & 0 & -\delta x_n & d y_n \\
+		-\delta y_n & \delta x_n & 0 & d z_n \\
+		0 & 0 & 0 & 0
+	\end{bmatrix}
+	=
+	\left[
+	\begin{array}{c:c}
+	\Omega_{\delta\bm{\varphi}_n} & d \bm{r}_n \\ \hdashline
+	000 &  0
+	\end{array}
+	\right]\!\!\!.
+\end{equation}
+
+Раскрыв~\eqref{Delta_matrix}, получим:
+\begin{equation}
+	\left[
+	\begin{array}{c:c}
+		\Omega_{\delta\bm{\varphi}_n} & d\bm{r}_n - \Omega_{\delta\bm{\varphi}_n} \cdot {p}_n \\ \hdashline
+		000 &  0
+	\end{array}
+	\right]
+	=
+	\left[
+	\begin{array}{c:c}
+		R_{k-1} \Omega_{001} R_{k-1}^T & - R_{k-1} \Omega_{001} R_{k-1}^T {p}_{k-1} \\ \hdashline
+		000 &  0
+	\end{array}
+	\right]
+	dq_k,
+\end{equation}
+где 
+\begin{gather}
+	\label{dr}
+	d\bm{r}_n = \Omega_{\delta\bm{\varphi}_n} \cdot {p}_n - R_{k-1} \cdot \Omega_{001} \cdot R_{k-1}^T \cdot {p}_{k-1} \cdot dq_k, \\
+	\label{Omega_phi}
+	\Omega_{\delta\bm{\varphi}_n} = R_{k-1} \cdot \Omega_{001} \cdot R_{k-1}^T \cdot dq_k,
+\end{gather}
+$ \Omega_{001} $~--- матрица, задающая вращение вокруг вектора $ [0,0,1]^T $.
+
+Вращение вокруг оси $ z_{k-1} $ определяется выражением:
+\begin{equation}
+	z_{k-1} = R_{k-1} \cdot
+	\begin{bmatrix}
+	0 \\ 0 \\ 1
+	\end{bmatrix}\!\!\!,
+\end{equation}
+тогда, в силу~\eqref{Omega_phi} и \eqref{dr}, имеем
+\begin{gather}
+	\label{diff_dr}
+	d\bm{r}_n = z_{k-1} \times (p_n - p_{k-1}) \cdot dq_k, \\
+	\label{diff_delta_phi}
+	\delta\bm{\varphi}_n = z_{k-1} \cdot dq_k.
+\end{gather}
+
+Из выражения~\eqref{diff_delta_phi} видим, что расчет матрицы Якоби $ J_\omega $ из выражения~\eqref{J} не представляет труда, так как векторы $ z_i $ легко извлекаются из матриц трансформации $ T_i $ (третий столбец).
+
+%\textcolor{red}{Представим альтернативную форму представления матрицы Якоби, позволяющую эффективнее производить ее вычисления...}
+
+Из выражений~\eqref{diff_delta_phi}--\eqref{diff_dr} и~\eqref{J} получим все матрицы Якоби для рассматриваемого манипулятора:
+
+\begin{gather*}
+	J_{\omega 1} =
+	\begin{bmatrix}
+		z^0_0 & \nv & \nv & \nv & \nv
+	\end{bmatrix}\!\!,
+	\qquad
+	J_{\omega 2} =
+	\begin{bmatrix}
+		z^0_0 & z^0_1 & \nv & \nv & \nv
+	\end{bmatrix}\!\!,
+	\\
+	J_{\omega 3} =
+	\begin{bmatrix}
+		z^0_0 & z^0_1 & z^0_2 & \nv & \nv
+	\end{bmatrix}\!\!,
+	\qquad
+	J_{\omega 4} =
+	\begin{bmatrix}
+		z^0_0 & z^0_1 & z^0_2 & z^0_3 & \nv
+	\end{bmatrix}\!\!,
+	\\
+	J_{\omega 5} =
+	\begin{bmatrix}
+		z^0_0 & z^0_1 & z^0_2 & z^0_3 & z^0_4
+	\end{bmatrix}\!\!,
+\end{gather*}
+где $\nv = [0\;0\;0]^T$~--- нулевой вектор.
+
+\begin{gather*}
+J_{v1} =
+\begin{bmatrix}
+z^0_0 \times \left( r^0_{0,\,1} - r^0_{0,\,0}\right) & \nv & \nv & \nv & \nv
+\end{bmatrix}\!\!,
+\\
+J_{v2} =
+\begin{bmatrix}
+z^0_0 \times \left( r^0_{0,\,2} - r^0_{0,\,0}\right) & z^0_1 \times \left( r^0_{0,\,2} - r^0_{0,\,1}\right) & \nv & \nv & \nv
+\end{bmatrix}\!\!,
+\\
+J_{v3} =
+\begin{bmatrix}
+z^0_0 \times \left( r^0_{0,\,3} - r^0_{0,\,0}\right) & z^0_1 \times \left( r^0_{0,\,3} - r^0_{0,\,1}\right) &
+z^0_2 \times \left( r^0_{0,\,3} - r^0_{0,\,2}\right) & \nv & \nv
+\end{bmatrix}\!\!,
+\end{gather*}
+\begin{gather*}
+J_{v4} =
+\begin{bmatrix}
+z^0_0 \times \left( r^0_{0,\,4} - r^0_{0,\,0}\right) \\
+z^0_1 \times \left( r^0_{0,\,4} - r^0_{0,\,1}\right) \\
+z^0_2 \times \left( r^0_{0,\,4} - r^0_{0,\,2}\right) \\
+z^0_3 \times \left( r^0_{0,\,4} - r^0_{0,\,3}\right) \\
+\nv
+\end{bmatrix}^T\!\!\!\!\!,
+\qquad
+J_{v5} =
+\begin{bmatrix}
+z^0_0 \times \left( r^0_{0,\,5} - r^0_{0,\,0}\right) \\
+z^0_1 \times \left( r^0_{0,\,5} - r^0_{0,\,1}\right) \\
+z^0_2 \times \left( r^0_{0,\,5} - r^0_{0,\,2}\right) \\
+z^0_3 \times \left( r^0_{0,\,5} - r^0_{0,\,3}\right) \\
+z^0_4 \times \left( r^0_{0,\,5} - r^0_{0,\,4}\right)
+\end{bmatrix}^T\!\!\!\!\!.
+\end{gather*}
+
+
+%\subsubsection{Обратная задача о скорости}
+\textbf{Обратная задача о скорости} формулируется как поиск неизвестных скоростей обобщенных координат при известных линейной и уголовой скоростях схвата. Соотношения записывается как система шести линейных уравнений с $ n $ неизвестными $ \dot{q}_1, \dot{q}_2, \dots, \dot{q}_n $:
+\begin{equation}\label{ivp}
+	\dot{\mathbf{q}} =  J^{-1}(\mathbf{q})\dot{\mathbf{s}}.
+\end{equation}
+
+Решение~\eqref{ivp} существует тогда и только тогда, когда 
+\begin{equation}
+	rank(J(\mathbf{q})) = rank([J(\mathbf{q}), \dot{\mathbf{s}}]).
+\end{equation}
+
+Для пятистепенного манипулятора KUKA Youbot возможны три случая:
+\begin{enumerate}
+	\item $rank(J) \ne rank([J, \dot{\mathbf{s}}])$~--- не имеет решений;
+	\item $rank(J) = rank([J, \dot{\mathbf{s}}])$~--- имеет единственное решение;
+	\item $rank(J) = rank([J, \dot{\mathbf{s}}])$~--- бесконечное множество решений.
+\end{enumerate}
+
+Таким образом, в сингулярных конфигурациях манипулятора матрица Якоби не позволяется установить однозначную зависимость в~\eqref{ivp}. Поиск решений уравнения~\eqref{ivp} является частью алгоритма управления манипулятором.
+
+

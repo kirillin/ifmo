@@ -1,0 +1,337 @@
+\subsubsection{Динамические уравнения}
+
+Для описание динамики манипулятора вводятся в рассмотрение барицентрические СК $Ox_{ci}y_{ci}z_{ci}$\lefteqn,\footnote{Системы координат, чьи начала совпадают с центрами масс соответствующих звеньев.} где $i=\overline{1,5}$, показанные на рисунке~\ref{img_mass_frames}.
+Причем, каждая СК $Ox_{ci}y_{ci}z_{ci}$ сонаправлена с~$Ox_iy_iz_i$.
+
+\begin{figure}[h!]
+	\centering\includegraphics[height=16.5cm]{kinematics_mass_frames.pdf}
+	\caption{Положение барицентрических СК и направление вектора $\vec{g}$.}
+	\label{img_mass_frames}
+\end{figure}
+
+Для описания положения введенных СК используются следующие векторы:
+\begin{equation}
+    r^i_{i,\,ci} =
+    \begin{bmatrix}
+        x_{ci} \\ y_{ci} \\ z_{ci}
+    \end{bmatrix}\!\!,\quad i = \overline{1,5},
+\end{equation}
+где $x_{ci}$, $y_{ci}$ и $z_{ci}$~--- некоторые постоянные величины, $r^i_{j,k}$~--- вектор из начала $Ox_{j}y_{j}z_{j}$ в начало $Ox_{k}y_{k}z_{k}$, выраженный относительно $Ox_{i}y_{i}z_{i}$.
+
+Для компонент тензоров инерции $\mathcal{I}^{i}_i = const$ вводятся обозначения:
+\begin{equation}
+    \mathcal{I}^{i}_i =
+    \begin{bmatrix}
+        I_{i,\,xx} & I_{i,\,xy} & I_{i,\,xz} \\
+        I_{i,\,xy} & I_{i,\,yy} & I_{i,\,yz} \\
+        I_{i,\,xz} & I_{i,\,yz} & I_{i,\,zz}
+    \end{bmatrix}\!\!\ldotp
+\end{equation}
+
+Вектор гравитации имеет вид:
+\begin{equation}
+    g_0 =
+    \begin{bmatrix}
+        0 \\ 0 \\ -g
+    \end{bmatrix}\!\!,
+\end{equation}
+где $g=9.82\text{ м}/\text{с}^2$.
+
+Ниже приводятся формулы для расчета величин, которые потребуются в дальнейшем (далее везде $i = \overline{1,5}$):
+\begin{itemize}
+    \item для расчета $r^0_{0,\,i}$ и ${}^{0}R_i$:
+        \begin{equation}
+            {}^0A_i = {}^0A_1 \cdot {}^1A_2 \cdot \ldots \cdot {}^{i-1}A_i;
+        \end{equation}
+    \item для расчета $r^i_{0,\,i}$:
+        \begin{gather}
+            r^i_{0,\,i} = {}^{0}R_i^T \cdot r^0_{0,\,i};
+        \end{gather}
+    \item для расчета $z^0_i$:
+        \begin{equation}
+            z^0_i = {}^{0}R_i \cdot z^i_i = {}^{0}R_i \cdot
+            \begin{bmatrix}
+                0 \\ 0 \\ 1
+            \end{bmatrix}\!\!;
+        \end{equation}
+    \item для расчета $g_i$, $v^i_i$ и $\omega^i_i$:
+        \begin{equation}\label{eq_transform_of_g_v_omega}
+            g_i = {}^{0}R_i^T \cdot g_0,
+            \qquad
+            v^i_i = {}^{0}R_i^T \cdot v^0_i,
+            \qquad
+            \omega^i_i = {}^{0}R_i^T \cdot \omega^0_i \ldotp
+        \end{equation}
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\textbf{Вывод уравнений движения}
+
+Для синтеза системы управления, модель манипулятора нужно представить в матричном виде:
+\begin{equation}\label{simple_dynamics}
+	\tau = D(q) \ddot{q} + C(q,\dot{q}) \dot{q} + G(q),
+\end{equation}
+где $D(q)$~--- матрица инерции, $C(q,\dot{q})$~--- матрица центробежных и Кориолисовых сил, $G(q)$~--- вектор гравитации, $\tau$~--- вектор моментов.
+
+Выражение для матрицы~$D(q)$ может быть найдено из формулы для кинетической энергии с учетом того, что справедливо
+\begin{equation}\label{eq_K_in_form_with_D}
+	\left\{
+	\begin{aligned}
+	\!& K = \frac{1}{2} \, \dot{q}^T D(q) \dot{q}, \\
+	\!& D(q) = D^T\!(q),
+	\end{aligned}
+	\right.
+\end{equation}
+для матрицы $C(q,\dot{q})$~--- из выражения для $D(q)$ в соответствии с формулами:
+\begin{gather}
+	C_{ijk} = \cfrac{1}{2} \left( \cfrac{\partial D_{kj}}{\partial q_i} + \cfrac{\partial D_{ki}}{\partial q_j} - \cfrac{\partial D_{ij}}{\partial q_k}\right)\!\!,
+	\\
+	C_{kj} = \sum_{i = 1}^n C_{ijk} \dot{q}_i,
+\end{gather}
+где $D_{ij}$, $C_{ij}$~--- элементы матриц $D(q)$ и $C(q,\dot{q})$ соответственно, стоящие на пересечении $i$-ой строки и $j$-го столбца;
+а для вектора $G(q)$~--- по формуле
+\begin{equation}
+	G(q) =
+	\begin{bmatrix}
+		\cfrac{\partial U}{\partial q_1} &
+		\cfrac{\partial U}{\partial q_2} &
+		\dots &
+		\cfrac{\partial U}{\partial q_5}
+	\end{bmatrix}^T\!\!\!\!\!\ldotp
+\end{equation}
+
+Потенциальная энергия манипулятора
+\begin{equation}
+    U =  -\sum_{i=1}^5 \left( m_i g_i^T r^i_{0,\,ci} \right) = -\sum_{i=1}^5 \left( m_i g_i^T r^i_{0,\,i} + g_i^T (m_ir^i_{i,\,ci}) \right)\!.
+\end{equation}
+
+Кинетическая энергия манипулятора
+\begin{equation}\label{eq_eq_for_K_for_linear_model}
+	K = \sum_{i=1}^5 \left( \frac{1}{2} m_i (v^i_i)^T v^i_i + \frac{1}{2} (\omega^i_i)^T \mathcal{I}^{i}_i \omega^i_i + (m_ir^i_{i,\,ci})^T \cdot (v^i_i \times \omega^i_i) \right)  \ldotp
+\end{equation}
+
+Якобианы, устанавливающие в соответствии с формулой
+\begin{equation}\label{eq_work_of_lin_jacobians}
+    v^0_{i} = -J_{vi}\dot{q}, \quad i = \overline{1,5}
+\end{equation}
+связь между линейными скоростями начал соответствующих СК и вектором~$\dot{q}$:
+\begin{gather}
+    J_{v1} =
+    \begin{bmatrix}
+        z^0_0 \times \left( r^0_{0,\,1} - r^0_{0,\,0}\right) & \nv & \nv & \nv & \nv
+    \end{bmatrix}\!\!,
+    \\
+    J_{v2} =
+    \begin{bmatrix}
+        z^0_0 \times \left( r^0_{0,\,2} - r^0_{0,\,0}\right) & z^0_1 \times \left( r^0_{0,\,2} - r^0_{0,\,1}\right) & \nv & \nv & \nv
+    \end{bmatrix}\!\!,
+    \\
+    J_{v3} =
+    \begin{bmatrix}
+        z^0_0 \times \left( r^0_{0,\,3} - r^0_{0,\,0}\right) & z^0_1 \times \left( r^0_{0,\,3} - r^0_{0,\,1}\right) &
+        z^0_2 \times \left( r^0_{0,\,3} - r^0_{0,\,2}\right) & \nv & \nv
+    \end{bmatrix}\!\!,
+    \\
+    J_{v4} =
+    \begin{bmatrix}
+        z^0_0 \times \left( r^0_{0,\,4} - r^0_{0,\,0}\right) \\
+        z^0_1 \times \left( r^0_{0,\,4} - r^0_{0,\,1}\right) \\
+        z^0_2 \times \left( r^0_{0,\,4} - r^0_{0,\,2}\right) \\
+        z^0_3 \times \left( r^0_{0,\,4} - r^0_{0,\,3}\right) \\
+        \nv
+    \end{bmatrix}^T\!\!\!\!\!,
+    \qquad
+    J_{v5} =
+    \begin{bmatrix}
+        z^0_0 \times \left( r^0_{0,\,5} - r^0_{0,\,0}\right) \\
+        z^0_1 \times \left( r^0_{0,\,5} - r^0_{0,\,1}\right) \\
+        z^0_2 \times \left( r^0_{0,\,5} - r^0_{0,\,2}\right) \\
+        z^0_3 \times \left( r^0_{0,\,5} - r^0_{0,\,3}\right) \\
+        z^0_4 \times \left( r^0_{0,\,5} - r^0_{0,\,4}\right)
+    \end{bmatrix}^T\!\!\!\!\!,
+\end{gather}
+где $\nv = [0\;0\;0]^T$~--- нулевой вектор.
+
+Якобианы, устанавливающие в соответствии с формулой
+\begin{equation}\label{eq_work_of_ang_jacobians}
+    \omega^0_{i} = -J_{\omega i}\dot{q}, \quad i = \overline{1,5}
+\end{equation}
+связь между угловыми скоростями звеньев и вектором~$\dot{q}$:
+\begin{gather}
+    J_{\omega 1} =
+    \begin{bmatrix}
+        z^0_0 & \nv & \nv & \nv & \nv
+    \end{bmatrix}\!\!,
+    \qquad
+    J_{\omega 2} =
+    \begin{bmatrix}
+        z^0_0 & z^0_1 & \nv & \nv & \nv
+    \end{bmatrix}\!\!,
+    \\
+    J_{\omega 3} =
+    \begin{bmatrix}
+         z^0_0 & z^0_1 & z^0_2 & \nv & \nv
+    \end{bmatrix}\!\!,
+    \qquad
+    J_{\omega 4} =
+    \begin{bmatrix}
+        z^0_0 & z^0_1 & z^0_2 & z^0_3 & \nv
+    \end{bmatrix}\!\!,
+    \\
+    J_{\omega 5} =
+    \begin{bmatrix}
+        z^0_0 & z^0_1 & z^0_2 & z^0_3 & z^0_4
+    \end{bmatrix}\!\!\ldotp
+\end{gather}
+
+С учетом полученных выражений, кинетическая энергия может быть переписана в виде:
+\begin{gather}
+	K = \sum_{i=1}^5 \biggl( \frac{1}{2} m_i \cdot \left( -{}^0R_i^T J_{vi} \dot{q} \right)^T \!\!\cdot \left(-{}^0R_i^T J_{vi} \dot{q}\right) + \frac{1}{2} \left( -{}^0R_i^T J_{\omega i} \dot{q} \right)^T \!\!\cdot \mathcal{I}^{i}_i \cdot \left( -{}^0R_i^T J_{\omega i} \dot{q} \right) + {}\notag\\
+	%
+	{} + (m_ir^i_{i,\,ci})^T \cdot \Bigl( \left( -{}^0R_i^T J_{vi} \dot{q} \right) \times \left( -{}^0R_i^T J_{\omega i} \dot{q} \right) \Bigr) \biggr) = {}\notag\\
+	%
+	{} = \sum_{i=1}^5 \biggl(\frac{1}{2} m_i \dot{q}^T J_{vi}^T J_{vi} \dot{q} \!+\! \frac{1}{2} \dot{q}^T J_{\omega i}^T \, {}^0\!R_i \, \mathcal{I}^{i}_i \, {}^0\!R_i^T J_{\omega i} \dot{q} \!+\! (m_i \underbrace{{}^0\!R_i r^i_{i,\,ci}}_{\displaystyle r^0_{i,\,ci}})^T \!\!\cdot \Bigl( \left( J_{vi} \dot{q} \right) \times \left( J_{\omega i} \dot{q} \right) \Bigr) \!\biggr) = {}\notag \\
+	%
+	{} = \frac{1}{2} \dot{q}^T \Biggl(\sum_{i=1}^5 \Bigl(m_i J_{vi}^T J_{vi} + J_{\omega i}^T \, {}^0\!R_i \, \mathcal{I}^{i}_i \, {}^0\!R_i^T J_{\omega i} + 2 \cdot x\{ m_i r^0_{i,\,ci} \} \!\cdot\! J_{xi}  + {}\notag \\
+	%
+	{} + 2 \cdot y\{ m_i r^0_{i,\,ci} \} \!\cdot\! J_{yi} + 2 \cdot z\{ m_i r^0_{i,\,ci} \} \!\cdot\! J_{zi}\Bigr) \Biggr) \dot{q}, \label{eq_getting_form_with_D_for_K}
+\end{gather}
+при преобразованиях учтено то, что
+\begin{equation*}
+\left( J_{vi} \dot{q} \right) \times \left( J_{\omega i} \dot{q} \right) =
+\begin{bmatrix}
+J_{vi}^{\{1\}} \dot{q}\\
+J_{vi}^{\{2\}} \dot{q}\\
+J_{vi}^{\{3\}} \dot{q}
+\end{bmatrix}
+\times
+\begin{bmatrix}
+J_{\omega i}^{\{1\}} \dot{q}\\
+J_{\omega i}^{\{2\}} \dot{q}\\
+J_{\omega i}^{\{3\}} \dot{q}
+\end{bmatrix}
+=
+\begin{bmatrix}
+-J_{vi}^{\{3\}} \dot{q} J_{\omega i}^{\{2\}} \dot{q} + J_{vi}^{\{2\}} \dot{q} J_{\omega i}^{\{3\}} \dot{q}\\
+J_{vi}^{\{3\}} \dot{q} J_{\omega i}^{\{1\}} \dot{q} - J_{vi}^{\{1\}} \dot{q} J_{\omega i}^{\{3\}} \dot{q}\\
+-J_{vi}^{\{2\}} \dot{q} J_{\omega i}^{\{1\}} \dot{q} + J_{vi}^{\{1\}} \dot{q} J_{\omega i}^{\{2\}} \dot{q}
+\end{bmatrix}
+=
+\end{equation*}
+\begin{equation}
+=
+\begin{bmatrix}
+-\dot{q}^T \bigl(J_{vi}^{\{3\}} \bigr)^T J_{\omega i}^{\{2\}} \dot{q} +
+\dot{q}^T \bigl( J_{vi}^{\{2\}} \bigr)^T J_{\omega i}^{\{3\}} \dot{q}
+\\
+\dot{q}^T \bigl( J_{vi}^{\{3\}} \bigr)^T J_{\omega i}^{\{1\}} \dot{q} -
+\dot{q}^T \bigl( J_{vi}^{\{1\}} \bigr)^T J_{\omega i}^{\{3\}} \dot{q}
+\\
+-\dot{q}^T \bigl( J_{vi}^{\{2\}} \bigr)^T J_{\omega i}^{\{1\}} \dot{q} +
+\dot{q}^T \bigl( J_{vi}^{\{1\}} \bigr)^T J_{\omega i}^{\{2\}} \dot{q}
+\end{bmatrix}
+=
+\begin{bmatrix}
+\dot{q}^T \! J_{xi} \dot{q} \\
+\dot{q}^T \! J_{yi} \dot{q} \\
+\dot{q}^T \! J_{zi} \dot{q}
+\end{bmatrix}\!\!,
+\end{equation}
+где
+\begin{align}
+&J_{xi} =  - \bigl( J_{vi}^{\{3\}} \bigr)^T J_{\omega i}^{\{2\}} + \bigl( J_{vi}^{\{2\}} \bigr)^T J_{\omega i}^{\{3\}}, \\
+&J_{yi} = \phantom{-}\bigl( J_{vi}^{\{3\}} \bigr)^T J_{\omega i}^{\{1\}} - \bigl( J_{vi}^{\{1\}} \bigr)^T J_{\omega i}^{\{3\}}, \\
+&J_{zi} =  - \bigl( J_{vi}^{\{2\}} \bigr)^T J_{\omega i}^{\{1\}} + \bigl( J_{vi}^{\{1\}} \bigr)^T J_{\omega i}^{\{2\}} \ldotp
+\end{align}
+
+Стоит отметить тот факт, что выражение из~\eqref{eq_getting_form_with_D_for_K}, обозначим которое через $\mathcal{D}(q)$, равное
+\begin{gather}
+	\mathcal{D}(q) = \sum_{i=1}^5 \Bigl(m_i J_{vi}^T J_{vi} + J_{\omega i}^T \, {}^0\!R_i \, \mathcal{I}^{i}_i \, {}^0\!R_i^T J_{\omega i} + 2 \cdot x\{ m_i r^0_{i,\,ci} \} \!\cdot\! J_{xi} \,\, + {}\notag \\
+	%
+	{} + 2 \cdot y\{ m_i r^0_{i,\,ci} \} \!\cdot\! J_{yi} + 2 \cdot z\{ m_i r^0_{i,\,ci} \} \!\cdot\! J_{zi}\Bigr),
+\end{gather}
+в общем случае не равно матрице $D(q)$.
+При этом получить последнюю из матрицы $\mathcal{D}(q)$ можно с помощью следующей формулы:
+\begin{equation}
+	D_{ij} =
+	\begin{cases}
+		0.5 (\mathcal{D}_{ij} + \mathcal{D}_{ji}), & i \ne j; \\
+		\mathcal{D}_{ij}, & i = j;
+	\end{cases}
+\end{equation}
+где $\mathcal{D}_{ij}$~--- элемент матрицы $\mathcal{D}(q)$, стоящий на пересечении $i$-ой строки и $j$-го столбца.
+
+
+\textbf{Учет динамики приводов}
+
+Уравнения, описывающие динамику приводов, в матричном виде имеют вид
+\begin{equation}\label{eq_actuators_dynamic}
+	I_a \ddot{q} = \tau_e - \tau,
+\end{equation}
+где $I_a$~--- диагональная матрица приведенных к выходным валам моментов инерции приводов, $\tau_e$~--- вектор-столбец приведенных к выходным валам приводов моментов силы, развиваемых двигателями, имеющие вид:
+\begin{equation}
+	I_a =
+	\begin{bmatrix}
+		I_{a,1} & 0 & \cdots & 0 \\
+		0 & I_{a,2} & \cdots & 0 \\
+		\vdots & \vdots & \ddots & 0 \\
+		0 & 0 & \cdots & I_{a,5}
+	\end{bmatrix}\!\!,
+	\qquad \qquad
+	\tau_e =
+	\begin{bmatrix}
+		\tau_{e,1} \\ \tau_{e,2} \\ \vdots \\ \tau_{e,5}
+	\end{bmatrix}\!\!\ldotp
+\end{equation}
+
+Объединяя уравнения~\eqref{eq_dynamic_in_linear} и~\eqref{eq_actuators_dynamic}, имеем 
+\begin{equation}
+	\tau_e = I_a \ddot{q} + \xi \chi,
+\end{equation}
+и, добавив в это выражение учет моментов трения, окончательно имеем
+\begin{equation}\label{eq_eqs_with_tau_f}
+	\tau_e = I_a \ddot{q} + \xi \chi + t_f \ldotp
+\end{equation}
+
+Модель трения была выбрана как на поясняемом рисунке~\ref{img_friction_torque} и  описывается следующим уравнением \cite{siciliano2008springer}
+\begin{equation}\label{eq_friction_torque}
+	\tau_f(\dot{q}) = f_v \dot{q} + f_c \sign(\dot{q}) + f_\text{off},
+\end{equation}
+где $f_v$, $f_c$~--- диагональные матрицы коэффициентов вязкого и сухого трения соответственно, $f_\text{off}$~--- вектор-столбец сдвигов в моментах силы, имеющие вид
+\begin{equation}
+	f_v =
+	\begin{bmatrix}
+		f_{v,1} & 0 & \cdots & 0 \\
+		0 & f_{v,2} & \cdots & 0 \\
+		\vdots & \vdots & \ddots & 0 \\
+		0 & 0 & \cdots & f_{v,5}
+	\end{bmatrix}\!\!,
+	\quad
+	f_c =
+	\begin{bmatrix}
+		f_{c,1} & 0 & \cdots & 0 \\
+		0 & f_{c,2} & \cdots & 0 \\
+		\vdots & \vdots & \ddots & 0 \\
+		0 & 0 & \cdots & f_{c,5}
+	\end{bmatrix}\!\!,
+	\quad
+	f_\text{off} =
+	\begin{bmatrix}
+		f_{\text{off},1} \\ f_{\text{off},2} \\ \vdots \\ f_{\text{off},5}
+	\end{bmatrix}\!\!\ldotp
+\end{equation}
+
+\begin{figure}[h!]
+	\centering\includegraphics[width=0.7\textwidth]{friction_torque.pdf}
+	\caption{График, поясняющий выбранную модель трения}
+	\label{img_friction_torque}
+\end{figure}
+
+С~учетом динамики приводов и уравнения~\eqref{simple_dynamics} можно окончательно получить модель манипулятора:
+\begin{equation}\label{eq_model_with_standard_matrix}
+\tau_e = M(q) \ddot{q} + C(q,\dot{q}) \dot{q} + G(q) + t_f(\dot{q}),
+\end{equation}
+где $M(q) = I_a + D(q)$.
+
