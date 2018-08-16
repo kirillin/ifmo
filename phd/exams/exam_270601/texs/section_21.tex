@@ -1,0 +1,105 @@
+\subsection{Коэффициенты ошибок по задающему и возмущающему воздействиям и их вычисление. Статизм и астатизм непрерывных систем}
+\begin{enumerate}
+    \item \textbf{По задающему воздействию}.
+    
+    Коэффициенты ошибок позволяют вычислять установившиееся значение ошибки относительно задающего воздействия на основе разложения задающего воздействия в бесконечнй ряд по производным задающего воздействия.
+    
+    ПФ по ошибке
+    \begin{equation}
+        \Phi_e(s) = \cfrac{E(s)}{G(s)} = \cfrac{1}{1 + W(s)} \quad
+        E(s) = \Phi_e(s) G(s)
+    \end{equation}
+    
+    Разложив ошибку в ряд Тейлора в окресности $s=0$
+    \begin{equation}
+        E(s) = (c_0 + c_1 s + \cfrac{c_2 s^2}{2!} + \dots + \cfrac{c_k s^k}{k!}) G(s)
+    \end{equation}
+    где $c_i$~--- коэффициенты разложения в ряд Тейлора (коэффициенты ошибок).
+    
+    \begin{equation}
+        e_{\text{уст}} (t) = \sum\limints_{i=0}^{p} \cfrac{c_i}{i!} \cdot \cfrac{d^i g(i)}{d t^i} 
+        \quad
+        c_0 = [\Phi_e(s)]_{s=0},
+        \quad
+        \cfrac{c_i}{i!} = [\cfrac{d^i \Phi_e(s)}{d s^i}]_{s=0}
+    \end{equation}
+    
+    \item Статическая система
+    
+    Если коэффициент ошибок $c_0 \ne 0$, то система статическая отностельно задающего воздействия.
+    \begin{enumerate}
+        \item Для 
+            \begin{equation}
+                g(t) = g_0 = const \quad
+                e_{\text{уст}} = c_0 g_0
+            \end{equation}
+            
+            Статическая система отрабатывает постоянное воздействие с постоянной ошибкой.
+
+        \item Для
+            \begin{equation}
+                g(t) = g_1 t 
+                \quad
+                e_{\text{уст}} = c_0 g_1 t + c_1 g_1
+            \end{equation}
+            
+            Статическая система воздействия с постоянной скоростью в установившемся режиме отрабатывает с бесконечной ошибкой (причем ошибка растет в бесконечность линейно).
+    \end{enumerate}
+
+    \item Система с астатизмом относительно задающего воздействия
+    
+    I порядок астатизма:
+    \begin{equation}
+        c_0 = 0, \quad c_1 \ne 0
+    \end{equation}
+
+    \begin{enumerate}
+        \item Постоянное входное воздействие
+        \begin{equation}
+            g(t) = g_0 = const
+            \quad
+            e_{\text{уст}} = \underbrace{c_0}_{=0} g_0 \textcolor{gray}{(= 0)}
+        \end{equation}
+        \item Нарастающее входное воздействие
+        \begin{equation}
+            g(t) = g_1 t \quad
+            e_{\text{уст}} = \underbrace{c_0}_{=0} g_1 t + c_1 g_1 = c_1 g_1
+        \end{equation}
+        Добротность по скорости системы с астатизмом I порядка [$c^{-1}$]
+        \begin{equation}
+            \cfrac{1}{c_1} = \cfrac{g_1}{e_{\text{уст}}}
+        \end{equation}
+    \end{enumerate}
+
+    II порядок астатизма:
+    \begin{equation}
+        c_0 = 0, \quad c_1 = 0, \quad c_2 \ne 0
+    \end{equation}
+    
+    \begin{enumerate}
+        \item
+        \begin{equation}
+            g(t) = g_0 = const \quad
+            e_{\text{уст}} = c_0 g_0 + c_1 \cfrac{dg_0}{dt} + \cfrac{c_2}{2} \cfrac{d^2 g_0}{dt^2} + \dots = c_0 g_0 = 0
+        \end{equation}
+        \item 
+        \begin{equation}
+            g(t) = g_1 t, \quad
+            e = 0, \quad
+            \cfrac{dg(t)}{dt} = g_1, \quad
+            \cfrac{d^2g(t)}{dt^2} = 0
+        \end{equation}
+        \item 
+        \begin{equation}
+            g(t) = \cfrac{g_2}{2} t^2, \quad
+            e_{\text{уст}} = \cfrac{c_2}{2} g_2 \quad\Rightarrow\quad
+        \end{equation}
+        Добротность по ускорению
+        \begin{equation}
+            \Rightarrow\quad
+            \cfrac{g_2}{e} = \Big(\cfrac{c_2}{2}\Big)^{-1}
+        \end{equation}
+    \end{enumerate}
+
+
+\end{enumerate}

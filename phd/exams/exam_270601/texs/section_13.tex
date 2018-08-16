@@ -1,0 +1,57 @@
+\subsection{Понятие разностных уравнений и способы их решений}
+
+Для объекта:
+\begin{equation}
+    \begin{cases}
+        x(k+1) = A x(k) + Bu(k),\\
+        y(k) = C x(k).
+    \end{cases}
+\end{equation}
+
+\textbf{Аналитическое решение} разностного уравнения в форме ВСВ:
+\begin{gather}
+    x(1) = A x(0) + B u(0),\\
+    x(2) = A^{2} x(0) + A B u(0) + B u(1),\\
+    x(3) = A^3 x(0) + A^2 B u(0) + A B u(1) + B u(2),\\
+    x(k) = \underbrace{A^k x(0)}_{\text{св. сост-ая}} + 
+    \underbrace{\sum\limits_{i=0}^{k} A^{k-1-i} B u(i)}_{\text{в. сост-ая}}
+\end{gather}
+
+\textbf{Аналитическое решение} разностного уравнения в рекуррентном виде:
+\begin{equation}
+    a_0 y(k+n) + a_1 y(k+n-1) +\dots+ a_n y(k) = b_1 u(k+n-1) +\dots+ b_n u(k)
+\end{equation}
+
+Форма представления моделей дает простой путь для получения рекуррентного решения, т. е. процедуры нахождения текущих значений $y(k)$ по известным значениям функций у и u в предшествующие моменты дискретного времени k. Подставляя в разностное уравнение $k+n=k$ (или $n= 0$) запишем:
+\begin{equation}
+    y(k) = -a_1 y(k-1) -\dots- a_n y(k) + b_1 u(k-1) + b_2 u(k-2) + \dots + b_n u(0)
+\end{equation}
+\begin{equation}
+    \sum\limits_{i=0}^{n} a_i y (k+n-i) = \sum\limits_{j=0}^{k} b_j u(k+j)
+\end{equation}
+Сдвиг входной переменно k должен быть не больше сдвига n: $k \le n$~--- уловие физической реализуемости.
+
+Пример:
+
+Характеристическое уравнение системы:
+\begin{equation}
+    z^2 + a_{n-1} z^{n-1} + \dots + a_q z + a_o = 0
+\end{equation}
+
+\begin{equation}
+    y(k) = \sum\limits_{i=1}^{n} C_i z_i^k + y_{\text{в}}(k)
+\end{equation}
+
+Найдем вынужденную составляющую из
+\begin{equation}
+    \sum\limits_{i=0}^{n} a_i y_{\text{в}}(k+i) = \sum\limits_{j=0}^{k} b_j u(k+j)
+\end{equation}
+Затем, найдем неопределенные коэффициенты $C_i$ из условия, что общее решения для n-1 интервала должно быть равно начальным условиям $y(0),y(1), \dots, y(n)$.
+\begin{gather}
+    \sum\limits_{i=0}^{n} C_i +  y_{\text{в}}(0) = y(0),\\
+    \sum\limits_{i=0}^{n} C_i z_i+  y_{\text{в}}(1) = y(1),\\
+    \sum\limits_{i=0}^{n} C_i z_y^2+  y_{\text{в}}(2) = y(2),\\
+    \sum\limits_{i=0}^{n} C_i z_y^n +  y_{\text{в}}(n) = y(n).
+\end{gather}
+
+

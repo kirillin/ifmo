@@ -1,0 +1,37 @@
+\subsection{Передаточные функции и матрицы дискретных систем и объектов и их вычисление на основе структурного представления}
+
+ПФ~--- отношение дискретного преобразования Лапласа входной переменной к выходной при нулевых начальных условиях:
+\begin{equation}
+    W(z) = \cfrac{Y(z)}{X(z)}
+\end{equation}
+
+Передаточная матрица:
+\begin{gather}
+    \text{for} z\{x(k)\} = X(z), \quad z\{u(k)\} = U(z), \quad z\{y(k)\} = Y(z), \\
+    \begin{cases}
+        x(k+1) = A x(k) + B u(k),\\
+        y(k) = C x(k),
+    \end{cases}
+    \quad\Rightarrow\quad
+    \begin{cases}
+        z X(z) = A X(z) + B U(z),\\
+        Y(z) = C X(z),
+    \end{cases}
+\end{gather}
+Отсюда, получим предаточную матрицу:
+\begin{gather}
+    Y(z) = C(z I - A)^{-1} B \cdot U(z)
+    \quad\Rightarrow\quad
+    W(z) = C(z I - A)^{-1} B
+\end{gather}
+где
+\begin{gather}
+    W(z) = \Big[ W_{ij}(z) \Big], i=\overline{1,n}, j=\overline{1,n}
+\end{gather}
+где $W_{ij}$~--- связывает i-ый вход с j-ым выходом.
+
+Пример:
+\begin{equation}
+    Y(z) = \cfrac{W_1 W_2}{1+W_1 W_2} G(z) + \cfrac{W_2}{1+W_1 W_2} F(z),
+\end{equation}
+где $G(z)$~--- изображение входа, $F(z)$~--- изображение помехи.
