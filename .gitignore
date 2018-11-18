@@ -8,3 +8,6 @@
 *.synctex.gz
 *.pyc
 *.backup
+*.gz
+*.tar
+*.dvi

@@ -1,0 +1,41 @@
+from sympy import symbols, Matrix
+
+# M_g nd L_g vars
+m11,m12,m13, m21,m22,m23 = symbols('m_{11} m_{12} m_{13} m_{21} m_{22} m_{23}')
+l1, l2, l3 = symbols('l_1 l_2 l_3')
+
+# init matricies
+Mg = Matrix([[m11,m12,m13],[m21,m22,m23]])
+Lg = Matrix([l1,l2, l3])
+
+G = Matrix([[0,1,0],[-64,0,0],[0,0,0]]) 
+A = Matrix([[0,1],[1,-1]])
+b = Matrix([[2],[1]])
+h = Matrix([[1],[0],[1]])
+C = Matrix([[1, 0]])
+
+# compute equations
+u1 = Mg * G - A * Mg - b * Lg.T
+u2 = h.T - C*Mg
+
+us = []
+for u in [u1,u2]:
+    for _u in u:
+        us.append(_u)
+    
+# solve equations
+values = solve(us, [l1,l2,l3,m11,m12,m13, m21,m22,m23])
+
+# printing all values for each in [l1,l2,l3,m11,m12,m13, m21,m22,m23]
+L_g = []
+M_g = [ ]
+for i, v in enumerate(values):
+
+    if i < 3:
+        L_g.append(eval(str(values[v])))
+    else:
+        M_g.append(eval(str(values[v])))
+
+    
+print(L_g)
+print(M_g)
